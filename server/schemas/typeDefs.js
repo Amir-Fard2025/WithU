@@ -23,7 +23,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    me: User
+    user: User
   }
   input ResourceData {
     resourceId: ID
