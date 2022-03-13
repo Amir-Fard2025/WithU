@@ -2,7 +2,7 @@ const express = require("express");
 
 const db = require("./config/connection");
 
-const { typeDefs } = require("./schemas");
+const { typeDefs, resolvers } = require("./schemas");
 
 const { ApolloServer } = require("apollo-server-express");
 
@@ -14,7 +14,7 @@ app.use(express.json());
 
 const server = new ApolloServer({
   typeDefs,
-  // resolvers,
+  resolvers,
 });
 
 const serverStart = async () => {
