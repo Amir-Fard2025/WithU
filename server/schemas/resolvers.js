@@ -57,7 +57,7 @@ const resolvers = {
       } catch (error) {
         return resolvers.status(400).json(err);
       }
-      return false;
+      return true;
     },
   },
 };
