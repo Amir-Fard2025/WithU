@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, ResourcesCard } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -51,8 +51,13 @@ const resolvers = {
       });
       return { token, user };
     },
-    saveResourcesCard: async (parent, args, context) => {
-      return { message: "save resources is in process" };
+    saveResourcesCard: async (parent, args) => {
+      console.log(args.resource);
+      try {
+      } catch (error) {
+        return resolvers.status(400).json(err);
+      }
+      return false;
     },
   },
 };
