@@ -39,6 +39,7 @@ const typeDefs = gql`
     addResourcesCard(resource: ResourceData!): Boolean
     updateResourcesCard(resource: ResourceData!): Boolean
     deleteResourcesCard(cardId: ID!): Boolean
+    likeResourcesCard(cardId: ID!): Boolean
   }
 `;
 module.exports = typeDefs;

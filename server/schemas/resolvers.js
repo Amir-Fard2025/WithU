@@ -94,6 +94,20 @@ const resolvers = {
         return resolvers.status(400).json(err);
       }
     },
+    likeResourcesCard: async (parent, { cardId }) => {
+      try {
+        const resourceCard = await resource.findOne({
+          // take the _id dynamically from context
+
+          _id: cardId,
+        });
+        if (resourceCard.like.includes(userId)) {
+          console.log("unlike");
+        } else {
+          console.log("like");
+        }
+      } catch (err) {}
+    },
   },
 };
 
