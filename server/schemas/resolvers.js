@@ -51,14 +51,7 @@ const resolvers = {
       });
       return { token, user };
     },
-    saveResourcesCard: async (parent, args) => {
-      console.log(args.resource);
-      try {
-      } catch (error) {
-        return resolvers.status(400).json(err);
-      }
-      return true;
-    },
+
     addResourcesCard: async (parent, args) => {
       console.log(args.resource);
       const { resourceId, title, description, url, language } = args.resource;
@@ -86,6 +79,16 @@ const resolvers = {
           { new: true }
         );
         // return { updatedCard };
+        return true;
+      } catch (err) {
+        return resolvers.status(400).json(err);
+      }
+    },
+    deleteResourcesCard: async (parent, { cardId }) => {
+      try {
+        const deleteCard = await ResourcesCard.findOneAndDelete({
+          _id: cardId,
+        });
         return true;
       } catch (err) {
         return resolvers.status(400).json(err);
