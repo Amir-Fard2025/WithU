@@ -37,6 +37,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     adduser(email: String!, password: String!): Auth
     saveResourcesCard(resource: ResourceData!): Boolean
+    addResourcesCard(resource: ResourceData!): Boolean
+    updateResourcesCard(resource: ResourceData!): Boolean
   }
 `;
 module.exports = typeDefs;

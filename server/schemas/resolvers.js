@@ -59,6 +59,38 @@ const resolvers = {
       }
       return true;
     },
+    addResourcesCard: async (parent, args) => {
+      console.log(args.resource);
+      const { resourceId, title, description, url, language } = args.resource;
+      try {
+        const addCard = await ResourcesCard.create({
+          title,
+          description,
+          url,
+          language,
+        });
+        return { addCard };
+      } catch (err) {
+        console.error(err.message);
+      }
+    },
+    updateResourcesCard: async (parent, args) => {
+      console.log(args.resource);
+      const { resourceId, title, description, url, language } = args.resource;
+      try {
+        const updatedCard = await ResourcesCard.findOneAndUpdate(
+          // take the _id dynamically from context
+
+          { _id: "622f85e57137ed6dac431a36" },
+          { $set: { resourceId, title, description, url, language } },
+          { new: true }
+        );
+        // return { updatedCard };
+        return true;
+      } catch (err) {
+        return resolvers.status(400).json(err);
+      }
+    },
   },
 };
 
