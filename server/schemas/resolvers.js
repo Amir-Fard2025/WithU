@@ -10,6 +10,9 @@ const resolvers = {
       }
       throw new AuthenticationError("Please login first!");
     },
+    resourcesCards: async () => {
+      return await ResourcesCard.find();
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -97,16 +100,19 @@ const resolvers = {
     likeResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
         try {
-          const resourceCard = await resource.findOne({
+          const resourceCard = await ResourcesCard.findOne({
             _id: cardId,
           });
           if (resourceCard.like.includes(context.user._id)) {
             console.log("unlike");
+            return true;
           } else {
             console.log("like");
+            return false;
           }
         } catch (err) {
           console.log(err);
+          return false;
         }
       }
       throw new AuthenticationError("Please login first!");

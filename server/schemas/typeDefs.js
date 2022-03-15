@@ -10,7 +10,7 @@ const typeDefs = gql`
   }
 
   type ResourcesCard {
-    resourceId: ID
+    id: ID
     title: String
     description: String
     url: String
@@ -24,6 +24,7 @@ const typeDefs = gql`
 
   type Query {
     user: User
+    resourcesCards: [ResourcesCard]
   }
   input ResourceData {
     title: String
