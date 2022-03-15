@@ -1,0 +1,14 @@
+[
+  {
+    "title": "bob@bob.com",
+    "description": "password01"
+  },
+  {
+    "email": "maria@maria.com",
+    "password": "password02"
+  },
+  {
+    "email": "amiko@amiko.com",
+    "password": "password03"
+  }
+]

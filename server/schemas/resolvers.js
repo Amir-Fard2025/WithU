@@ -26,7 +26,6 @@ const resolvers = {
       // retrieve the token
       const token = signToken({
         _id: user.id,
-        username: user.username,
         email: user.email,
       });
       return { user, token };
@@ -52,6 +51,7 @@ const resolvers = {
       return { token, user };
     },
 
+    // Here I need to extract the toket first to ensure user is allowed to create a card; user is logged in and is allowed to create a card
     addResourcesCard: async (parent, args) => {
       console.log(args.resource);
       const { resourceId, title, description, url, language } = args.resource;
@@ -67,6 +67,8 @@ const resolvers = {
         console.error(err.message);
       }
     },
+
+    // Here I need to extract the toket first to ensure user is allowed to update a card;
     updateResourcesCard: async (parent, args) => {
       console.log(args.resource);
       const { resourceId, title, description, url, language } = args.resource;
@@ -84,6 +86,8 @@ const resolvers = {
         return resolvers.status(400).json(err);
       }
     },
+
+    // Here I need to extract the toket first to ensure user is allowed to delete a card;
     deleteResourcesCard: async (parent, { cardId }) => {
       try {
         const deleteCard = await ResourcesCard.findOneAndDelete({
@@ -94,6 +98,8 @@ const resolvers = {
         return resolvers.status(400).json(err);
       }
     },
+
+    // Here I need to extract the toket first to ensure user is allowed to like a card;
     likeResourcesCard: async (parent, { cardId }) => {
       try {
         const resourceCard = await resource.findOne({
