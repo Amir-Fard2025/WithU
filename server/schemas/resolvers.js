@@ -12,28 +12,23 @@ const resolvers = {
     },
   },
   Mutation: {
-    login: async (parent, args) => {
-      const user = await User.findOne({
-        $or: [{ email: args.email }],
-      });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
       if (!user) {
-        return { message: "Can't find this user" };
+        throw new AuthenticationError(`Can't find this user`);
       }
-      const correctPw = await user.isCorrectPassword(args.password);
+      const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        return { message: "Wrong password!" };
+        throw new AuthenticationError(`Wrong password!`);
       }
       // retrieve the token
-      const token = signToken({
-        _id: user.id,
-        email: user.email,
-      });
-      return { user, token };
+      const token = signToken(user);
+      return { token, user };
     },
-    adduser: async (parent, args) => {
+
+    addUser: async (parent, args) => {
       console.log(args);
       const user = await User.create({
-        username: args.username,
         email: args.email,
         password: args.password,
       });
@@ -44,7 +39,6 @@ const resolvers = {
       // retrieve the token
       const token = signToken({
         id: user.id,
-        username: user.username,
         email: user.email,
         password: user.password,
       });
@@ -57,6 +51,7 @@ const resolvers = {
       const { resourceId, title, description, url, language } = args.resource;
       try {
         const addCard = await ResourcesCard.create({
+          resourceId,
           title,
           description,
           url,

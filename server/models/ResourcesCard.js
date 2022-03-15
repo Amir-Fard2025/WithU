@@ -4,10 +4,16 @@ const resourceCardSchema = new Schema({
   title: {
     type: String,
     required: true,
+    minlength: 1,
+    maxlength: 25,
+    trim: true,
   },
   description: {
     type: String,
     required: true,
+    minlength: 1,
+    maxlength: 120,
+    trim: true,
   },
   url: {
     type: String,

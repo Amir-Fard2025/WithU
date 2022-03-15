@@ -5,7 +5,7 @@ const typeDefs = gql`
     _id: ID
     email: String
     password: String
-    savedResources: [ResourcesCard]
+    savedResources: [ResourcesCard]!
     resourceCount: String
   }
 
@@ -14,7 +14,7 @@ const typeDefs = gql`
     title: String
     description: String
     url: String
-    language: [String]
+    language: [String]!
   }
 
   type Auth {
@@ -35,7 +35,7 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    adduser(email: String!, password: String!): Auth
+    addUser(email: String!, password: String!): Auth
     addResourcesCard(resource: ResourceData!): Boolean
     updateResourcesCard(resource: ResourceData!): Boolean
     deleteResourcesCard(cardId: ID!): Boolean

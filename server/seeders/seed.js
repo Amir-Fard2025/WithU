@@ -5,7 +5,7 @@ const userSeeds = require("./userSeeds.json");
 db.once("open", async () => {
   try {
     await User.deleteMany({});
-    await User.create(userSeeds);
+    await User.create(userSeeds, { validateBeforeSave: true });
 
     console.log("all done!");
     process.exit(0);
