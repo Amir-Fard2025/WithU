@@ -51,13 +51,62 @@ const resolvers = {
       });
       return { token, user };
     },
-    saveResourcesCard: async (parent, args) => {
+
+    addResourcesCard: async (parent, args) => {
       console.log(args.resource);
+      const { resourceId, title, description, url, language } = args.resource;
       try {
-      } catch (error) {
+        const addCard = await ResourcesCard.create({
+          title,
+          description,
+          url,
+          language,
+        });
+        return { addCard };
+      } catch (err) {
+        console.error(err.message);
+      }
+    },
+    updateResourcesCard: async (parent, args) => {
+      console.log(args.resource);
+      const { resourceId, title, description, url, language } = args.resource;
+      try {
+        const updatedCard = await ResourcesCard.findOneAndUpdate(
+          // take the _id dynamically from context
+
+          { _id: "622f85e57137ed6dac431a36" },
+          { $set: { resourceId, title, description, url, language } },
+          { new: true }
+        );
+        // return { updatedCard };
+        return true;
+      } catch (err) {
         return resolvers.status(400).json(err);
       }
-      return true;
+    },
+    deleteResourcesCard: async (parent, { cardId }) => {
+      try {
+        const deleteCard = await ResourcesCard.findOneAndDelete({
+          _id: cardId,
+        });
+        return true;
+      } catch (err) {
+        return resolvers.status(400).json(err);
+      }
+    },
+    likeResourcesCard: async (parent, { cardId }) => {
+      try {
+        const resourceCard = await resource.findOne({
+          // take the _id dynamically from context
+
+          _id: cardId,
+        });
+        if (resourceCard.like.includes(userId)) {
+          console.log("unlike");
+        } else {
+          console.log("like");
+        }
+      } catch (err) {}
     },
   },
 };

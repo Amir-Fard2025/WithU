@@ -17,6 +17,12 @@ const resourceCardSchema = new Schema({
     type: [String],
     required: true,
   },
+  like: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const ResourceCard = model("ResourceCard", resourceCardSchema);
