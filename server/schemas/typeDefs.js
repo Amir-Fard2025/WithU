@@ -26,7 +26,6 @@ const typeDefs = gql`
     user: User
   }
   input ResourceData {
-    resourceId: ID
     title: String
     description: String
     url: String

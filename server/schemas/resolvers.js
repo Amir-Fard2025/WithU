@@ -21,93 +21,95 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError(`Wrong password!`);
       }
-      // retrieve the token
       const token = signToken(user);
       return { token, user };
     },
 
-    addUser: async (parent, args) => {
-      console.log(args);
+    addUser: async (parent, { email, password }) => {
       const user = await User.create({
-        email: args.email,
-        password: args.password,
+        email,
+        password,
       });
       if (!user) {
         console.log("Error in adding a user");
         return { message: "Something is wrong!" };
       }
-      // retrieve the token
-      const token = signToken({
-        id: user.id,
-        email: user.email,
-        password: user.password,
-      });
+
+      const token = signToken(user);
       return { token, user };
     },
 
-    // Here I need to extract the toket first to ensure user is allowed to create a card; user is logged in and is allowed to create a card
-    addResourcesCard: async (parent, args) => {
-      console.log(args.resource);
-      const { resourceId, title, description, url, language } = args.resource;
-      try {
-        const addCard = await ResourcesCard.create({
-          resourceId,
-          title,
-          description,
-          url,
-          language,
-        });
-        return { addCard };
-      } catch (err) {
-        console.error(err.message);
+    addResourcesCard: async (parent, args, context) => {
+      if (context.user) {
+        const { resourceId, title, description, url, language } = args.resource;
+        try {
+          const addCard = await ResourcesCard.create({
+            resourceId,
+            title,
+            description,
+            url,
+            language,
+          });
+          return true;
+        } catch (err) {
+          console.error(err.message);
+          return false;
+        }
       }
+      throw new AuthenticationError("Please login first!");
     },
 
-    // Here I need to extract the toket first to ensure user is allowed to update a card;
-    updateResourcesCard: async (parent, args) => {
-      console.log(args.resource);
-      const { resourceId, title, description, url, language } = args.resource;
-      try {
-        const updatedCard = await ResourcesCard.findOneAndUpdate(
-          // take the _id dynamically from context
+    updateResourcesCard: async (parent, args, context) => {
+      if (context.user) {
+        const { resourceId, title, description, url, language } = args.resource;
+        try {
+          const updatedCard = await ResourcesCard.findOneAndUpdate(
+            // take the _id dynamically from context
 
-          { _id: "622f85e57137ed6dac431a36" },
-          { $set: { resourceId, title, description, url, language } },
-          { new: true }
-        );
-        // return { updatedCard };
-        return true;
-      } catch (err) {
-        return resolvers.status(400).json(err);
+            { _id: "622f85e57137ed6dac431a36" },
+            { $set: { resourceId, title, description, url, language } },
+            { new: true }
+          );
+          // return { updatedCard };
+          return true;
+        } catch (err) {
+          return resolvers.status(400).json(err);
+        }
       }
+      throw new AuthenticationError("Please login first!");
     },
 
     // Here I need to extract the toket first to ensure user is allowed to delete a card;
-    deleteResourcesCard: async (parent, { cardId }) => {
-      try {
-        const deleteCard = await ResourcesCard.findOneAndDelete({
-          _id: cardId,
-        });
-        return true;
-      } catch (err) {
-        return resolvers.status(400).json(err);
+    deleteResourcesCard: async (parent, { cardId }, context) => {
+      if (context.user) {
+        try {
+          const deleteCard = await ResourcesCard.findOneAndDelete({
+            _id: cardId,
+          });
+          return true;
+        } catch (err) {
+          return resolvers.status(400).json(err);
+        }
       }
+      throw new AuthenticationError("Please login first!");
     },
 
-    // Here I need to extract the toket first to ensure user is allowed to like a card;
-    likeResourcesCard: async (parent, { cardId }) => {
-      try {
-        const resourceCard = await resource.findOne({
-          // take the _id dynamically from context
-
-          _id: cardId,
-        });
-        if (resourceCard.like.includes(userId)) {
-          console.log("unlike");
-        } else {
-          console.log("like");
+    likeResourcesCard: async (parent, { cardId }, context) => {
+      if (context.user) {
+        try {
+          const resourceCard = await resource.findOne({
+            _id: cardId,
+          });
+          if (resourceCard.like.includes(context.user._id)) {
+            console.log("unlike");
+          } else {
+            console.log("like");
+          }
+        } catch (err) {
+          console.log(err);
         }
-      } catch (err) {}
+      }
+      throw new AuthenticationError("Please login first!");
     },
   },
 };

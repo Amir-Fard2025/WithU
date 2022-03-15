@@ -3,18 +3,18 @@
     "title": "Energy",
     "description": "Give us the power!",
     "url": "https://goodnews.eu/unabhaengige-energieversorgung-vor-2030-moeglich/",
-    "language": "De"
+    "language": ["De"]
   },
   {
     "title": "Coral",
     "description": "Corals are so beautiful!",
     "url": "https://goodnews.eu/en/good-news/climate-resilient-coral-species-offer-hope-bongos-are-back-in-kenya-meet-the-mediator-robot/",
-    "language": "En"
+    "language": ["En"]
   },
   {
     "title": "Tech",
-    "description": "Creative ways tech is used to help!",
+    "description": "Creative ways tech is used to",
     "url": "https://goodnews.eu/en/good-news/creative-ways-tech-is-used-to-help-airbnb-offers-free-housing-to-refugees-ultrasound-can-detect-prostate-cancer/",
-    "language": "En"
+    "language": ["En"]
   }
 ]
