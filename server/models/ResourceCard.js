@@ -23,7 +23,7 @@ const resourceCardSchema = new Schema({
     type: [String],
     required: true,
   },
-  like: [
+  userLikes: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",

@@ -27,6 +27,7 @@ const typeDefs = gql`
     user: User
     resourcesCards: [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
+    getAllUserCards: [ResourcesCard]
   }
 
   input ResourceData {
