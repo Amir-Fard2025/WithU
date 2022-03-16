@@ -1,0 +1,21 @@
+tag .App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.stack {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.primary {
+  color: rgba(206, 216, 14, 0.733);
+}
+
+.autocomplete {
+  color: red;
+}
