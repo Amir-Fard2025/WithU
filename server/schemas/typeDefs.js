@@ -15,6 +15,7 @@ const typeDefs = gql`
     description: String
     url: String
     language: [String]!
+    like: [ID]
   }
 
   type Auth {
@@ -39,6 +40,7 @@ const typeDefs = gql`
     addResourcesCard(resource: ResourceData!): Boolean
     updateResourcesCard(resource: ResourceData!): Boolean
     deleteResourcesCard(cardId: ID!): Boolean
+    canLikeResourcesCard(cardId: ID!): Boolean
     likeResourcesCard(cardId: ID!): Boolean
   }
 `;

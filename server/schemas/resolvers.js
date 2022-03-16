@@ -97,7 +97,7 @@ const resolvers = {
       throw new AuthenticationError("Please login first!");
     },
 
-    likeResourcesCard: async (parent, { cardId }, context) => {
+    canLikeResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
         try {
           const resourceCard = await ResourcesCard.findOne({
@@ -110,6 +110,22 @@ const resolvers = {
             console.log("like");
             return false;
           }
+        } catch (err) {
+          console.log(err);
+          return false;
+        }
+      }
+      throw new AuthenticationError("Please login first!");
+    },
+    likeResourcesCard: async (parent, arg, context) => {
+      if (context.user) {
+        try {
+          const resourceCard = await ResourcesCard.findOneAndUpdate(
+            { _id: arg.cardId },
+            { $addToSet: { like: context.user._id } }
+          );
+          console.log(resourceCard);
+          return true;
         } catch (err) {
           console.log(err);
           return false;
