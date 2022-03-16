@@ -4,7 +4,7 @@ const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
+    user: async (parent, arg, context) => {
       if (context.user) {
         return await User.findOne({ _id: context.user._id });
       }
@@ -13,7 +13,16 @@ const resolvers = {
     resourcesCards: async () => {
       return await ResourcesCard.find();
     },
+    getSingleCardbyId: async (parent, { _id }, context) => {
+      if (context.user) {
+        return await ResourcesCard.findOne({
+          _id,
+        });
+      }
+      throw new AuthenticationError("Please login first!");
+    },
   },
+
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

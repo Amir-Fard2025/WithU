@@ -26,7 +26,9 @@ const typeDefs = gql`
   type Query {
     user: User
     resourcesCards: [ResourcesCard]
+    getSingleCardbyId(_id: ID!): ResourcesCard
   }
+
   input ResourceData {
     title: String
     description: String
