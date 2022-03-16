@@ -6,6 +6,12 @@ const tagSchema = new Schema({
     required: true,
     unique: true,
   },
+  resourcesCards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'ResourceCard'
+    }
+  ]
 });
 
 const Tag = model("Tag", tagSchema);

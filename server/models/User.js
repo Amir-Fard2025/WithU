@@ -13,6 +13,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
+  createdCards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'ResourceCard'
+    }
+  ],
+  likedCards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'ResourceCard'
+    }
+  ]
 });
 
 userSchema.pre("save", async function (next) {

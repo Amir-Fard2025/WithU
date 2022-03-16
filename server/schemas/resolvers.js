@@ -1,4 +1,4 @@
-const { User, ResourcesCard } = require("../models");
+const { User, ResourceCard } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -11,16 +11,22 @@ const resolvers = {
       throw new AuthenticationError("Please login first!");
     },
     resourcesCards: async () => {
-      return await ResourcesCard.find();
+      return await ResourceCard.find();
     },
     getSingleCardbyId: async (parent, { _id }, context) => {
       if (context.user) {
-        return await ResourcesCard.findOne({
+        return await ResourceCard.findOne({
           _id,
         });
       }
       throw new AuthenticationError("Please login first!");
     },
+    getAllUserCards: async (parent, args, context) => {
+      if (context.user) {
+        return (await User.findOne({ _id: context.user._id }).populate('createdCards')).createdCards;
+      }
+      throw new AuthenticationError("Please login first!");
+    }
   },
 
   Mutation: {
@@ -55,13 +61,17 @@ const resolvers = {
       if (context.user) {
         const { resourceId, title, description, url, language } = args.resource;
         try {
-          const addCard = await ResourcesCard.create({
+          const addCard = await ResourceCard.create({
             resourceId,
             title,
             description,
             url,
             language,
           });
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { createdCards: addCard._id } }
+          )
           return true;
         } catch (err) {
           console.error(err.message);
@@ -76,7 +86,7 @@ const resolvers = {
         const { _id, resourceId, title, description, url, language } =
           args.resource;
         try {
-          const updatedCard = await ResourcesCard.findOneAndUpdate(
+          const updatedCard = await ResourceCard.findOneAndUpdate(
             { _id },
             { $set: { resourceId, title, description, url, language } },
             { new: true }
@@ -92,7 +102,7 @@ const resolvers = {
     deleteResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
         try {
-          const deleteCard = await ResourcesCard.findOneAndDelete({
+          const deleteCard = await ResourceCard.findOneAndDelete({
             _id: cardId,
           });
           return true;
@@ -106,7 +116,7 @@ const resolvers = {
     canLikeResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
         try {
-          const resourceCard = await ResourcesCard.findOne({
+          const resourceCard = await ResourceCard.findOne({
             _id: cardId,
           });
           if (resourceCard.like.includes(context.user._id)) {
@@ -126,7 +136,7 @@ const resolvers = {
     likeResourcesCard: async (parent, arg, context) => {
       if (context.user) {
         try {
-          const resourceCard = await ResourcesCard.findOneAndUpdate(
+          const resourceCard = await ResourceCard.findOneAndUpdate(
             { _id: arg.cardId },
             { $addToSet: { like: context.user._id } }
           );
