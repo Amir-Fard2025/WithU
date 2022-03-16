@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 //import Container from "@mui/material/Container";
 //import Link from "@mui/material/Link";
-import { Grid, Link, MenuItem, Typography } from "@mui/material";
+import { Grid, Link, Typography } from "@mui/material";
 
 // function Copyright() {
 //   return (
@@ -32,7 +32,7 @@ export default function Footer() {
       <Box
         component="footer"
         sx={{
-          py: 3,
+          py: 2,
           px: 2,
           mt: "auto",
           backgroundColor: (theme) =>

@@ -1,7 +1,6 @@
 import React from "react";
 import Footer from "./components/Footer/Footer";
-// import Footer from "./components/Footer/Footer";
-import ResponsiveNavbar from "./components/Navbar/Navbar";
+import ResponsiveNavbar from "./components/Navbar/ResponsiveNavbar";
 
 function App() {
   return (
