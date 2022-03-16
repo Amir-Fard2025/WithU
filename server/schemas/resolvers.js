@@ -73,16 +73,14 @@ const resolvers = {
 
     updateResourcesCard: async (parent, args, context) => {
       if (context.user) {
-        const { resourceId, title, description, url, language } = args.resource;
+        const { _id, resourceId, title, description, url, language } =
+          args.resource;
         try {
           const updatedCard = await ResourcesCard.findOneAndUpdate(
-            // take the _id dynamically from context
-
-            { _id: "622f85e57137ed6dac431a36" },
+            { _id },
             { $set: { resourceId, title, description, url, language } },
             { new: true }
           );
-          // return { updatedCard };
           return true;
         } catch (err) {
           return resolvers.status(400).json(err);
@@ -91,7 +89,6 @@ const resolvers = {
       throw new AuthenticationError("Please login first!");
     },
 
-    // Here I need to extract the toket first to ensure user is allowed to delete a card;
     deleteResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
         try {

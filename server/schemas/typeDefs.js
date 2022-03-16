@@ -30,6 +30,7 @@ const typeDefs = gql`
   }
 
   input ResourceData {
+    _id: ID
     title: String
     description: String
     url: String
