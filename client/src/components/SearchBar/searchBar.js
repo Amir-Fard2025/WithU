@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import "./SearchBar.css";
 
-export default function Tags() {
+export default function Search() {
   return (
     <>
       <Stack
@@ -36,10 +36,10 @@ export default function Tags() {
 // Top 13 Research dummies
 const topResearch = [
   { search: "Ukraine" },
-  { search: "Germany" },
+  { search: "Children" },
   { search: "Finance" },
   { search: "Shelters" },
-  { search: "Children" },
+  { search: "Germany" },
   { search: "Animals" },
   { search: "Refugees" },
   {
