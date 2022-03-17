@@ -1,4 +1,4 @@
-const { User, ResourceCard } = require("../models");
+const { User, ResourceCard, Tag } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -33,6 +33,9 @@ const resolvers = {
       return await ResourceCard.find({
         tag_id: { $in: [args.tagId] },
       });
+    },
+    getAllTags: async (parent, args) => {
+      return await Tag.find();
     },
   },
 

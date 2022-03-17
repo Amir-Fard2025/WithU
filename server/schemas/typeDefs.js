@@ -24,12 +24,18 @@ const typeDefs = gql`
     user: User
   }
 
+  type Tag {
+    id: ID
+    tagName: String
+  }
+
   type Query {
     user: User
     resourcesCards: [ResourcesCard]
     getCardsByTag(tagId: ID!): [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
     getAllUserCards: [ResourcesCard]
+    getAllTags: [Tag]
   }
 
   input ResourceData {
