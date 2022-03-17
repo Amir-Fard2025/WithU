@@ -1,11 +1,21 @@
-import "./Tags.css";
 import * as React from "react";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 
 export default function ClickableLinkChips() {
   return (
-    <Stack className="tags" direction="row" spacing={1}>
+    <Stack
+      className="tags"
+      direction="row"
+      spacing={1}
+      sx={{
+        minHeight: "10vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <>
         <Chip
           label="Children"
@@ -15,28 +25,28 @@ export default function ClickableLinkChips() {
           clickable
         />
         <Chip
-          label=" Link"
+          label=" Ukraine"
           component="a"
           href="#basic-chip"
           variant="outlined"
           clickable
         />
         <Chip
-          label="Clickable Link"
+          label="Finance"
           component="a"
           href="#basic-chip"
           variant="outlined"
           clickable
         />
         <Chip
-          label="Clickable Link"
+          label="Shelters"
           component="a"
           href="#basic-chip"
           variant="outlined"
           clickable
         />
         <Chip
-          label="Clickable Link"
+          label="Germany"
           component="a"
           href="#basic-chip"
           variant="outlined"
@@ -45,28 +55,28 @@ export default function ClickableLinkChips() {
       </>
       <>
         <Chip
-          label="Clickable Link"
+          label="Medical"
           component="a"
           href="#basic-chip"
           variant="outlined"
           clickable
         />
         <Chip
-          label="Clickable Link"
+          label="Border"
           component="a"
           href="#basic-chip"
           variant="outlined"
           clickable
         />
         <Chip
-          label="Clickable Link"
+          label="Transport"
           component="a"
           href="#basic-chip"
           variant="outlined"
           clickable
         />
         <Chip
-          label="Clickable Link"
+          label="Help"
           component="a"
           href="#basic-chip"
           variant="outlined"
