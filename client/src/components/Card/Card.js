@@ -7,8 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FlagCircleRoundedIcon from '@mui/icons-material/FlagCircleRounded';
 
-export default function MediaCard() {
-  return (
+export default function MediaCard({title, description}) {
+    return (
     <Card sx={{ maxWidth: 345, borderRadius: 5, boxShadow: 2, margin: 2}}>
       <CardMedia
         component="img"
@@ -18,10 +18,10 @@ export default function MediaCard() {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Resource
+            {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          This is a very special resource
+            {description}
         </Typography>
       </CardContent>
       <FlagCircleRoundedIcon/><FlagCircleRoundedIcon/><FlagCircleRoundedIcon/>
