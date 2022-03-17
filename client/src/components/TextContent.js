@@ -8,9 +8,10 @@ export default function TextAlignment() {
       <Box
         sx={{
           textAlign: "center",
-          marginLeft: 50,
-          marginRight: 50,
-          marginTop: 10,
+          width: "50%",
+          backgroundColor: "transparent",
+          marginTop: "5%",
+          marginLeft: "25%",
         }}
       >
         This page is about I am Lorem ipsum dolor sit amet, consectetur
