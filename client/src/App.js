@@ -3,6 +3,7 @@ import "./App.js";
 import SearchBar from "./components/SearchBar/searchBar";
 import Tags from "./components/Tags/Tags";
 import PlusButton from "./components/Button/PlusButton";
+import Text from "./components/TextContent";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <SearchBar />
       <Tags />
       <PlusButton />
+      <Text />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Autocomplete, TextField, Stack } from "@mui/material";
+import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
 
 export default function Search() {
   return (
@@ -32,15 +32,6 @@ export default function Search() {
           )}
         />
       </Stack>
-
-      {/* <div className="Aboutpage">
-        <p sx={{ width: 500, py: 5, px: 5, mt: "auto" }}>
-          This page is about I am Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque
-          dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis
-          aliquid perferendis magni nam, nihil explicabo ea!{" "}
-        </p>
-      </div> */}
     </>
   );
 }
