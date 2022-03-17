@@ -2,37 +2,32 @@ import { getCardActionsUtilityClass } from "@mui/material";
 import { borderBottom } from "@mui/system";
 import React, {useState, useEffect} from "react"; 
 import Card from "../Card/Card"
+import {GET_ALL_CARDS} from "../../utils/queries"
+import { useQuery } from "@apollo/client";
 
-const getAllUserCards = "hello from suer cards";
 
 const Container = () => {
-    const [cards, setCards] = useState([]);
-    const [loading, setLoading] = useState(false); 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [cardsPerPage, setCostsPerPage] = useState(6);
+    const {loading, data, error}= useQuery(GET_ALL_CARDS);
 
-    useEffect(() => {
-        const fetchCards = async () => {
-            setLoading(true);
-            const res = await getAllUserCards; // VERIFY WITH BACKEND
-            setCards(res);
-            setLoading(false);
-        }
-        fetchCards();
-    }, []);
+    console.log(loading, data);
 
-   if(loading) {
+
+    if(error) {
+        console.log(error);
+    } else  if(loading) {
        return (
            <div>
                <p>Loading...</p>
            </div>
        )
-   }
-    return (
-        <div>
-        <Card/>
+   } else {
+
+       return (
+           <div>
+            {data.resourcesCards.map(c => <Card key={c.id} title={c.title} description = {c.description} />)};
         </div>
         
-    )
-};
-export default Container; 
+        )
+    }
+    };
+    export default Container; 
