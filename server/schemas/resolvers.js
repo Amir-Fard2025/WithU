@@ -23,10 +23,17 @@ const resolvers = {
     },
     getAllUserCards: async (parent, args, context) => {
       if (context.user) {
-        return (await User.findOne({ _id: context.user._id }).populate('createdCards')).createdCards;
+        return (
+          await User.findOne({ _id: context.user._id }).populate("createdCards")
+        ).createdCards;
       }
       throw new AuthenticationError("Please login first!");
-    }
+    },
+    getCardsByTag: async (parent, args) => {
+      return await ResourceCard.find({
+        tag_id: { $in: [args.tagId] },
+      });
+    },
   },
 
   Mutation: {
@@ -59,7 +66,8 @@ const resolvers = {
 
     addResourcesCard: async (parent, args, context) => {
       if (context.user) {
-        const { resourceId, title, description, url, language } = args.resource;
+        const { resourceId, title, description, url, language, tag_id } =
+          args.resource;
         try {
           const addCard = await ResourceCard.create({
             resourceId,
@@ -67,11 +75,12 @@ const resolvers = {
             description,
             url,
             language,
+            tag_id,
           });
           const user = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $addToSet: { createdCards: addCard._id } }
-          )
+          );
           return true;
         } catch (err) {
           console.error(err.message);
@@ -83,12 +92,12 @@ const resolvers = {
 
     updateResourcesCard: async (parent, args, context) => {
       if (context.user) {
-        const { _id, resourceId, title, description, url, language } =
+        const { _id, resourceId, title, description, url, language, tag_id } =
           args.resource;
         try {
           const updatedCard = await ResourceCard.findOneAndUpdate(
             { _id },
-            { $set: { resourceId, title, description, url, language } },
+            { $set: { resourceId, title, description, url, language, tag_id } },
             { new: true }
           );
           return true;

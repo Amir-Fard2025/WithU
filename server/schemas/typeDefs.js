@@ -16,6 +16,7 @@ const typeDefs = gql`
     url: String
     language: [String]!
     like: [ID]
+    tag_id: [String]
   }
 
   type Auth {
@@ -26,6 +27,7 @@ const typeDefs = gql`
   type Query {
     user: User
     resourcesCards: [ResourcesCard]
+    getCardsByTag(tagId: ID!): [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
     getAllUserCards: [ResourcesCard]
   }
@@ -36,6 +38,7 @@ const typeDefs = gql`
     description: String
     url: String
     language: [String]
+    tag_id: [String]
   }
 
   type Mutation {
