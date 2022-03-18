@@ -19,9 +19,12 @@ const style = {
   p: 4,
 };
 
-const fontColor = {
-  color: "white",
+const field = {
   width: 400,
+};
+
+const button = {
+  color: "red",
 };
 
 export default function BasicModal() {
@@ -31,9 +34,10 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen} style={button}>
+        Open modal
+      </Button>
       <Modal
-        style={{ color: "red" }}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -41,19 +45,19 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <TextField
-            sx={fontColor}
+            sx={field}
             id="outlined-basic"
             label="Title"
             variant="outlined"
           />
           <TextField
-            sx={fontColor}
+            sx={field}
             id="outlined-basic"
             label="Description"
             variant="outlined"
           />
           <TextField
-            sx={fontColor}
+            sx={field}
             id="outlined-basic"
             label="URL"
             variant="outlined"
