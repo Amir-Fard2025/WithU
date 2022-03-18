@@ -29,6 +29,12 @@ const resourceCardSchema = new Schema({
       ref: "User",
     },
   ],
+  tag_id: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Tag",
+    },
+  ],
 });
 
 const ResourceCard = model("ResourceCard", resourceCardSchema);
