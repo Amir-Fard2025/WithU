@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
-
+import { Autocomplete, TextField, Stack } from "@mui/material";
 export default function Search() {
   return (
     <>
@@ -9,13 +8,12 @@ export default function Search() {
         spacing={3}
         sx={{
           width: "50%",
-          backgroundColor: "transparent",
-          marginTop: "15%",
+          paddingTop: "%",
           marginLeft: "25%",
         }}
-        textColor="inherit"
       >
         <Autocomplete
+          sx={{ paddingTop: "20%" }}
           className="autocomplete"
           multiple
           id="tags-standard"

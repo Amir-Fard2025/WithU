@@ -7,7 +7,17 @@ import Text from "./components/TextContent";
 
 function App() {
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        background: "linear-gradient(#4285f49f, #ffff00b3)",
+        height: "100vh",
+      }}
+      // style={{
+      //   background: "linear-gradient(90deg, blue 50%, yellow 50%)",
+      //   height: "180vh",
+      // }}
+    >
       <SearchBar />
       <Tags />
       <PlusButton />

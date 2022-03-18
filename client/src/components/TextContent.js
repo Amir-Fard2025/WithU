@@ -12,6 +12,7 @@ export default function TextAlignment() {
           backgroundColor: "transparent",
           marginTop: "5%",
           marginLeft: "25%",
+          color: "white",
         }}
       >
         This page is about I am Lorem ipsum dolor sit amet, consectetur
@@ -21,20 +22,4 @@ export default function TextAlignment() {
       </Box>
     </Typography>
   );
-}
-{
-  /* <Typography
-  sx={{
-    width: "50%",
-    align: "inherit",
-    textAlign: "center",
-    paddingLeft: "20%",
-    paddingTop: "20%",
-  }}
->
-  This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing
-  elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel
-  adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis
-  magni nam, nihil explicabo ea!{" "}
-</Typography>; */
 }
