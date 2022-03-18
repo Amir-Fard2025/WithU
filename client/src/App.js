@@ -3,7 +3,7 @@ import "./App.js";
 import SearchBar from "./components/SearchBar/searchBar";
 import Tags from "./components/Tags/Tags";
 import PlusButton from "./components/Button/PlusButton";
-import Text from "./components/TextContent";
+import Text from "./components/TextContent/TextContent";
 
 function App() {
   return (

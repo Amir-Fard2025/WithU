@@ -22,6 +22,7 @@ export default function Search() {
           defaultValue={[topResearch[13]]}
           renderInput={(params) => (
             <TextField
+              sx={{ color: "white" }}
               className="textfield"
               {...params}
               variant="standard"
