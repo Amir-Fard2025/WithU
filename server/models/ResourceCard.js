@@ -23,10 +23,16 @@ const resourceCardSchema = new Schema({
     type: [String],
     required: true,
   },
-  like: [
+  userLikes: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",
+    },
+  ],
+  tag_id: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Tag",
     },
   ],
 });

@@ -22,9 +22,10 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
+        position: "absolute",
+        bottom: "0",
+        width: "100%",
+        height: "60px",
       }}
     >
       <CssBaseline />
@@ -35,10 +36,7 @@ export default function Footer() {
           py: 2,
           px: 2,
           mt: "auto",
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+          backgroundColor: "transparent",
         }}
       >
         <Box>
@@ -49,7 +47,7 @@ export default function Footer() {
             <Grid item xs={1} md={3}>
               <Box sx={{ color: "black" }}>
                 <Typography sx={{ textAlign: "center" }} component="div">
-                  <Link href="/" underline="none" color="black">
+                  <Link href="/faq" underline="none" color="black">
                     FAQ
                   </Link>
                 </Typography>
