@@ -49,7 +49,7 @@ export default function Footer() {
             <Grid item xs={1} md={3}>
               <Box sx={{ color: "black" }}>
                 <Typography sx={{ textAlign: "center" }} component="div">
-                  <Link href="/" underline="none" color="black">
+                  <Link href="/faq" underline="none" color="black">
                     FAQ
                   </Link>
                 </Typography>
