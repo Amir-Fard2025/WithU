@@ -8,7 +8,7 @@ export default function Search() {
         spacing={3}
         sx={{
           width: "50%",
-          paddingTop: "%",
+          paddingTop: "5%",
           marginLeft: "25%",
         }}
       >

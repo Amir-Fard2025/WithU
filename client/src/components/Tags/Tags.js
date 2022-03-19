@@ -13,6 +13,7 @@ export default function ClickableLinkChips() {
         width: "100%",
         display: "flex",
         justifyContent: "center",
+        flexWrap: "wrap",
         alignItems: "center",
       }}
     >
