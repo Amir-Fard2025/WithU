@@ -32,8 +32,15 @@ const Container = () => {
         }
         setCurrPage(currPage + inc);
     }
+
+    
     const updatePage = (pageNum) => {
-        setCurrPage(pageNum - 1);
+        if(pageNum) {
+            setCurrPage(pageNum - 1);
+        }
+        else {
+            console.log(pageNum);
+        }
     }
     if(error) {
         console.log(error);
@@ -48,8 +55,8 @@ const Container = () => {
            <div>
 
             {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} />)};
-            <button onClick={()=>handleClick(-1)} > Dec </button>
-            <button onClick={()=>handleClick(1)} >Inc</button>
+            {/* <button onClick={()=>handleClick(-1)} > Dec </button>
+            <button onClick={()=>handleClick(1)} >Inc</button> */}
             <Pagination count={ Math.ceil(totalCards.length/CARDS_PER_PAGE)} updatePage={updatePage} />
         </div>
         
