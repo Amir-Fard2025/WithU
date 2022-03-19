@@ -7,12 +7,22 @@ import FAQPage from "./pages/FAQPage";
 import ResultsPage from "./pages/ResultsPage";
 import DashboardPage from "./pages/DashboardPage";
 import ResponsiveNavbar from "./components/Navbar/ResponsiveNavbar";
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import Container from "../src/components/Pagination/Container";
+import Card from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   const [open, setOpen] = useState(true);
 
   return (
+      <ApolloProvider client={client}>
+    
     <div
       className="App"
       style={{
@@ -33,6 +43,8 @@ function App() {
       </BrowserRouter>
       <Footer />
     </div>
+
+    </ApolloProvider>
   );
 }
 
