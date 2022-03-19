@@ -1,11 +1,12 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.js";
-import SearchBar from "./components/SearchBar/searchBar";
-import Tags from "./components/Tags/Tags";
-import Text from "./components/TextContent/TextContent";
-import Modal from "./components/Modals/Modal";
-import Footer from "./components/Footer/Footer";
+import LandingPage from "./pages/LandingPage";
+import FAQPage from "./pages/FAQPage";
+import ResultsPage from "./pages/ResultsPage";
+import DashboardPage from "./pages/DashboardPage";
 import ResponsiveNavbar from "./components/Navbar/ResponsiveNavbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -16,16 +17,16 @@ function App() {
         height: "100vh",
         width: "auto",
       }}
-      // style={{
-      //   background: "linear-gradient(90deg, blue 50%, yellow 50%)",
-      //   height: "180vh",
-      // }}
     >
       <ResponsiveNavbar />
-      <SearchBar />
-      <Tags />
-      <Text />
-      <Modal />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </div>
   );
