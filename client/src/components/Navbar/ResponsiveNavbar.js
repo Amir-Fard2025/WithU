@@ -14,7 +14,9 @@ export default function ResponsiveNavbar() {
     <React.Fragment>
       <AppBar sx={{ background: "#8cb2f9" }}>
         <Toolbar justifycontent="space-around">
-          <Typography sx={{ fontSize: "2rem" }}>WithU</Typography>
+          <a href="/">
+            <Typography sx={{ fontSize: "2rem" }}>WithU</Typography>
+          </a>
           <Tabs
             sx={{ marginLeft: "auto" }}
             textcolor="black"
