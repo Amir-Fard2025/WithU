@@ -1,29 +1,47 @@
 import React from "react";
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
+//import LoginModal from "../LoginModal/LoginModal";
 
-export default function ResponsiveNavbar() {
-  const [value, setValue] = useState();
+const buttonStyles = {
+  paddingTop: "0.75rem",
+  paddingBottom: "0.75rem",
+  marginLeft: "1vw",
+  marginRight: "1vw",
+};
+
+export default function ResponsiveNavbar({ setOpen }) {
+  const [value, setValue] = useState(0);
+  //const [open, setOpen] = useState(false);
+
+  const openLoginModal = () => {
+    setOpen(true);
+  };
+
   return (
     <React.Fragment>
-      <AppBar sx={{ background: "#8cb2f9" }}>
-        <Toolbar justifyContent="space-around">
+      <AppBar elevation={0} sx={{ background: "transparent" }}>
+        <Toolbar justifycontent="space-around">
           <Typography sx={{ fontSize: "2rem" }}>WithU</Typography>
           <Tabs
             sx={{ marginLeft: "auto" }}
-            textColor="black"
+            textcolor="black"
             value={value}
             onChange={(e, value) => setValue(value)}
             indicatorColor="primary"
           >
             <Tab label="Dashboard" />
-            <Button variant="contained" sx={{ padding: "8px" }}>
-              Login/SignUp
-            </Button>
-            <Button variant="outlined" sx={{ padding: "8px" }}>
-              Logout
-            </Button>
           </Tabs>
+          <Button
+            variant="contained"
+            onClick={openLoginModal}
+            sx={buttonStyles}
+          >
+            Login/SignUp
+          </Button>
+          <Button variant="outlined" sx={buttonStyles}>
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
     </React.Fragment>
