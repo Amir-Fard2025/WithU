@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import LoginModal from "./components/LoginModal/LoginModal";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.js";
 import LandingPage from "./pages/LandingPage";
@@ -9,6 +10,8 @@ import ResponsiveNavbar from "./components/Navbar/ResponsiveNavbar";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [open, setOpen] = useState(true);
+
   return (
     <div
       className="App"
@@ -18,7 +21,8 @@ function App() {
         width: "auto",
       }}
     >
-      <ResponsiveNavbar />
+      <ResponsiveNavbar setOpen={setOpen} />
+      <LoginModal open={open} onClose={() => setOpen(false)} />
       <BrowserRouter>
         <Routes>
           <Route path="/faq" element={<FAQPage />} />

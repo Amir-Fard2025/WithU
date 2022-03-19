@@ -1,6 +1,7 @@
 import React from "react";
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
+//import LoginModal from "../LoginModal/LoginModal";
 
 const buttonStyles = {
   paddingTop: "0.75rem",
@@ -8,8 +9,15 @@ const buttonStyles = {
   marginLeft: "1vw",
   marginRight: "1vw",
 };
-export default function ResponsiveNavbar() {
+
+export default function ResponsiveNavbar({ setOpen }) {
   const [value, setValue] = useState(0);
+  //const [open, setOpen] = useState(false);
+
+  const openLoginModal = () => {
+    setOpen(true);
+  };
+
   return (
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
@@ -24,7 +32,11 @@ export default function ResponsiveNavbar() {
           >
             <Tab label="Dashboard" />
           </Tabs>
-          <Button variant="contained" sx={buttonStyles}>
+          <Button
+            variant="contained"
+            onClick={openLoginModal}
+            sx={buttonStyles}
+          >
             Login/SignUp
           </Button>
           <Button variant="outlined" sx={buttonStyles}>
