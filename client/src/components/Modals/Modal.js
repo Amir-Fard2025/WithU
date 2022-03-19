@@ -12,7 +12,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 480,
   bgcolor: "white",
   opacity: "0.7",
   border: "0px solid",
@@ -26,7 +26,16 @@ const field = {
 };
 
 const button = {
-  color: "red",
+  direction: "row",
+  width: "auto",
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
+  alignItems: "center",
+  position: "absolute",
+  left: "50%",
+  top: "70%",
+  transform: "translate(-50%, -50%)",
 };
 
 export default function BasicModal() {

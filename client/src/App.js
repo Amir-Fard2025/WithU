@@ -15,6 +15,7 @@ function App() {
       style={{
         background: "linear-gradient(#4285f49f, #ffff00b3)",
         height: "100vh",
+        width: "auto",
       }}
     >
       <ResponsiveNavbar />

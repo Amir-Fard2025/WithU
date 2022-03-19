@@ -12,7 +12,7 @@ export default function ResponsiveNavbar() {
   const [value, setValue] = useState(0);
   return (
     <React.Fragment>
-      <AppBar sx={{ background: "#8cb2f9" }}>
+      <AppBar elevation={0} sx={{ background: "transparent" }}>
         <Toolbar justifycontent="space-around">
           <Typography sx={{ fontSize: "2rem" }}>WithU</Typography>
           <Tabs
