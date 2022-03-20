@@ -3,18 +3,35 @@
     "title": "Energy",
     "description": "Give us the power!",
     "url": "https://goodnews.eu/unabhaengige-energieversorgung-vor-2030-moeglich/",
+    "status": "published",
     "language": ["De"]
   },
   {
     "title": "Coral",
     "description": "Corals are so beautiful!",
     "url": "https://goodnews.eu/en/good-news/climate-resilient-coral-species-offer-hope-bongos-are-back-in-kenya-meet-the-mediator-robot/",
+    "status": "published",
     "language": ["En"]
   },
   {
     "title": "Tech",
     "description": "Creative ways tech is used to",
     "url": "https://goodnews.eu/en/good-news/creative-ways-tech-is-used-to-help-airbnb-offers-free-housing-to-refugees-ultrasound-can-detect-prostate-cancer/",
+    "status": "published",
     "language": ["En"]
+  },
+  {
+    "title": "Money collection",
+    "description": "We are collecting money for ukraine",
+    "url": "https://goodnews.eu/en/good-news/creative-ways-tech-is-used-to-help-airbnb-offers-free-housing-to-refugees-ultrasound-can-detect-prostate-cancer/",
+    "status": "unpublished",
+    "language": ["En", "Ua", "Ru"]
+  },
+  {
+    "title": "Safe Passage",
+    "description": "We are securing safe passage to people out of ukraine",
+    "url": "https://goodnews.eu/en/good-news/creative-ways-tech-is-used-to-help-airbnb-offers-free-housing-to-refugees-ultrasound-can-detect-prostate-cancer/",
+    "status": "unpublished",
+    "language": ["En", "Ua", "Ru"]
   }
 ]

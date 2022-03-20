@@ -12,6 +12,9 @@ import Container from "../src/components/Pagination/Container";
 import Card from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
 
+import AdminSide from "./pages/AdminSide";
+
+
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
@@ -39,6 +42,7 @@ function App() {
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/admin" element={<AdminSide />} />
         </Routes>
       </BrowserRouter>
       <Footer />

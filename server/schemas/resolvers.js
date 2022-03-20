@@ -37,6 +37,12 @@ const resolvers = {
     getAllTags: async (parent, args) => {
       return await Tag.find();
     },
+    getAllCardsByStatus: async (parent, args) => {
+      const { status } = args;
+      return await ResourceCard.find({
+        status
+      })
+    }
   },
 
   Mutation: {

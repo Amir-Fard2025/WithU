@@ -35,7 +35,8 @@ const typeDefs = gql`
     getCardsByTag(tagId: ID!): [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
     getAllUserCards: [ResourcesCard]
-    getAllTags: [Tag]
+    getAllTags: [Tag],
+    getAllCardsByStatus(status: String!): [ResourcesCard]
   }
 
   input ResourceData {
