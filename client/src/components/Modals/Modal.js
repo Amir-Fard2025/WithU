@@ -7,6 +7,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import { Typography } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import Stack from "@mui/material/Stack";
 
 const style = {
   position: "absolute",
@@ -39,20 +41,6 @@ const button = {
   transform: "translate(-50%, -50%)",
 };
 
-const text = {
-  direction: "row",
-  width: "auto",
-  display: "flex",
-  justifyContent: "center",
-  flexWrap: "wrap",
-  alignItems: "center",
-  position: "absolute",
-  left: "90%",
-  top: "76%",
-  transform: "translate(-50%, -50%)",
-  color: "primary.main",
-};
-
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -60,8 +48,9 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Typography sx={text}>Add or Edit Resource</Typography>
       <Button onClick={handleOpen} style={button}>
+        {" "}
+        Add or Edit resource
         <Fab color="info" aria-label="add">
           <AddIcon />
         </Fab>
@@ -105,6 +94,11 @@ export default function BasicModal() {
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Language" />}
           />
+          <Stack direction="row" spacing={2}>
+            <Button variant="contained" endIcon={<SendIcon />}>
+              Add
+            </Button>
+          </Stack>
         </Box>
       </Modal>
     </div>

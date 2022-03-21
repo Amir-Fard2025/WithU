@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Autocomplete, TextField, Stack } from "@mui/material";
-
+import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import "./searchBar.css";
 // const size = {
 //   transform: "scale(1.1)",
 // };
@@ -13,7 +14,6 @@ export default function Search() {
         className="stack"
         direction="row"
         spacing={3}
-        transform="scale(1.5)"
         sx={{
           minHeight: "10vh",
           width: "100%",
@@ -23,24 +23,44 @@ export default function Search() {
           alignItems: "center",
         }}
       >
-        <Autocomplete
-          sx={{ paddingTop: "20%" }}
-          className="autocomplete"
-          multiple
-          id="tags-standard"
-          options={topResearch}
-          getOptionLabel={(option) => option.search}
-          defaultValue={[topResearch[13]]}
-          renderInput={(params) => (
-            <TextField
-              sx={{ color: "white" }}
-              className="textfield"
-              {...params}
-              variant="standard"
-              placeholder="How can I help..."
-            />
-          )}
-        />
+        <div className="search-bar-wrapper">
+          <Autocomplete
+            sx={{
+              minWidth: "20%",
+              height: "4vh",
+            }}
+            className="autocomplete"
+            multiple
+            id="tags-standard"
+            options={topResearch}
+            getOptionLabel={(option) => option.search}
+            defaultValue={[topResearch[13]]}
+            renderInput={(params) => (
+              <TextField
+                sx={{
+                  color: "white",
+                  height: "4vh",
+                }}
+                className="textfield"
+                {...params}
+                variant="standard"
+                placeholder="Type..."
+              />
+            )}
+          />
+          <Button
+            variant="contained"
+            className="my-buttton"
+            sx={{
+              display: "flex",
+              backgroundColor: "yellow",
+              opacity: "0.7",
+              height: "4vh",
+            }}
+          >
+            <Typography sx={{ color: "black" }}>Enter</Typography>
+          </Button>
+        </div>
       </Stack>
     </>
   );

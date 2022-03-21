@@ -19,6 +19,7 @@ const style = {
 
 const modal = {
   backgroundColor: "yellow",
+  opacity: "0.8",
   border: "2px solid transparent",
   borderRadius: "15px",
   position: "absolute",
