@@ -36,7 +36,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/faq" element={<FAQPage />} />
-          <Route path="/results" element={<ResultsPage />} />
+          <Route path="/results/:tags" element={<ResultsPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/" element={<LandingPage />} />
         </Routes>

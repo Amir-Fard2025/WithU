@@ -10,3 +10,8 @@ export const GET_ALL_CARDS = gql`
   }
 }
 `;
+
+export const GET_PUBLISHED_CARDS_BY_TAG = gql`
+
+`
+
