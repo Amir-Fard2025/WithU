@@ -133,15 +133,20 @@ const resolvers = {
 
     canLikeResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
+        const userId = user._id;
         try {
           const resourceCard = await ResourceCard.findOne({
             _id: cardId,
           });
-          if (resourceCard.like.includes(context.user._id)) {
+          if (resourceCard.userLikes.includes(context.userId)) {
             console.log("unlike");
+            await ResourceCard.findOneAndUpdate({ _id: cardId }, { $pull: { userLikes: userId } })
+            await User.findOneAndUpdate({ _id: userId }, { $pull: { userLikes: cardId } })
             return true;
           } else {
             console.log("like");
+            await ResourceCard.findOneAndUpdate({ _id: cardId }, { $addToSet: { userLikes: userId } })
+            await User.findOneAndUpdate({ _id: userId }, { $addToSet: { userLikes: cardId } })
             return false;
           }
         } catch (err) {
