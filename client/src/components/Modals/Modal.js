@@ -6,6 +6,7 @@ import Modal from "@mui/material/Modal";
 import Autocomplete from "@mui/material/Autocomplete";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import { Typography } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -14,7 +15,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 480,
   bgcolor: "white",
-  opacity: "0.7",
+  opacity: "0.9",
   border: "0px solid",
   borderRadius: "20px",
   color: "white",
@@ -33,9 +34,23 @@ const button = {
   flexWrap: "wrap",
   alignItems: "center",
   position: "absolute",
-  left: "50%",
+  left: "90%",
   top: "70%",
   transform: "translate(-50%, -50%)",
+};
+
+const text = {
+  direction: "row",
+  width: "auto",
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
+  alignItems: "center",
+  position: "absolute",
+  left: "90%",
+  top: "76%",
+  transform: "translate(-50%, -50%)",
+  color: "primary.main",
 };
 
 export default function BasicModal() {
@@ -45,6 +60,7 @@ export default function BasicModal() {
 
   return (
     <div>
+      <Typography sx={text}>Add or Edit Resource</Typography>
       <Button onClick={handleOpen} style={button}>
         <Fab color="info" aria-label="add">
           <AddIcon />

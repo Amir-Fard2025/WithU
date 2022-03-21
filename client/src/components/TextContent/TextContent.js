@@ -11,15 +11,18 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "2px solid transparent",
   borderRadius: "15px",
   boxShadow: 24,
   p: 4,
 };
 
 const modal = {
+  backgroundColor: "yellow",
+  border: "2px solid transparent",
+  borderRadius: "15px",
   position: "absolute",
-  top: "80%",
+  top: "70%",
   left: "50%",
   transform: "translate(-50%, -50%)",
 };
@@ -32,7 +35,9 @@ export default function BasicModal() {
   return (
     <div>
       <Button sx={modal} onClick={handleOpen}>
-        Click here to learn more about this page
+        <Typography component="h1">
+          Click here to learn more about this page
+        </Typography>
       </Button>
       <Modal
         open={open}
