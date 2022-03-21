@@ -25,7 +25,6 @@ export default function Footer() {
         position: "absolute",
         bottom: "0",
         width: "100%",
-        height: "60px",
       }}
     >
       <CssBaseline />
@@ -33,7 +32,6 @@ export default function Footer() {
       <Box
         component="footer"
         sx={{
-          py: 2,
           px: 2,
           mt: "auto",
           backgroundColor: "transparent",

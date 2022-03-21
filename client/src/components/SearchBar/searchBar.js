@@ -1,15 +1,26 @@
 import * as React from "react";
 import { Autocomplete, TextField, Stack } from "@mui/material";
+
+// const size = {
+//   transform: "scale(1.1)",
+// };
+
 export default function Search() {
   return (
     <>
       <Stack
+        // style={size}
         className="stack"
+        direction="row"
         spacing={3}
+        transform="scale(1.5)"
         sx={{
-          width: "50%",
-          paddingTop: "5%",
-          marginLeft: "25%",
+          minHeight: "10vh",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          alignItems: "center",
         }}
       >
         <Autocomplete

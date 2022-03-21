@@ -22,36 +22,41 @@ export default function ClickableLinkChips() {
           label="Children"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
+          color="primary"
           clickable
         />
         <Chip
           label=" Ukraine"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
+          color="primary"
           clickable
         />
         <Chip
           label="Finance"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
+          color="primary"
           clickable
         />
         <Chip
           label="Shelters"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
           clickable
+          color="primary"
         />
         <Chip
           label="Germany"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
           clickable
+          color="primary"
         />
       </>
       <>
@@ -59,29 +64,33 @@ export default function ClickableLinkChips() {
           label="Medical"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
           clickable
+          color="primary"
         />
         <Chip
           label="Border"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
           clickable
+          color="primary"
         />
         <Chip
           label="Transport"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
           clickable
+          color="primary"
         />
         <Chip
           label="Help"
           component="a"
           href="#basic-chip"
-          variant="outlined"
+          variant="filled"
           clickable
+          color="primary"
         />
       </>
     </Stack>
