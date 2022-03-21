@@ -77,7 +77,7 @@ const resolvers = {
           try{
 
             const screenshotName = title.toLowerCase().replace(" ", "");
-            generateScreenshot(url, screenshotName);
+            generateScreenshot(url, "public/screenshots/" + screenshotName + ".png");
             screenshot=`/screenshots/${screenshotName}.png`;
 
           } catch(err) {
