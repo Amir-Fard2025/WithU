@@ -131,7 +131,7 @@ const resolvers = {
       throw new AuthenticationError("Please login first!");
     },
 
-    canLikeResourcesCard: async (parent, { cardId }, context) => {
+    toggleLikeResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
         const userId = user._id;
         try {
