@@ -147,24 +147,8 @@ const resolvers = {
             console.log("like");
             await ResourceCard.findOneAndUpdate({ _id: cardId }, { $addToSet: { userLikes: userId } })
             await User.findOneAndUpdate({ _id: userId }, { $addToSet: { userLikes: cardId } })
-            return false;
+            return true;
           }
-        } catch (err) {
-          console.log(err);
-          return false;
-        }
-      }
-      throw new AuthenticationError("Please login first!");
-    },
-    likeResourcesCard: async (parent, arg, context) => {
-      if (context.user) {
-        try {
-          const resourceCard = await ResourceCard.findOneAndUpdate(
-            { _id: arg.cardId },
-            { $addToSet: { like: context.user._id } }
-          );
-          console.log(resourceCard);
-          return true;
         } catch (err) {
           console.log(err);
           return false;
