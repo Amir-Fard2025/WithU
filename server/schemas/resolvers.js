@@ -1,6 +1,7 @@
 const { User, ResourceCard, Tag } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
+const generateScreenshot = require("../utils/screenshot");
 
 const resolvers = {
   Query: {
@@ -72,11 +73,23 @@ const resolvers = {
         const { resourceId, title, description, url, language, tag_id } =
           args.resource;
         try {
+          let screenshot;
+          try{
+
+            const screenshotName = title.toLowerCase().replace(" ", "");
+            generateScreenshot(url, screenshotName);
+            screenshot=`/screenshots/${screenshotName}.png`;
+
+          } catch(err) {
+            console.log("Error while generating a screenshot");
+            screenshot = null;
+          }
           const addCard = await ResourceCard.create({
             resourceId,
             title,
             description,
             url,
+            screenshot,
             language,
             tag_id,
           });
