@@ -1,5 +1,13 @@
 import React from "react";
-import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  Tab,
+  Tabs,
+  Toolbar,
+  Typography,
+  Label,
+} from "@mui/material";
 import { useState } from "react";
 //import LoginModal from "../LoginModal/LoginModal";
 
@@ -8,10 +16,26 @@ const buttonStyles = {
   paddingBottom: "0.75rem",
   marginLeft: "1vw",
   marginRight: "1vw",
+  textTransform: "none",
+  color: "white",
+  "&:hover": {
+    color: "#ffeb3b",
+    backgroundColor: "transparent",
+    fontSize: 16,
+  },
+};
+
+const typographyStyle = {
+  fontSize: "2rem",
+  color: "white",
+  "&:hover": {
+    color: "#ffeb3b",
+    backgroundColor: "transparent",
+  },
 };
 
 export default function ResponsiveNavbar({ setOpen }) {
-  const [value, setValue] = useState(0);
+  const [alignment, setAlignment, value, setValue] = useState(0);
   //const [open, setOpen] = useState(false);
 
   const openLoginModal = () => {
@@ -21,25 +45,24 @@ export default function ResponsiveNavbar({ setOpen }) {
   return (
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
-        <Toolbar justifycontent="space-around">
-          <Typography sx={{ fontSize: "2rem" }}>WithU</Typography>
+        <Toolbar>
+          <Typography sx={typographyStyle}>WithU</Typography>
+
           <Tabs
-            sx={{ marginLeft: "auto" }}
-            textcolor="black"
-            value={value}
-            onChange={(e, value) => setValue(value)}
-            indicatorColor="primary"
-          >
-            <Tab label="Dashboard" />
-          </Tabs>
-          <Button
-            variant="contained"
+            variant="text"
             onClick={openLoginModal}
-            sx={buttonStyles}
+            sx={{ marginLeft: "auto" }}
           >
+            <Button variant="text" sx={buttonStyles}>
+              Dashboard
+            </Button>
+          </Tabs>
+
+          <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
             Login/SignUp
           </Button>
-          <Button variant="outlined" sx={buttonStyles}>
+
+          <Button variant="text" sx={buttonStyles}>
             Logout
           </Button>
         </Toolbar>

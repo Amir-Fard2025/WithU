@@ -42,15 +42,16 @@ export default function NestedList() {
   return (
     <>
       <Typography component="div">
-        <Box sx={{ paddingTop: "12%" }}>
+        <Box sx={{ paddingTop: "14%" }}>
           <Stack
             className="stack"
             spacing={3}
             sx={{
               width: "50%",
               marginLeft: "25%",
-              // backgroundColor: "white",
-              // opacity: "60%",
+              backgroundColor: "white",
+              opacity: "80%",
+              boxShadow: 3,
               // border: 1,
               // borderColor: "white",
               borderRadius: "20px",
