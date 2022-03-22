@@ -42,7 +42,8 @@ const SignupForm = () => {
           ...userFormData,
         },
       });
-      const { token } = res.data.login;
+      console.log(res);
+      const { token } = res.data.adduser;
 
       Auth.login(token);
     } catch (err) {
