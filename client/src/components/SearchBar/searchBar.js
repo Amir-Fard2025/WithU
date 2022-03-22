@@ -51,12 +51,12 @@ export default function Search() {
           <Button
             variant="contained"
             className="my-buttton"
-            sx={{
-              display: "flex",
-              backgroundColor: "yellow",
-              opacity: "0.7",
-              height: "4vh",
-            }}
+            // sx={{
+            //   display: "flex",
+            //   backgroundColor: "yellow",
+            //   opacity: "0.7",
+            //   height: "4vh",
+            // }}
           >
             <Typography sx={{ color: "black" }}>Enter</Typography>
           </Button>
