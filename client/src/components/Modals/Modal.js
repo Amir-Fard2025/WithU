@@ -36,8 +36,9 @@ const button = {
   flexWrap: "wrap",
   alignItems: "center",
   position: "absolute",
-  left: "90%",
+  left: "50%",
   top: "70%",
+  width: "150px",
   transform: "translate(-50%, -50%)",
 };
 
@@ -50,7 +51,7 @@ export default function BasicModal() {
     <div>
       <Button onClick={handleOpen} style={button}>
         {" "}
-        Add or Edit resource
+        Add Resource
         <Fab color="info" aria-label="add">
           <AddIcon />
         </Fab>

@@ -8,4 +8,11 @@
 .search-bar-wrapper .my-buttton {
   background-color: #ffff00b3;
   opacity: 0.7;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.stack {
+  border-style: solid;
+  border-color: red;
 }
