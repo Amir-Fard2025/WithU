@@ -13,6 +13,9 @@ import Card from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
 import ContactModal from "./components/ContactModal/ContactModal";
 
+import AdminSide from "./pages/AdminSide";
+
+
 const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache(),
@@ -39,6 +42,7 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/admin" element={<AdminSide />} />
             <Route path="/" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
