@@ -20,6 +20,17 @@ const buttonStyles = {
   color: "white",
   "&:hover": {
     color: "#ffeb3b",
+    backgroundColor: "transparent",
+    fontSize: 16,
+  },
+};
+
+const typographyStyle = {
+  fontSize: "2rem",
+  color: "white",
+  "&:hover": {
+    color: "#ffeb3b",
+    backgroundColor: "transparent",
   },
 };
 
@@ -35,7 +46,7 @@ export default function ResponsiveNavbar({ setOpen }) {
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
         <Toolbar>
-          <Typography sx={{ fontSize: "2rem" }}>WithU</Typography>
+          <Typography sx={typographyStyle}>WithU</Typography>
 
           <Tabs
             variant="text"
