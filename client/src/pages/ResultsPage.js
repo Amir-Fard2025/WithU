@@ -1,15 +1,9 @@
+import MediaCard from "../components/Card/Card";
+
 export default function ResultsPage() {
   return (
     <>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
-      <h1>Hello results :)</h1>
+      <MediaCard />
     </>
   );
 }
