@@ -18,6 +18,7 @@ const typeDefs = gql`
     language: [String]!
     like: [ID]
     tag_id: [String]
+    status: String
   }
 
   type Auth {
@@ -34,7 +35,9 @@ const typeDefs = gql`
   type Query {
     user: User
     resourcesCards: [ResourcesCard]
-    getCardsByTag(tagId: ID!): [ResourcesCard]
+    getPublishedCardsByTagId(tagId: ID!): [ResourcesCard]
+    getPublishedCardsByTagName(tagName: String!): [ResourcesCard]
+    getUnpublishedCards: [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
     getAllUserCards: [ResourcesCard]
     getAllTags: [Tag],

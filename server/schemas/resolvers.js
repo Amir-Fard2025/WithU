@@ -29,10 +29,23 @@ const resolvers = {
       }
       throw new AuthenticationError("Please login first!");
     },
-    getCardsByTag: async (parent, args) => {
+    getUnpublishedCards: async (parent, args) => {
+      return await ResourceCard.find({
+        status: "unpublished"
+      });
+    },
+    getPublishedCardsByTagId: async (parent, args) => {
       return await ResourceCard.find({
         tag_id: { $in: [args.tagId] },
+        status: "published"
       });
+    },
+    getPublishedCardsByTagName: async (parent, { tagName }) => {
+      const { resourceCards } = await Tag.findOne({
+        tagName
+      }).populate("resourceCards")
+      
+      return resourceCards.filter(resourceCard => resourceCard.status = "published")
     },
     getAllTags: async (parent, args) => {
       return await Tag.find();
@@ -133,20 +146,21 @@ const resolvers = {
 
     toggleLikeResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
-        const userId = user._id;
+        const userId = context.user._id;
         try {
           const resourceCard = await ResourceCard.findOne({
             _id: cardId,
           });
-          if (resourceCard.userLikes.includes(context.userId)) {
+          const resourceCardUserLikesIdsStrings = resourceCard.userLikes.map(obj => obj.toString())
+          if (resourceCardUserLikesIdsStrings.includes(userId)) {
             console.log("unlike");
             await ResourceCard.findOneAndUpdate({ _id: cardId }, { $pull: { userLikes: userId } })
-            await User.findOneAndUpdate({ _id: userId }, { $pull: { userLikes: cardId } })
+            await User.findOneAndUpdate({ _id: userId }, { $pull: { likedCards: cardId } })
             return true;
           } else {
             console.log("like");
             await ResourceCard.findOneAndUpdate({ _id: cardId }, { $addToSet: { userLikes: userId } })
-            await User.findOneAndUpdate({ _id: userId }, { $addToSet: { userLikes: cardId } })
+            await User.findOneAndUpdate({ _id: userId }, { $addToSet: { likedCards: cardId } })
             return true;
           }
         } catch (err) {
