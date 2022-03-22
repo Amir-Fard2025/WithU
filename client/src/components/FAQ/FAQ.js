@@ -6,6 +6,17 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+
+const typographyStyle = {
+  color: "#2979ff",
+  "&:hover": {
+    backgroundColor: "#ffeb3b",
+    opacity: "70%",
+    borderRadius: "20px",
+  },
+};
 
 export default function NestedList() {
   const [open1, setOpen1] = React.useState(false);
@@ -27,63 +38,82 @@ export default function NestedList() {
 
   return (
     <>
-      <Stack
-        className="stack"
-        spacing={3}
-        sx={{
-          width: "50%",
-          paddingTop: "5%",
-          marginLeft: "25%",
-        }}
-      >
-        <ListItemButton onClick={() => handleClick("FAQ1")}>
-          <ListItemText primary="FAQ1" />
-          {open1 ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={open1} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 2 }}>
-              <ListItemText primary="This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis magni nam, nihil explicabo ea!." />
+      <Typography component="div">
+        <Box sx={{ paddingTop: "12%" }}>
+          <Stack
+            className="stack"
+            spacing={3}
+            sx={{
+              width: "50%",
+              marginLeft: "25%",
+              backgroundColor: "white",
+              opacity: "60%",
+              borderRadius: "20px",
+              padding: 0,
+            }}
+          >
+            <ListItemButton
+              sx={typographyStyle}
+              onClick={() => handleClick("FAQ1")}
+            >
+              <ListItemText primary="About WithU" />
+              {open1 ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
-          </List>
-        </Collapse>
+            <Collapse in={open1} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="WithU is a place, where people can share useful links to people who are affected by the Ukraine crisis and for people who feel like contributing to a crowdsourced platform to increase the accessibility to useful sources." />
+                </ListItemButton>
+              </List>
+            </Collapse>
 
-        <ListItemButton onClick={() => handleClick("FAQ2")}>
-          <ListItemText primary="FAQ2" />
-          {open2 ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={open2} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 2 }}>
-              <ListItemText primary="This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis magni nam, nihil explicabo ea!." />
+            <ListItemButton
+              sx={typographyStyle}
+              onClick={() => handleClick("FAQ2")}
+            >
+              <ListItemText primary="FAQ2" />
+              {open2 ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
-          </List>
-        </Collapse>
+            <Collapse in={open2} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis magni nam, nihil explicabo ea!." />
+                </ListItemButton>
+              </List>
+            </Collapse>
 
-        <ListItemButton onClick={() => handleClick("FAQ3")}>
-          <ListItemText primary="FAQ3" />
-          {open3 ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={open3} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 2 }}>
-              <ListItemText primary="This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis magni nam, nihil explicabo ea!." />
+            <ListItemButton
+              sx={typographyStyle}
+              onClick={() => handleClick("FAQ3")}
+            >
+              <ListItemText primary="FAQ3" />
+              {open3 ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
-          </List>
-        </Collapse>
+            <Collapse in={open3} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis magni nam, nihil explicabo ea!." />
+                </ListItemButton>
+              </List>
+            </Collapse>
 
-        <ListItemButton onClick={() => handleClick("FAQ4")}>
-          <ListItemText primary="FAQ4" />
-          {open4 ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={open4} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 2 }}>
-              <ListItemText primary="This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis magni nam, nihil explicabo ea!." />
+            <ListItemButton
+              sx={typographyStyle}
+              onClick={() => handleClick("FAQ4")}
+            >
+              <ListItemText primary="FAQ4" />
+              {open4 ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
-          </List>
-        </Collapse>
-      </Stack>
+            <Collapse in={open4} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItemButton>
+                  <ListItemText primary="This page is about I am Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis aliquid perferendis magni nam, nihil explicabo ea!." />
+                </ListItemButton>
+              </List>
+            </Collapse>
+          </Stack>
+        </Box>
+      </Typography>
     </>
   );
 }
