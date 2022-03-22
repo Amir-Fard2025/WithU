@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
-//import Typography from "@mui/material/Typography";
+import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Button, TextField } from "@mui/material";
 
@@ -30,6 +30,9 @@ const ContactModal = ({ open, onClose }) => {
     <Modal open={open} onClose={onClose}>
       <Box sx={style.modalStyles}>
         <Box sx={style.inputFields}>
+          <Typography sx={{ mt: 2 }}>
+            Leave us a message and we will get back to you ASAP!
+          </Typography>
           <TextField
             placeholder="E-mail"
             name="userEmail"

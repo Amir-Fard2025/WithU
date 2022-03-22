@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-//import Container from "@mui/material/Container";
-//import Link from "@mui/material/Link";
 import { Button, Grid, Link, Typography } from "@mui/material";
 
 export default function Footer({ setOpen }) {
-  // const [openContactForm, setOpenContactForm] = useState(false);
-
   const openContactModal = () => {
     console.log("modal clicked fromat footer");
     setOpen(true);
@@ -54,14 +50,7 @@ export default function Footer({ setOpen }) {
               </Box>
             </Grid>
             <Grid item xs={12} md={3}>
-              <Button
-                onClick={openContactModal}
-                //sx={{ textDecoration: "underline" }}
-              >
-                Contact Us
-              </Button>
-
-              {/* <Grid>email@email.email</Grid> */}
+              <Button onClick={openContactModal}>Contact Us</Button>
             </Grid>
           </Grid>
         </Box>
