@@ -77,6 +77,15 @@ const SignupForm = () => {
         value={userFormData.password}
         onChange={handleInputChange}
       />
+      <TextField
+        placeholder="Password"
+        name="password"
+        label="Confirm password"
+        required
+        sx={{ marginTop: "1rem" }}
+        value={userFormData.password}
+        onChange={handleInputChange}
+      />
       <Button
         variant="contained"
         sx={{ marginTop: "1rem" }}
