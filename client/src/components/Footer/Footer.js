@@ -31,10 +31,10 @@ export default function Footer({ setOpen }) {
       >
         <Box>
           <Grid container spacing={3} alignItems="center">
-            <Grid sx={{ fontSize: "15px" }} item xs={12} md={6}>
+            <Grid sx={{ fontSize: "15px" }} item xs={12} md={10}>
               © WithU 2022
             </Grid>
-            <Grid item xs={1} md={3}>
+            <Grid item xs={1} md={1}>
               <Box sx={{ color: "black" }}>
                 <Typography sx={{ textAlign: "center" }} component="div">
                   <Link
@@ -42,15 +42,17 @@ export default function Footer({ setOpen }) {
                     underline="none"
                     fontSize="15px"
                     fontWeight="500"
-                    color="#2873c6"
+                    color="black"
                   >
                     FAQ
                   </Link>
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} md={3}>
-              <Button onClick={openContactModal}>Contact Us</Button>
+            <Grid item xs={12} md={1}>
+              <Button sx={{ color: "black" }} onClick={openContactModal}>
+                Contact Us
+              </Button>
             </Grid>
           </Grid>
         </Box>
