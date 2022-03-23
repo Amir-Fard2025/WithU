@@ -5,15 +5,15 @@ import "./App.js";
 import LandingPage from "./pages/LandingPage";
 import FAQPage from "./pages/FAQPage";
 import ResultsPage from "./pages/ResultsPage";
+import AdminSide from "./pages/AdminSidePage";
 import DashboardPage from "./pages/DashboardPage";
 import ResponsiveNavbar from "./components/Navbar/ResponsiveNavbar";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import Container from "../src/components/Pagination/Container";
-import Card from "./components/Card/Card";
+// import Container from "../src/components/Pagination/Container";
+// import Card from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
 import ContactModal from "./components/ContactModal/ContactModal";
 
-import AdminSide from "./pages/AdminSide";
 
 
 const client = new ApolloClient({
@@ -40,7 +40,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/faq" element={<FAQPage />} />
-            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/results/:filters" element={<ResultsPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/admin" element={<AdminSide />} />
             <Route path="/" element={<LandingPage />} />
