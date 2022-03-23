@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-import { Autocomplete, TextField, Stack, Button } from "@mui/material";
-=======
-import * as React from "react";
 import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import "./searchBar.css";
@@ -10,7 +6,6 @@ import "./searchBar.css";
 //   transform: "scale(1.1)",
 // };
 
->>>>>>> dev
 export default function Search() {
   const [filters, setFilters] = useState([topResearch[13]]);
 
@@ -39,32 +34,6 @@ export default function Search() {
           alignItems: "center",
         }}
       >
-<<<<<<< HEAD
-        <Autocomplete
-          sx={{ paddingTop: "20%" }}
-          className="autocomplete"
-          onChange={(event, value) => {
-            setFilters(value);
-          }}
-          multiple
-          id="tags-standard"
-          options={topResearch}
-          getOptionLabel={(option) => option.search}
-          defaultValue={[topResearch[13]]}
-          renderInput={(params) => {
-            console.log(params);
-            return (
-              <TextField
-                sx={{ color: "white" }}
-                className="textfield"
-                {...params}
-                variant="standard"
-                placeholder="How can I help..."
-              />
-            );
-          }}
-        />
-=======
         <div className="search-bar-wrapper">
           <Autocomplete
             sx={{
@@ -73,27 +42,31 @@ export default function Search() {
               flexGrow: "1",
             }}
             className="autocomplete"
+            onChange={(event, value) => {
+              setFilters(value);
+            }}
             multiple
             id="tags-standard"
             options={topResearch}
             getOptionLabel={(option) => option.search}
             defaultValue={[topResearch[13]]}
-            renderInput={(params) => (
-              <TextField
-                sx={{
-                  color: "white",
-                  height: "4vh",
-                }}
-                className="textfield"
-                {...params}
-                variant="standard"
-                placeholder="Type..."
-              />
-            )}
+            renderInput={(params) => {
+              console.log(params);
+              return (
+                <TextField
+                  sx={{ color: "white", height: "4vh" }}
+                  className="textfield"
+                  {...params}
+                  variant="standard"
+                  placeholder="Type..."
+                />
+              );
+            }}
           />
           <Button
             variant="contained"
             className="my-buttton"
+            onClick={onSubmit}
             // sx={{
             //   display: "flex",
             //   backgroundColor: "yellow",
@@ -104,7 +77,6 @@ export default function Search() {
             <Typography sx={{ color: "black" }}>Search</Typography>
           </Button>
         </div>
->>>>>>> dev
       </Stack>
     </>
   );
