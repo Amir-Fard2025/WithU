@@ -101,7 +101,7 @@ const resolvers = {
 
           } catch(err) {
             console.log("Error while generating a screenshot");
-            screenshot = null;
+            screenshot = `/default.png`;
           }
           const addCard = await ResourceCard.create({
             resourceId,

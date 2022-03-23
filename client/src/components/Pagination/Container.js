@@ -54,7 +54,7 @@ const Container = () => {
        return (
            <div>
 
-            {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} />)};
+            {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} language= {c.language} />)};
             {/* <button onClick={()=>handleClick(-1)} > Dec </button>
             <button onClick={()=>handleClick(1)} >Inc</button> */}
             <Pagination count={ Math.ceil(totalCards.length/CARDS_PER_PAGE)} updatePage={updatePage} />
