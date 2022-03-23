@@ -8,11 +8,14 @@ export default function TextAlignment() {
       <Box
         sx={{
           textAlign: "center",
-          width: "50%",
-          backgroundColor: "transparent",
-          marginTop: "5%",
-          marginLeft: "25%",
-          color: "white",
+          width: "40%",
+          opacity: "0.7",
+          borderColor: "transparent",
+          borderRadius: "10px",
+          marginLeft: "30%",
+          color: "#2874A6",
+          marginTop: "10px",
+          fontFamily: "Roboto",
         }}
       >
         This page is about I am Lorem ipsum dolor sit amet, consectetur
