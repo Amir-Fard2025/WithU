@@ -2,7 +2,7 @@ import React from "react";
 import {
   AppBar,
   Button,
-  Tab,
+  // Tab,
   Tabs,
   Toolbar,
   Typography,
@@ -48,6 +48,12 @@ export default function ResponsiveNavbar({ setOpen }) {
       <AppBar elevation={0} sx={{ background: "transparent" }}>
         <Toolbar>
           <Typography sx={typographyStyle}>WithU</Typography>
+
+          <Tabs
+            variant="text"
+            onClick={openLoginModal}
+            sx={{ marginLeft: "auto" }}
+          ></Tabs>
 
           <Button variant="text" sx={buttonStyles}>
             Dashboard
