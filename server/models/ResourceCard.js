@@ -19,6 +19,10 @@ const resourceCardSchema = new Schema({
     type: String,
     required: true,
   },
+  screenshot: {
+    type: String,
+    required: false,
+  },
   language: {
     type: [String],
     required: true,

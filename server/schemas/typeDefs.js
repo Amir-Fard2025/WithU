@@ -18,6 +18,7 @@ const typeDefs = gql`
     language: [String]!
     like: [ID]
     tag_id: [String]
+    screenshot:String
     status: String
   }
 

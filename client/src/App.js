@@ -12,9 +12,7 @@ import Container from "../src/components/Pagination/Container";
 import Card from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
 import ContactModal from "./components/ContactModal/ContactModal";
-
-import AdminSide from "./pages/AdminSidePage";
-// import BasicModal from "./components/Modals/Modal";
+import AdminSidePage from "./pages/AdminSidePage";
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -42,7 +40,7 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/admin" element={<AdminSide />} />
+            <Route path="/admin" element={<AdminSidePage />} />
             <Route path="/" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
