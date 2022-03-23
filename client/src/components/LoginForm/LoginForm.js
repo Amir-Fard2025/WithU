@@ -14,6 +14,8 @@ const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [password, setPassword] = useState("");
+  const [hiddenPassword, setHiddenPassword] = useState("");
 
   const [login] = useMutation(LOGIN);
 
@@ -22,6 +24,20 @@ const LoginForm = () => {
     console.log(event.target.value);
     setUserFormData({ ...userFormData, [name]: value });
   };
+
+  const handlePasswordChange = (event) => {
+    const { name, value } = event.target;
+    console.log(event.target.value);
+    const newPassword = password + value.split("").pop();
+    setPassword(newPassword);
+    setUserFormData({ ...userFormData, password: newPassword });
+    const cryptedPassword = value
+      .split("")
+      .map(() => "*")
+      .join("");
+    setHiddenPassword(cryptedPassword);
+  };
+
   console.log(userFormData);
 
   const handleFormSubmit = async (event) => {
@@ -71,8 +87,8 @@ const LoginForm = () => {
         label="Password"
         required
         sx={{ marginTop: "1rem" }}
-        value={userFormData.password}
-        onChange={handleInputChange}
+        value={hiddenPassword}
+        onChange={handlePasswordChange}
       />
       <Button
         variant="contained"
