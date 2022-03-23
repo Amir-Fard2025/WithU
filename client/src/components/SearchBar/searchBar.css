@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  transform: scale(1.2);
 }
 
 .search-bar-wrapper .my-buttton {
