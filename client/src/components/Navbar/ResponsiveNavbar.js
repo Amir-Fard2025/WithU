@@ -9,6 +9,7 @@ import {
   Label,
 } from "@mui/material";
 import { useState } from "react";
+import Auth from "../../utils/auth";
 //import LoginModal from "../LoginModal/LoginModal";
 
 const buttonStyles = {
@@ -52,17 +53,17 @@ export default function ResponsiveNavbar({ setOpen }) {
             variant="text"
             onClick={openLoginModal}
             sx={{ marginLeft: "auto" }}
-          >
-            <Button variant="text" sx={buttonStyles}>
-              Dashboard
-            </Button>
-          </Tabs>
+          ></Tabs>
+
+          <Button variant="text" sx={buttonStyles}>
+            Dashboard
+          </Button>
 
           <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
             Login/SignUp
           </Button>
 
-          <Button variant="text" sx={buttonStyles}>
+          <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
             Logout
           </Button>
         </Toolbar>

@@ -27,7 +27,6 @@ const field = {
 
 const button = {
   direction: "row",
-  width: "auto",
   display: "flex",
   justifyContent: "center",
   flexWrap: "wrap",
@@ -45,11 +44,9 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen} style={button}>
-        <Fab color="info" aria-label="add">
-          <AddIcon />
-        </Fab>
-      </Button>
+      <Fab color="info" aria-label="add" onClick={handleOpen} style={button}>
+        <AddIcon />
+      </Fab>
       <Modal
         open={open}
         onClose={handleClose}

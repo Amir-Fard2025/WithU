@@ -5,7 +5,8 @@ const typeDefs = gql`
     _id: ID
     email: String
     password: String
-    savedResources: [ResourcesCard]!
+    createdCards: [String]
+    likedCards: [String]
     resourceCount: String
   }
 
@@ -17,6 +18,8 @@ const typeDefs = gql`
     language: [String]!
     like: [ID]
     tag_id: [String]
+    screenshot:String
+    status: String
   }
 
   type Auth {
@@ -27,15 +30,19 @@ const typeDefs = gql`
   type Tag {
     id: ID
     tagName: String
+    resourceCards: [String]
   }
 
   type Query {
     user: User
     resourcesCards: [ResourcesCard]
-    getCardsByTag(tagId: ID!): [ResourcesCard]
+    getPublishedCardsByTagId(tagId: ID!): [ResourcesCard]
+    getPublishedCardsByTagName(tagName: String!): [ResourcesCard]
+    getUnpublishedCards: [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
     getAllUserCards: [ResourcesCard]
-    getAllTags: [Tag]
+    getAllTags: [Tag],
+    getAllCardsByStatus(status: String!): [ResourcesCard]
   }
 
   input ResourceData {
@@ -53,8 +60,7 @@ const typeDefs = gql`
     addResourcesCard(resource: ResourceData!): Boolean
     updateResourcesCard(resource: ResourceData!): Boolean
     deleteResourcesCard(cardId: ID!): Boolean
-    canLikeResourcesCard(cardId: ID!): Boolean
-    likeResourcesCard(cardId: ID!): Boolean
+    toggleLikeResourcesCard(cardId: ID!): Boolean
   }
 `;
 module.exports = typeDefs;

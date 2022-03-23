@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-
 import { Box, Button, TextField } from "@mui/material";
-
 import Auth from "../../utils/auth";
 import { LOGIN } from "../../utils/mutations";
 
@@ -43,7 +41,7 @@ const LoginForm = () => {
         },
       });
       const { token } = res.data.login;
-      
+
       Auth.login(token);
     } catch (err) {
       console.error(err);
