@@ -14,6 +14,7 @@ import Footer from "./components/Footer/Footer";
 import ContactModal from "./components/ContactModal/ContactModal";
 
 import AdminSide from "./pages/AdminSidePage";
+// import BasicModal from "./components/Modals/Modal";
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -45,6 +46,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
+        {/* <BasicModal /> */}
         <Footer setOpen={setOpenContactForm} />
         <ContactModal
           open={openContactForm}

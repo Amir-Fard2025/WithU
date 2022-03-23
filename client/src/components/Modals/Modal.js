@@ -6,6 +6,9 @@ import Modal from "@mui/material/Modal";
 import Autocomplete from "@mui/material/Autocomplete";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADDRESOURCE } from "../../utils/mutations";
 
 const style = {
   position: "absolute",
@@ -42,6 +45,52 @@ export default function BasicModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // how to handle the arrays here?
+  const [userFormData, setUserFormData] = useState({
+    title: "",
+    description: "",
+    url: "",
+    tag_id: "",
+    language: "",
+  });
+  const [validated] = useState(false);
+
+  const [addResourcesCard] = useMutation(ADDRESOURCE);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    console.log(event.target.value);
+    setUserFormData({ ...userFormData, [name]: value });
+  };
+  console.log(userFormData); // each char goes on a separate line
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!userFormData) {
+      return;
+    }
+
+    try {
+      const res = await addResourcesCard({
+        variables: {
+          ...userFormData,
+        },
+      });
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setUserFormData({
+      title: "",
+      description: "",
+      url: "",
+      tag_id: "",
+      language: "",
+    });
+  };
+
   return (
     <div>
       <Fab color="info" aria-label="add" onClick={handleOpen} style={button}>
@@ -57,20 +106,29 @@ export default function BasicModal() {
           <TextField
             sx={field}
             id="outlined-basic"
+            name="title"
             label="Title"
             variant="outlined"
+            value={userFormData.title}
+            onChange={handleInputChange}
           />
           <TextField
             sx={field}
             id="outlined-basic"
+            name="description"
             label="Description"
             variant="outlined"
+            value={userFormData.description}
+            onChange={handleInputChange}
           />
           <TextField
             sx={field}
             id="outlined-basic"
+            name="url"
             label="URL"
             variant="outlined"
+            value={userFormData.url}
+            onChange={handleInputChange}
           />
           <Autocomplete
             disablePortal
@@ -86,6 +144,9 @@ export default function BasicModal() {
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Language" />}
           />
+          <Button variant="contained" onSubmit={handleFormSubmit}>
+            Add
+          </Button>
         </Box>
       </Modal>
     </div>

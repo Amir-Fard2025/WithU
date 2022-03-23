@@ -26,4 +26,33 @@ const ADDUSER = gql`
     }
   }
 `;
-export { LOGIN, ADDUSER };
+
+// How to handle arrays for tags and languages?
+const ADDRESOURCE = gql`
+  mutation (
+    $title: String!
+    $description: String!
+    $url: String!
+    $tag_id: [String!]
+    $language: [String!]
+  ) {
+    addResourcesCard(
+      title: $title
+      description: $description
+      url: $url
+      tag_id: $tag_id
+      language: $language
+    ) {
+      resource {
+        _id
+
+        title
+        description
+        url
+        tag_id
+        language
+      }
+    }
+  }
+`;
+export { LOGIN, ADDUSER, ADDRESOURCE };
