@@ -44,6 +44,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
+        {/* <BasicModal /> */}
         <Footer setOpen={setOpenContactForm} />
         <ContactModal
           open={openContactForm}

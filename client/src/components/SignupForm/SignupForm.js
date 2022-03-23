@@ -16,6 +16,8 @@ const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [password, setPassword] = useState("");
+  const [hiddenPassword, setHiddenPassword] = useState("");
 
   const [addUser] = useMutation(ADDUSER);
 
@@ -23,6 +25,19 @@ const SignupForm = () => {
     const { name, value } = event.target;
     console.log(event.target.value);
     setUserFormData({ ...userFormData, [name]: value });
+  };
+
+  const handlePasswordChange = (event) => {
+    const { name, value } = event.target;
+    console.log(event.target.value);
+    const newPassword = password + value.split("").pop();
+    setPassword(newPassword);
+    setUserFormData({ ...userFormData, password: newPassword });
+    const cryptedPassword = value
+      .split("")
+      .map(() => "*")
+      .join("");
+    setHiddenPassword(cryptedPassword);
   };
   console.log(userFormData);
 
@@ -72,6 +87,15 @@ const SignupForm = () => {
         placeholder="Password"
         name="password"
         label="Password"
+        required
+        sx={{ marginTop: "1rem" }}
+        value={hiddenPassword}
+        onChange={handlePasswordChange}
+      />
+      <TextField
+        placeholder="Password"
+        name="password"
+        label="Confirm password"
         required
         sx={{ marginTop: "1rem" }}
         value={userFormData.password}

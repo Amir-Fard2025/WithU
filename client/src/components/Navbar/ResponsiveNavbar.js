@@ -42,7 +42,7 @@ export default function ResponsiveNavbar({ setOpen }) {
   const openLoginModal = () => {
     setOpen(true);
   };
-
+  const loggedIn = !!localStorage.getItem("id_token");
   return (
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
@@ -58,14 +58,15 @@ export default function ResponsiveNavbar({ setOpen }) {
           <Button variant="text" sx={buttonStyles}>
             Dashboard
           </Button>
-
-          <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-            Login/SignUp
-          </Button>
-
-          <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
-            Logout
-          </Button>
+          {loggedIn ? (
+            <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
+              Logout
+            </Button>
+          ) : (
+            <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
+              Login/SignUp
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </React.Fragment>
