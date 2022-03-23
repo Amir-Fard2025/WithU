@@ -13,8 +13,7 @@ import Card from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
 import ContactModal from "./components/ContactModal/ContactModal";
 
-import AdminSide from "./pages/AdminSide";
-
+import AdminSide from "./pages/AdminSidePage";
 
 const client = new ApolloClient({
   uri: "/graphql",
