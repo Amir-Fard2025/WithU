@@ -19,6 +19,10 @@ const resourceCardSchema = new Schema({
     type: String,
     required: true,
   },
+  screenshot: {
+    type: String,
+    required: false,
+  },
   language: {
     type: [String],
     required: true,
@@ -35,6 +39,12 @@ const resourceCardSchema = new Schema({
       ref: "Tag",
     },
   ],
+  status: {
+    type: String,
+    enum: ["published", "unpublished", 'rejected'],
+    default: "unpublished",
+    required: true
+  }
 });
 
 const ResourceCard = model("ResourceCard", resourceCardSchema);

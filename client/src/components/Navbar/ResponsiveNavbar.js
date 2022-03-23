@@ -53,11 +53,11 @@ export default function ResponsiveNavbar({ setOpen }) {
             variant="text"
             onClick={openLoginModal}
             sx={{ marginLeft: "auto" }}
-          >
-            <Button variant="text" sx={buttonStyles}>
-              Dashboard
-            </Button>
-          </Tabs>
+          ></Tabs>
+
+          <Button variant="text" sx={buttonStyles}>
+            Dashboard
+          </Button>
 
           <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
             Login/SignUp

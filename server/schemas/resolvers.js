@@ -1,6 +1,7 @@
 const { User, ResourceCard, Tag } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
+const generateScreenshot = require("../utils/screenshot");
 
 const resolvers = {
   Query: {
@@ -29,14 +30,33 @@ const resolvers = {
       }
       throw new AuthenticationError("Please login first!");
     },
-    getCardsByTag: async (parent, args) => {
+    getUnpublishedCards: async (parent, args) => {
+      return await ResourceCard.find({
+        status: "unpublished"
+      });
+    },
+    getPublishedCardsByTagId: async (parent, args) => {
       return await ResourceCard.find({
         tag_id: { $in: [args.tagId] },
+        status: "published"
       });
+    },
+    getPublishedCardsByTagName: async (parent, { tagName }) => {
+      const { resourceCards } = await Tag.findOne({
+        tagName
+      }).populate("resourceCards")
+      
+      return resourceCards.filter(resourceCard => resourceCard.status = "published")
     },
     getAllTags: async (parent, args) => {
       return await Tag.find();
     },
+    getAllCardsByStatus: async (parent, args) => {
+      const { status } = args;
+      return await ResourceCard.find({
+        status
+      })
+    }
   },
 
   Mutation: {
@@ -72,11 +92,23 @@ const resolvers = {
         const { resourceId, title, description, url, language, tag_id } =
           args.resource;
         try {
+          let screenshot;
+          try{
+
+            const screenshotName = title.toLowerCase().replace(" ", "");
+            generateScreenshot(url, "public/screenshots/" + screenshotName + ".png");
+            screenshot=`/screenshots/${screenshotName}.png`;
+
+          } catch(err) {
+            console.log("Error while generating a screenshot");
+            screenshot = null;
+          }
           const addCard = await ResourceCard.create({
             resourceId,
             title,
             description,
             url,
+            screenshot,
             language,
             tag_id,
           });
@@ -125,35 +157,25 @@ const resolvers = {
       throw new AuthenticationError("Please login first!");
     },
 
-    canLikeResourcesCard: async (parent, { cardId }, context) => {
+    toggleLikeResourcesCard: async (parent, { cardId }, context) => {
       if (context.user) {
+        const userId = context.user._id;
         try {
           const resourceCard = await ResourceCard.findOne({
             _id: cardId,
           });
-          if (resourceCard.like.includes(context.user._id)) {
+          const resourceCardUserLikesIdsStrings = resourceCard.userLikes.map(obj => obj.toString())
+          if (resourceCardUserLikesIdsStrings.includes(userId)) {
             console.log("unlike");
+            await ResourceCard.findOneAndUpdate({ _id: cardId }, { $pull: { userLikes: userId } })
+            await User.findOneAndUpdate({ _id: userId }, { $pull: { likedCards: cardId } })
             return true;
           } else {
             console.log("like");
-            return false;
+            await ResourceCard.findOneAndUpdate({ _id: cardId }, { $addToSet: { userLikes: userId } })
+            await User.findOneAndUpdate({ _id: userId }, { $addToSet: { likedCards: cardId } })
+            return true;
           }
-        } catch (err) {
-          console.log(err);
-          return false;
-        }
-      }
-      throw new AuthenticationError("Please login first!");
-    },
-    likeResourcesCard: async (parent, arg, context) => {
-      if (context.user) {
-        try {
-          const resourceCard = await ResourceCard.findOneAndUpdate(
-            { _id: arg.cardId },
-            { $addToSet: { like: context.user._id } }
-          );
-          console.log(resourceCard);
-          return true;
         } catch (err) {
           console.log(err);
           return false;

@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const db = require("./config/connection");
 
@@ -28,6 +29,7 @@ const serverStart = async () => {
 
 serverStart();
 
+app.use(express.static(path.join(__dirname, "public/")))
 db.once("open", () => {
   try {
     app.listen(PORT, () => {
