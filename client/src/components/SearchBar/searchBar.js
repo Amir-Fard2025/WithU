@@ -47,12 +47,6 @@ export default function Search() {
             );
           }}
         />
-        <Button
-          sx={{ border: 2, backgroundColor: "yellow" }}
-          onClick={onSubmit}
-        >
-          Hello
-        </Button>
       </Stack>
     </>
   );
