@@ -42,7 +42,7 @@ export default function ResponsiveNavbar({ setOpen }) {
   const openLoginModal = () => {
     setOpen(true);
   };
-  const loggedIn = false;
+  const loggedIn = !!localStorage.getItem("id_token");
   return (
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
