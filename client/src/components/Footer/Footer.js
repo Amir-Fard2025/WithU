@@ -50,8 +50,11 @@ export default function Footer({ setOpen }) {
               </Box>
             </Grid>
             <Grid item xs={12} md={1}>
-              <Button sx={{ color: "black" }} onClick={openContactModal}>
-                Contact Us
+              <Button
+                sx={{ color: "black", textTransform: "none", fontSize: "15px" }}
+                onClick={openContactModal}
+              >
+                Contact
               </Button>
             </Grid>
           </Grid>
