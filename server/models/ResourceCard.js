@@ -39,6 +39,12 @@ const resourceCardSchema = new Schema({
       ref: "Tag",
     },
   ],
+  status: {
+    type: String,
+    enum: ["published", "unpublished", 'rejected'],
+    default: "unpublished",
+    required: true
+  }
 });
 
 const ResourceCard = model("ResourceCard", resourceCardSchema);
