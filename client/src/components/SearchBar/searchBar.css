@@ -8,8 +8,10 @@
 }
 
 .search-bar-wrapper .my-buttton {
-  background-color: #ffff00b3;
+  background-color: transparent;
+  border-style: solid;
+  border-color: yellow;
   opacity: 0.7;
-  border-radius: 10px;
-  margin: 20px;
+  border-radius: 30px;
+  margin: 40px;
 }

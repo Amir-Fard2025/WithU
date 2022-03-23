@@ -59,7 +59,7 @@ export default function Search() {
             //   height: "4vh",
             // }}
           >
-            <Typography sx={{ color: "black" }}>Enter</Typography>
+            <Typography sx={{ color: "black" }}>Search</Typography>
           </Button>
         </div>
       </Stack>
