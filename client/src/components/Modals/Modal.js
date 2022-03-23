@@ -27,7 +27,6 @@ const style = {
   opacity: "0.9",
   border: "0px solid",
   borderRadius: "20px",
-  color: "white",
   p: 4,
 };
 
@@ -44,8 +43,12 @@ const button = {
   position: "absolute",
   left: "50%",
   top: "70%",
-  width: "150px",
+  width: "60px",
   transform: "translate(-50%, -50%)",
+  color: "rgba(66, 133, 244, 0.624)",
+  backgroundColor: "transparent",
+  border: "solid",
+  borderColor: "rgba(66, 133, 244, 0.624)",
 };
 
 const ITEM_HEIGHT = 48;
@@ -87,11 +90,18 @@ export default function BasicModal() {
   };
 
   return (
-    <div>
-      <Fab color="info" aria-label="add" onClick={handleOpen} style={button}>
-        <AddIcon />
+    <div className="divdiv">
+      <Fab
+        className="styling"
+        color="info"
+        aria-label="add"
+        onClick={handleOpen}
+        style={button}
+      >
+        <AddIcon className="iconModal" />
       </Fab>
       <Modal
+        className="modal"
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -172,7 +182,7 @@ export default function BasicModal() {
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" endIcon={<SendIcon />}>
+            <Button variant="outlined" endIcon={<SendIcon />}>
               Add
             </Button>
           </Stack>

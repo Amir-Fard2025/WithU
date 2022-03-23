@@ -6,7 +6,6 @@ import {
   Tabs,
   Toolbar,
   Typography,
-  Label,
 } from "@mui/material";
 import { useState } from "react";
 import Auth from "../../utils/auth";
@@ -32,6 +31,8 @@ const typographyStyle = {
   "&:hover": {
     color: "#ffeb3b",
     backgroundColor: "transparent",
+    cursor: "pointer",
+    transform: "scale(1.1)",
   },
 };
 
