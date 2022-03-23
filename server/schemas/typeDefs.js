@@ -38,6 +38,7 @@ const typeDefs = gql`
     resourcesCards: [ResourcesCard]
     getPublishedCardsByTagId(tagId: ID!): [ResourcesCard]
     getPublishedCardsByTagName(tagName: String!): [ResourcesCard]
+    getPublishedCardsByAllTagNames(tagNamesArray: [String!]!): [ResourcesCard]
     getUnpublishedCards: [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
     getAllUserCards: [ResourcesCard]

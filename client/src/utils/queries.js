@@ -25,3 +25,18 @@ query GetPublishedCardsByTagName($tagName: String!) {
   }
 }
 `
+export const GET_PUBLISHED_CARDS_BY_ALL_TAGS = gql`
+query GetPublishedCardsByAllTagNames($tagNamesArray: [String!]!) {
+  getPublishedCardsByAllTagNames(tagNamesArray: $tagNamesArray) {
+    id
+    title
+    description
+    url
+    language
+    tag_id
+    like
+    screenshot
+    status
+  }
+}
+`
