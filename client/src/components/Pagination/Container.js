@@ -2,24 +2,25 @@ import { getCardActionsUtilityClass } from "@mui/material";
 import { borderBottom } from "@mui/system";
 import React, {useState, useEffect} from "react"; 
 import Card from "../Card/Card";
-import {GET_ALL_CARDS} from "../../utils/queries";
+import {GET_ALL_CARDS, GET_PUBLISHED_CARDS_BY_TAG} from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import Pagination from "./Pagination";
 
 const CARDS_PER_PAGE = 2;
-const Container = () => {
-    const {loading, data, error}= useQuery(GET_ALL_CARDS);
+const Container = ({tags}) => {
+    const {loading, data, error}= useQuery(GET_PUBLISHED_CARDS_BY_TAG, {variables: {tagName: tags}});
     const [currPage, setCurrPage] = useState(-1);
     const [totalCards, setTotalCards] = useState([]);
     let currCards = [];
-    if(totalCards.length === 0  && !loading){ 
-        setTotalCards(data.resourcesCards);
+    if(totalCards.length === 0  && !loading && data){ 
+        console.log(data);
+        setTotalCards(data.getPublishedCardsByTagName);
         setCurrPage(1);
     }
     if(currPage > -1) {
 
         const startingCardIndex = (currPage) * CARDS_PER_PAGE
-        currCards = data.resourcesCards.slice(startingCardIndex, startingCardIndex + CARDS_PER_PAGE );
+        currCards = data.getPublishedCardsByTagName.slice(startingCardIndex, startingCardIndex + CARDS_PER_PAGE );
     }
     
     const handleClick = (inc) => {
