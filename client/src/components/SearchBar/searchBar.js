@@ -26,8 +26,9 @@ export default function Search() {
         <div className="search-bar-wrapper">
           <Autocomplete
             sx={{
-              minWidth: "20%",
+              minWidth: "40%",
               height: "4vh",
+              flexGrow: "1",
             }}
             className="autocomplete"
             multiple
