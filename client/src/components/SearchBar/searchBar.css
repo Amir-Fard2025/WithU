@@ -1,0 +1,17 @@
+.search-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  transform: scale(1.2);
+  min-width: 40vw;
+}
+
+.search-bar-wrapper .my-buttton {
+  background-color: transparent;
+  border-style: solid;
+  border-color: yellow;
+  opacity: 0.7;
+  border-radius: 30px;
+  margin: 40px;
+}

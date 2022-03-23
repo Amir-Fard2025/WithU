@@ -42,17 +42,17 @@ const typeDefs = gql`
     getUnpublishedCards: [ResourcesCard]
     getSingleCardbyId(_id: ID!): ResourcesCard
     getAllUserCards: [ResourcesCard]
-    getAllTags: [Tag],
+    getAllTags: [Tag]
     getAllCardsByStatus(status: String!): [ResourcesCard]
   }
 
   input ResourceData {
     _id: ID
-    title: String
-    description: String
-    url: String
-    language: [String]
-    tag_id: [String]
+    title: String!
+    description: String!
+    url: String!
+    language: [String!]
+    tag_id: [String!]
   }
 
   type Mutation {
