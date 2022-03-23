@@ -38,7 +38,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/faq" element={<FAQPage />} />
-            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/results/:filters" element={<ResultsPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/admin" element={<AdminSidePage />} />
             <Route path="/" element={<LandingPage />} />
