@@ -1,4 +1,4 @@
-<div ><a href="........"><img src="./server/public/images/POT-logo.png"/></a></div>
+<div ><a href="........"><img src="./client/src/images/logo-screen.png"/></a></div>
 
 <br>
 <h1> WithU </h1>
@@ -36,7 +36,7 @@ Crowdsourced information platform as a MERN stack single-page application.
 ### Project Link
 
 [Link](https://) to our live app.
-These are our project's [presentation](https://) and our [GitHub repo](https://github.com/Amir-Fard2025/WithU/tree/dev).
+These are our project's [presentation](https://docs.google.com/presentation/d/1T8Ap8jjG7QYzMlNbsrQl5TnSuf05T5OFhGCes8wt5zc/edit#slide=id.g11e6c9f5e49_0_67) and our [GitHub repo](https://github.com/Amir-Fard2025/WithU/tree/dev).
 
 <br>
 
