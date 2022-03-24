@@ -50,38 +50,46 @@ const Container = ({ tags }) => {
       console.log(pageNum);
     }
   };
-  if (error) {
-    console.log(error);
-  } else if (loading) {
+
+  if (loading) {
     return (
       <div>
         <p>Loading...</p>
       </div>
     );
-  } else {
-    console.log(currCards);
+  }
+
+  if (error) {
+    console.log(error);
     return (
       <div>
-        {currCards.map((c) => (
-          <Card
-            key={c.id}
-            title={c.title}
-            description={c.description}
-            languages={c.language}
-          />
-        ))}
-
-        {/* <button onClick={()=>handleClick(-1)} > Dec </button>
-            {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} language= {c.language} />)};
-            {/* <button onClick={()=>handleClick(-1)} > Dec </button>
-            <button onClick={()=>handleClick(1)} >Inc</button> */}
-
-        <Pagination
-          count={Math.ceil(totalCards.length / CARDS_PER_PAGE)}
-          updatePage={updatePage}
-        />
+        oops, seems like there are no cards associated with your search. Please
+        try again with a different tag :){" "}
       </div>
     );
   }
+
+  console.log(currCards);
+  return (
+    <div>
+      {currCards.map((c) => (
+        <Card
+          key={c.id}
+          title={c.title}
+          description={c.description}
+          languages={c.language}
+        />
+      ))}
+      {/* <button onClick={()=>handleClick(-1)} > Dec </button>
+            {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} language= {c.language} />)};
+            {/* <button onClick={()=>handleClick(-1)} > Dec </button>
+            <button onClick={()=>handleClick(1)} >Inc</button> */}
+      <Pagination
+        count={Math.ceil(totalCards.length / CARDS_PER_PAGE)}
+        updatePage={updatePage}
+      />
+    </div>
+  );
 };
+
 export default Container;
