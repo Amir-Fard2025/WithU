@@ -65,6 +65,7 @@ const resolvers = {
       console.log("return array: ", returnArray)
       return returnArray
     },
+
     getAllTags: async (parent, args) => {
       return await Tag.find();
     },
@@ -73,7 +74,30 @@ const resolvers = {
       return await ResourceCard.find({
         status
       })
-    }
+    },
+    getAllUserCreatedCards: async (parent, args, context) => {
+      if (context.user) {
+        const _id = context.user._id;
+        console.log("id: ",_id)
+        const { createdCards } = await User.findOne({ _id })
+          .populate("createdCards");
+        return createdCards
+      }
+      throw new AuthenticationError("Please login first!");
+    },
+
+    getAllUserLikedCards: async (parent, args, context) => {
+      if (context.user) {
+        const _id = context.user._id;
+        console.log(_id)
+        const { likedCards } = await User.findOne({ _id })
+          .populate("likedCards");
+        return likedCards
+      }
+      throw new AuthenticationError("Please login first!");
+    },
+
+
   },
 
   Mutation: {

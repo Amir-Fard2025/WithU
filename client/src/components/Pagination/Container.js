@@ -3,28 +3,30 @@ import { borderBottom } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import { GET_ALL_CARDS, GET_PUBLISHED_CARDS_BY_TAG, GET_PUBLISHED_CARDS_BY_ALL_TAGS } from "../../utils/queries";
+//GET_CREATED_CARDS_BY_USER_ID
+//GET_LIKED_CARDS_BY_USER_ID
+//GET_ALL_UNPUBLISED_CARDS
 import { useQuery } from "@apollo/client";
 import Pagination from "./Pagination";
 
 const CARDS_PER_PAGE = 2;
-const Container = ({ tags }) => {
-    const tagNamesArray = tags.split(".");
-    const { loading, data, error } = useQuery(GET_PUBLISHED_CARDS_BY_ALL_TAGS,
+const Container = ({ variables, query, dataParameter }) => {
+    const { loading, data, error } = useQuery(query,
         {
-            variables: { tagNamesArray }
+            variables
         });
     const [currPage, setCurrPage] = useState(-1);
     const [totalCards, setTotalCards] = useState([]);
     let currCards = [];
     if (totalCards.length === 0 && !loading && data) {
         console.log(data);
-        setTotalCards(data.getPublishedCardsByAllTagNames);
+        setTotalCards(data[dataParameter]);
         setCurrPage(0);
     }
     if (currPage > -1) {
 
         const startingCardIndex = (currPage) * CARDS_PER_PAGE
-        currCards = data.getPublishedCardsByAllTagNames.slice(startingCardIndex, startingCardIndex + CARDS_PER_PAGE);
+        currCards = data[dataParameter].slice(startingCardIndex, startingCardIndex + CARDS_PER_PAGE);
     }
 
     const handleClick = (inc) => {

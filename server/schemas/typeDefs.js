@@ -44,6 +44,8 @@ const typeDefs = gql`
     getAllUserCards: [ResourcesCard]
     getAllTags: [Tag]
     getAllCardsByStatus(status: String!): [ResourcesCard]
+    getAllUserCreatedCards: [ResourcesCard]
+    getAllUserLikedCards: [ResourcesCard]
   }
 
   input ResourceData {
