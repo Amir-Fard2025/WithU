@@ -8,15 +8,19 @@ import Input from "@mui/material/Input";
 import Typography from "@mui/material/Typography";
 import FlagCircleRoundedIcon from "@mui/icons-material/FlagCircleRounded";
 import { positions } from "@mui/system";
+import Flags from "country-flag-icons/react/3x2";
+import Box from "@mui/material/Box";
 
 const styleCard = {
-  maxWidth: 345,
+  width: "400px",
+  height: "530px",
   borderRadius: "20px",
   boxShadow: 2,
   margin: 2,
   backgroundColor: "transparent",
   border: 1,
   borderColor: "yellow",
+  backgroundColor: "rgba(255, 255, 255, 0.212)",
 };
 
 const styleCardContent = {
@@ -34,11 +38,18 @@ const styleMediaCard = {
   borderRadius: "20px",
 };
 
+const styleFlag = {
+  width: "2rem",
+  height: "2rem",
+  margin: "15px",
+};
+
 export default function MediaCard({
   title,
   description,
   screenshot,
-  language,
+  languages,
+  like,
 }) {
   return (
     <Card sx={styleCard}>
@@ -59,10 +70,37 @@ export default function MediaCard({
           {description}
         </Typography>
       </CardContent>
-      {/* <Input defaultValue="Hello world" inputProps={} /> */}
-      <FlagCircleRoundedIcon />
-      <FlagCircleRoundedIcon />
-      <FlagCircleRoundedIcon />
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        {languages.includes("Ua") && (
+          <Box sx={styleFlag}>
+            <Flags.UA title="ukraine" />
+          </Box>
+        )}
+        {languages.includes("De") && (
+          <Box sx={styleFlag}>
+            <Flags.DE title="germany" />
+          </Box>
+        )}
+        {languages.includes("En") && (
+          <Box sx={styleFlag}>
+            <Flags.GB title="england" />
+          </Box>
+        )}
+        {languages.includes("Ru") && (
+          <Box sx={styleFlag}>
+            <Flags.RU title="russia" />
+          </Box>
+        )}
+        {languages.includes("Pl") && (
+          <Box sx={styleFlag}>
+            <Flags.PL title="poland" />
+          </Box>
+        )}
+      </div>
     </Card>
   );
 }
