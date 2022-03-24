@@ -1,0 +1,15 @@
+.logopng {
+  height: 40px;
+  width: 60px;
+  transform: translate(-40%, 60%);
+}
+
+.title {
+  transform: translate(40%, -50%);
+}
+
+.title:hover {
+  color: #ffeb3b;
+  background-color: transparent;
+  cursor: pointer;
+}
