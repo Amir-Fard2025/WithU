@@ -16,12 +16,10 @@ export default function TextAlignment() {
           color: "#2874A6",
           marginTop: "10px",
           fontFamily: "Roboto",
+          fontSize: "calc(7px + 2vw)",
         }}
       >
-        This page is about I am Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Commodi, architecto iusto magnam quidem totam eaque
-        dolorum vel adipisci! Cumque consequuntur debitis tempore blanditiis
-        aliquid perferendis magni nam, nihil explicabo ea!.
+        One platform for many affected souls.
       </Box>
     </Typography>
   );

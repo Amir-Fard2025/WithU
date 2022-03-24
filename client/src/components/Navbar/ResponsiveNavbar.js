@@ -6,11 +6,12 @@ import {
   Tabs,
   Toolbar,
   Typography,
-  Label,
 } from "@mui/material";
 import { useState } from "react";
 import Auth from "../../utils/auth";
 //import LoginModal from "../LoginModal/LoginModal";
+import logo from "../../images/logopng.png";
+import "./Navbar.css";
 
 const buttonStyles = {
   paddingTop: "0.75rem",
@@ -29,10 +30,6 @@ const buttonStyles = {
 const typographyStyle = {
   fontSize: "2rem",
   color: "white",
-  "&:hover": {
-    color: "#ffeb3b",
-    backgroundColor: "transparent",
-  },
 };
 
 export default function ResponsiveNavbar({ setOpen }) {
@@ -47,26 +44,29 @@ export default function ResponsiveNavbar({ setOpen }) {
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
         <Toolbar>
-          <Typography sx={typographyStyle}>WithU</Typography>
-
+          <div>
+            <img src={logo} alt="logo" className="logopng"></img>
+            <Typography className="title" sx={typographyStyle}>
+              WithU{" "}
+            </Typography>
+          </div>
           <Tabs
             variant="text"
             onClick={openLoginModal}
             sx={{ marginLeft: "auto" }}
           ></Tabs>
-
           <Button variant="text" sx={buttonStyles}>
             Dashboard
           </Button>
           {loggedIn ? (
-            <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
-              Logout
-            </Button>
-          ) : (
-            <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-              Login/SignUp
-            </Button>
+       <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
+            Login/SignUp
+          </Button>
+          <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
+            Logout
+          </Button>
           )}
+
         </Toolbar>
       </AppBar>
     </React.Fragment>

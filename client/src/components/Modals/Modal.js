@@ -19,6 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import "./Modal.css";
 
 const style = {
   position: "absolute",
@@ -30,7 +31,6 @@ const style = {
   opacity: "0.9",
   border: "0px solid",
   borderRadius: "20px",
-  color: "white",
   p: 4,
 };
 
@@ -47,8 +47,13 @@ const button = {
   position: "absolute",
   left: "50%",
   top: "70%",
-  width: "150px",
+  width: "60px",
+  // color: "rgba(66, 133, 244, 0.624)",
   transform: "translate(-50%, -50%)",
+  backgroundColor: "transparent",
+  border: "solid",
+  borderColor: "rgba(66, 133, 244, 0.624)",
+  hover: "scale(1.1)",
 };
 
 const ITEM_HEIGHT = 48;
@@ -136,11 +141,18 @@ export default function BasicModal() {
   };
 
   return (
-    <div>
-      <Fab color="info" aria-label="add" onClick={handleOpen} style={button}>
-        <AddIcon />
+    <div className="divdiv">
+      <Fab
+        className="styling"
+        aria-label="add"
+        onClick={handleOpen}
+        style={button}
+      >
+        Add
+        {/* <AddIcon className="iconModal" /> */}
       </Fab>
       <Modal
+        className="modal"
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -230,11 +242,8 @@ export default function BasicModal() {
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
           <Stack direction="row" spacing={2}>
-            <Button
-              variant="contained"
-              onSubmit={handleFormSubmit}
-              endIcon={<SendIcon />}
-            >
+
+            <Button variant="outlined" endIcon={<SendIcon />}>
               Add
             </Button>
           </Stack>

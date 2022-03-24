@@ -49,7 +49,8 @@ export default function Search() {
             id="tags-standard"
             options={topResearch}
             getOptionLabel={(option) => option.search}
-            defaultValue={[topResearch[13]]}
+
+            
             renderInput={(params) => {
               console.log(params);
               return (
@@ -64,7 +65,7 @@ export default function Search() {
             }}
           />
           <Button
-            variant="contained"
+            variant="outlined"
             className="my-buttton"
             onClick={onSubmit}
             // sx={{
@@ -74,7 +75,15 @@ export default function Search() {
             //   height: "4vh",
             // }}
           >
-            <Typography sx={{ color: "black" }}>Search</Typography>
+            <Typography
+              className="typo"
+              sx={{
+                color: "yellow",
+                textTransform: "capitalize",
+              }}
+            >
+              Search
+            </Typography>
           </Button>
         </div>
       </Stack>
