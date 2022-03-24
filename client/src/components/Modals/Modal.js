@@ -19,6 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import Auth from "../../utils/auth";
 import "./Modal.css";
 
 const style = {
@@ -159,94 +160,105 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <TextField
-            sx={field}
-            id="outlined-basic"
-            name="title"
-            label="Title"
-            variant="outlined"
-            value={userFormData.title}
-            onChange={handleInputChange}
-          />
-          <TextField
-            sx={field}
-            id="outlined-basic"
-            name="description"
-            label="Description"
-            variant="outlined"
-            value={userFormData.description}
-            onChange={handleInputChange}
-          />
-          <TextField
-            sx={field}
-            id="outlined-basic"
-            name="url"
-            label="URL"
-            variant="outlined"
-            value={userFormData.url}
-            onChange={handleInputChange}
-          />
+          {Auth.loggedIn() ? (
+            <>
+              <TextField
+                sx={field}
+                id="outlined-basic"
+                name="title"
+                label="Title"
+                variant="outlined"
+                value={userFormData.title}
+                onChange={handleInputChange}
+              />
+              <TextField
+                sx={field}
+                id="outlined-basic"
+                name="description"
+                label="Description"
+                variant="outlined"
+                value={userFormData.description}
+                onChange={handleInputChange}
+              />
+              <TextField
+                sx={field}
+                id="outlined-basic"
+                name="url"
+                label="URL"
+                variant="outlined"
+                value={userFormData.url}
+                onChange={handleInputChange}
+              />
 
-          <FormControl sx={{ width: 400 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              value={tags}
-              onChange={handleChangement}
-              input={<OutlinedInput label="Tag" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {allTags.map((tag) => (
-                <MenuItem key={tag} value={tag}>
-                  <Checkbox checked={tags.indexOf(tag) > -1} />
-                  <ListItemText primary={tag} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl sx={{ width: 400 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Language</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              value={personLanguage}
-              onChange={handleChange}
-              input={<OutlinedInput label="Language" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {languages.map((language) => (
-                <MenuItem key={language} value={language}>
-                  <Checkbox checked={personLanguage.indexOf(language) > -1} />
-                  <ListItemText primary={language} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          {/* <Autocomplete
+              <FormControl sx={{ width: 400 }}>
+                <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={tags}
+                  onChange={handleChangement}
+                  input={<OutlinedInput label="Tag" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {allTags.map((tag) => (
+                    <MenuItem key={tag} value={tag}>
+                      <Checkbox checked={tags.indexOf(tag) > -1} />
+                      <ListItemText primary={tag} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl sx={{ width: 400 }}>
+                <InputLabel id="demo-multiple-checkbox-label">
+                  Language
+                </InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={personLanguage}
+                  onChange={handleChange}
+                  input={<OutlinedInput label="Language" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {languages.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox
+                        checked={personLanguage.indexOf(language) > -1}
+                      />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              {/* <Autocomplete
             disablePortal
             id="combo-box-demo"
             options={topLabel}
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Tags" />}
           /> */}
-          {/* <Autocomplete
+              {/* <Autocomplete
             disablePortal
             id="combo-box-demo"
             options={languages}
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
-          <Stack direction="row" spacing={2}>
-
-            <Button variant="outlined" endIcon={<SendIcon />}>
-              Add
-            </Button>
-          </Stack>
+              <Stack direction="row" spacing={2}>
+                <Button variant="outlined" endIcon={<SendIcon />}>
+                  Add
+                </Button>
+              </Stack>
+            </>
+          ) : (
+            <InputLabel id="demo-multiple-checkbox-label">
+              You need to login first to add a card!
+            </InputLabel>
+          )}
         </Box>
       </Modal>
     </div>

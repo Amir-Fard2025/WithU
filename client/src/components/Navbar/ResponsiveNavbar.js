@@ -50,23 +50,19 @@ export default function ResponsiveNavbar({ setOpen }) {
               WithU{" "}
             </Typography>
           </div>
-          <Tabs
-            variant="text"
-            onClick={openLoginModal}
-            sx={{ marginLeft: "auto" }}
-          ></Tabs>
+          <div style={{ marginLeft: "auto" }}></div>
           <Button variant="text" sx={buttonStyles}>
             Dashboard
           </Button>
           {loggedIn ? (
-       <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-            Login/SignUp
-          </Button>
-          <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
-            Logout
-          </Button>
+            <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
+              Login/SignUp
+            </Button>
+          ) : (
+            <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
+              Logout
+            </Button>
           )}
-
         </Toolbar>
       </AppBar>
     </React.Fragment>
