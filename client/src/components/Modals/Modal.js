@@ -16,6 +16,7 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import "./Modal.css";
 
 const style = {
   position: "absolute",
@@ -44,11 +45,12 @@ const button = {
   left: "50%",
   top: "70%",
   width: "60px",
+  // color: "rgba(66, 133, 244, 0.624)",
   transform: "translate(-50%, -50%)",
-  color: "rgba(66, 133, 244, 0.624)",
   backgroundColor: "transparent",
   border: "solid",
   borderColor: "rgba(66, 133, 244, 0.624)",
+  hover: "scale(1.1)",
 };
 
 const ITEM_HEIGHT = 48;
@@ -93,12 +95,12 @@ export default function BasicModal() {
     <div className="divdiv">
       <Fab
         className="styling"
-        color="info"
         aria-label="add"
         onClick={handleOpen}
         style={button}
       >
-        <AddIcon className="iconModal" />
+        Add
+        {/* <AddIcon className="iconModal" /> */}
       </Fab>
       <Modal
         className="modal"
