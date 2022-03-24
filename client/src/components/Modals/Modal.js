@@ -1,8 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
 // import Autocomplete from "@mui/material/Autocomplete";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
@@ -34,8 +35,9 @@ const style = {
   p: 4,
 };
 
-const field = {
+const styleField = {
   width: 400,
+  marginBottom: "20px",
 };
 
 const button = {
@@ -49,6 +51,22 @@ const button = {
   top: "70%",
   width: "150px",
   transform: "translate(-50%, -50%)",
+};
+
+const styleButton = {
+  color: "white",
+  backgroundColor: "#0288d1",
+  borderStyle: "solid",
+  border: 1,
+  opacity: "0.7",
+  marginTop: "10px",
+  padding: "10px",
+  "&:hover": {
+    backgroundColor: "yellow",
+    color: "#0288d1",
+    opacity: "50%",
+    borderRadius: "20px",
+  },
 };
 
 const ITEM_HEIGHT = 48;
@@ -148,7 +166,7 @@ export default function BasicModal() {
       >
         <Box sx={style}>
           <TextField
-            sx={field}
+            sx={styleField}
             id="outlined-basic"
             name="title"
             label="Title"
@@ -156,8 +174,9 @@ export default function BasicModal() {
             value={userFormData.title}
             onChange={handleInputChange}
           />
+
           <TextField
-            sx={field}
+            sx={styleField}
             id="outlined-basic"
             name="description"
             label="Description"
@@ -166,7 +185,7 @@ export default function BasicModal() {
             onChange={handleInputChange}
           />
           <TextField
-            sx={field}
+            sx={styleField}
             id="outlined-basic"
             name="url"
             label="URL"
@@ -174,7 +193,6 @@ export default function BasicModal() {
             value={userFormData.url}
             onChange={handleInputChange}
           />
-
           <FormControl sx={{ width: 400 }}>
             <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
             <Select
@@ -195,7 +213,7 @@ export default function BasicModal() {
               ))}
             </Select>
           </FormControl>
-          <FormControl sx={{ width: 400 }}>
+          <FormControl sx={{ width: 400, marginTop: "20px" }}>
             <InputLabel id="demo-multiple-checkbox-label">Language</InputLabel>
             <Select
               labelId="demo-multiple-checkbox-label"
@@ -230,13 +248,13 @@ export default function BasicModal() {
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
           <Stack direction="row" spacing={2}>
-            <Button
+            <Chip
+              label="Add"
+              sx={styleButton}
               variant="contained"
-              onSubmit={handleFormSubmit}
+              onClick={handleFormSubmit}
               endIcon={<SendIcon />}
-            >
-              Add
-            </Button>
+            />
           </Stack>
         </Box>
       </Modal>
