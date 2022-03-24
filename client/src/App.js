@@ -38,12 +38,13 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/faq" element={<FAQPage />} />
-            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/results/:tags" element={<ResultsPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/admin" element={<AdminSidePage />} />
             <Route path="/" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
+        {/* <BasicModal /> */}
         <Footer setOpen={setOpenContactForm} />
         <ContactModal
           open={openContactForm}

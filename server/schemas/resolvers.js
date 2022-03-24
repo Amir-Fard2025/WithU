@@ -45,8 +45,25 @@ const resolvers = {
       const { resourceCards } = await Tag.findOne({
         tagName
       }).populate("resourceCards")
-      
-      return resourceCards.filter(resourceCard => resourceCard.status = "published")
+
+      return resourceCards.filter(resourceCard => resourceCard.status == "published")
+    },
+    getPublishedCardsByAllTagNames: async (parent, { tagNamesArray }) => {
+      let returnArray = [];
+      let ids = [];
+
+      for (let tagName of tagNamesArray) {
+        const { resourceCards } = await Tag.findOne({
+          tagName
+        }).populate("resourceCards")
+        const publishedArray = resourceCards.filter(resourceCard => resourceCard.status == "published" && !ids.includes(resourceCard._id.toString()));
+        returnArray = [...returnArray, ...publishedArray];
+        ids = returnArray.map(entry => entry._id.toString());
+        console.log(ids)
+      }
+
+      console.log("return array: ", returnArray)
+      return returnArray
     },
     getAllTags: async (parent, args) => {
       return await Tag.find();
@@ -93,15 +110,15 @@ const resolvers = {
           args.resource;
         try {
           let screenshot;
-          try{
+          try {
 
             const screenshotName = title.toLowerCase().replace(" ", "");
             generateScreenshot(url, "public/screenshots/" + screenshotName + ".png");
-            screenshot=`/screenshots/${screenshotName}.png`;
+            screenshot = `/screenshots/${screenshotName}.png`;
 
-          } catch(err) {
+          } catch (err) {
             console.log("Error while generating a screenshot");
-            screenshot = null;
+            screenshot = `/default.png`;
           }
           const addCard = await ResourceCard.create({
             resourceId,

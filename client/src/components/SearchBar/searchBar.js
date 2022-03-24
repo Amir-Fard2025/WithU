@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import "./searchBar.css";
@@ -7,6 +7,17 @@ import "./searchBar.css";
 // };
 
 export default function Search() {
+  const [filters, setFilters] = useState([topResearch[13]]);
+
+  const onSubmit = () => {
+    const formatedFilters = filters
+      .map((filter) => {
+        return filter.search.toLowerCase();
+      })
+      .join(".");
+    window.location.assign(`/results/${formatedFilters}`);
+  };
+
   return (
     <>
       <Stack
@@ -31,26 +42,32 @@ export default function Search() {
               flexGrow: "1",
             }}
             className="autocomplete"
+            onChange={(event, value) => {
+              setFilters(value);
+            }}
             multiple
             id="tags-standard"
             options={topResearch}
             getOptionLabel={(option) => option.search}
-            renderInput={(params) => (
-              <TextField
-                sx={{
-                  color: "white",
-                  height: "4vh",
-                }}
-                className="textfield"
-                {...params}
-                variant="standard"
-                placeholder="Type..."
-              />
-            )}
+
+            
+            renderInput={(params) => {
+              console.log(params);
+              return (
+                <TextField
+                  sx={{ color: "white", height: "4vh" }}
+                  className="textfield"
+                  {...params}
+                  variant="standard"
+                  placeholder="Type..."
+                />
+              );
+            }}
           />
           <Button
             variant="outlined"
             className="my-buttton"
+            onClick={onSubmit}
             // sx={{
             //   display: "flex",
             //   backgroundColor: "yellow",
