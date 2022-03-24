@@ -167,7 +167,7 @@ As an ordinary human being, I want to contribute to making it easier for the inn
 
   ![Image](./client/)
 
-  - #### Contact
+- #### Contact
 
   ![Image](./client/)
 
