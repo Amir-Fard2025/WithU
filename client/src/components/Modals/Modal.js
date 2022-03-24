@@ -20,6 +20,8 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import Auth from "../../utils/auth";
+import "./Modal.css";
 
 const style = {
   position: "absolute",
@@ -31,7 +33,6 @@ const style = {
   opacity: "0.9",
   border: "0px solid",
   borderRadius: "20px",
-  color: "white",
   p: 4,
 };
 
@@ -58,8 +59,13 @@ const button = {
   position: "absolute",
   left: "50%",
   top: "70%",
-  width: "150px",
+  width: "60px",
+  // color: "rgba(66, 133, 244, 0.624)",
   transform: "translate(-50%, -50%)",
+  backgroundColor: "transparent",
+  border: "solid",
+  borderColor: "rgba(66, 133, 244, 0.624)",
+  hover: "scale(1.1)",
 };
 
 const styleButton = {
@@ -163,108 +169,127 @@ export default function BasicModal() {
   };
 
   return (
-    <div>
-      <Fab color="info" aria-label="add" onClick={handleOpen} style={button}>
-        <AddIcon />
+    <div className="divdiv">
+      <Fab
+        className="styling"
+        aria-label="add"
+        onClick={handleOpen}
+        style={button}
+      >
+        Add
+        {/* <AddIcon className="iconModal" /> */}
       </Fab>
       <Modal
+        className="modal"
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <TextField
-            sx={styleField}
-            id="outlined-basic"
-            name="title"
-            label="Title"
-            variant="outlined"
-            value={userFormData.title}
-            onChange={handleInputChange}
-          />
+          {Auth.loggedIn() ? (
+            <>
+              <TextField
+                sx={styleField}
+                id="outlined-basic"
+                name="title"
+                label="Title"
+                variant="outlined"
+                value={userFormData.title}
+                onChange={handleInputChange}
+              />
+              <TextField
+                sx={styleField}
+                id="outlined-basic"
+                name="description"
+                label="Description"
+                variant="outlined"
+                value={userFormData.description}
+                onChange={handleInputChange}
+              />
+              <TextField
+                sx={styleField}
+                id="outlined-basic"
+                name="url"
+                label="URL"
+                variant="outlined"
+                value={userFormData.url}
+                onChange={handleInputChange}
+              />
 
-          <TextField
-            sx={styleField}
-            id="outlined-basic"
-            name="description"
-            label="Description"
-            variant="outlined"
-            value={userFormData.description}
-            onChange={handleInputChange}
-          />
-          <TextField
-            sx={styleField}
-            id="outlined-basic"
-            name="url"
-            label="URL"
-            variant="outlined"
-            value={userFormData.url}
-            onChange={handleInputChange}
-          />
-          <FormControl sx={{ width: 400 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              value={tags}
-              onChange={handleChangement}
-              input={<OutlinedInput label="Tag" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {allTags.map((tag) => (
-                <MenuItem key={tag} value={tag}>
-                  <Checkbox checked={tags.indexOf(tag) > -1} />
-                  <ListItemText primary={tag} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl sx={{ width: 400, marginTop: "20px" }}>
-            <InputLabel id="demo-multiple-checkbox-label">Language</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              value={personLanguage}
-              onChange={handleChange}
-              input={<OutlinedInput label="Language" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
-            >
-              {languages.map((language) => (
-                <MenuItem key={language} value={language}>
-                  <Checkbox checked={personLanguage.indexOf(language) > -1} />
-                  <ListItemText primary={language} />
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          {/* <Autocomplete
+              <FormControl sx={{ width: 400 }}>
+                <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={tags}
+                  onChange={handleChangement}
+                  input={<OutlinedInput label="Tag" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {allTags.map((tag) => (
+                    <MenuItem key={tag} value={tag}>
+                      <Checkbox checked={tags.indexOf(tag) > -1} />
+                      <ListItemText primary={tag} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl sx={{ width: 400 }}>
+                <InputLabel id="demo-multiple-checkbox-label">
+                  Language
+                </InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={personLanguage}
+                  onChange={handleChange}
+                  input={<OutlinedInput label="Language" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {languages.map((language) => (
+                    <MenuItem key={language} value={language}>
+                      <Checkbox
+                        checked={personLanguage.indexOf(language) > -1}
+                      />
+                      <ListItemText primary={language} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              {/* <Autocomplete
             disablePortal
             id="combo-box-demo"
             options={topLabel}
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Tags" />}
           /> */}
-          {/* <Autocomplete
+              {/* <Autocomplete
             disablePortal
             id="combo-box-demo"
             options={languages}
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
-          <Stack direction="row" spacing={2}>
-            <Chip
-              label="Add"
-              sx={styleButton}
-              variant="contained"
-              onClick={handleFormSubmit}
-              endIcon={<SendIcon />}
-            />
-          </Stack>
+              <Stack direction="row" spacing={2}>
+                <Chip
+                  label="Add"
+                  sx={styleButton}
+                  variant="contained"
+                  onClick={handleFormSubmit}
+                  endIcon={<SendIcon />}
+                />
+              </Stack>
+            </>
+          ) : (
+            <InputLabel id="demo-multiple-checkbox-label">
+              You need to login first to add a card!
+            </InputLabel>
+          )}
         </Box>
       </Modal>
     </div>

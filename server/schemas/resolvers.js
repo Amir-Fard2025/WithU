@@ -62,8 +62,6 @@ const resolvers = {
         console.log(ids)
       }
 
-      // await tagNamesArray.forEach(async tagName => {
-      // })
       console.log("return array: ", returnArray)
       return returnArray
     },
