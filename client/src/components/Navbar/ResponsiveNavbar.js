@@ -50,11 +50,7 @@ export default function ResponsiveNavbar({ setOpen }) {
               WithU{" "}
             </Typography>
           </div>
-          <Tabs
-            variant="text"
-            onClick={openLoginModal}
-            sx={{ marginLeft: "auto" }}
-          ></Tabs>
+          <div style={{ marginLeft: "auto" }}></div>
           <Button variant="text" sx={buttonStyles}>
             Dashboard
           </Button>
