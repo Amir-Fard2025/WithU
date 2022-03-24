@@ -18,6 +18,8 @@ const SignupForm = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [password, setPassword] = useState("");
   const [hiddenPassword, setHiddenPassword] = useState("");
+  const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [hiddenConfirmedPassword, setHiddenConfirmedPassword] = useState("");
 
   const [addUser] = useMutation(ADDUSER);
 
@@ -39,6 +41,20 @@ const SignupForm = () => {
       .join("");
     setHiddenPassword(cryptedPassword);
   };
+
+  const handleConfirmedPasswordChange = (event) => {
+    const { name, value } = event.target;
+    console.log(event.target.value);
+    const newPassword = confirmedPassword + value.split("").pop();
+    setConfirmedPassword(newPassword);
+    setUserFormData({ ...userFormData, confirmedPassword: newPassword });
+    const cryptedPassword = value
+      .split("")
+      .map(() => "*")
+      .join("");
+    setHiddenConfirmedPassword(cryptedPassword);
+  };
+
   console.log(userFormData);
 
   const handleFormSubmit = async (event) => {
@@ -98,8 +114,8 @@ const SignupForm = () => {
         label="Confirm password"
         required
         sx={{ marginTop: "1rem" }}
-        value={userFormData.password}
-        onChange={handleInputChange}
+        value={hiddenConfirmedPassword}
+        onChange={handleConfirmedPasswordChange}
       />
       <Button
         variant="contained"
