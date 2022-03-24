@@ -4,10 +4,10 @@ import Box from "@mui/material/Box";
 import { Button, Grid, Link, Typography } from "@mui/material";
 
 export default function Footer({ setOpen }) {
-  const openContactModal = () => {
-    console.log("modal clicked fromat footer");
-    setOpen(true);
-  };
+  // const openContactModal = () => {
+  //   console.log("modal clicked fromat footer");
+  //   setOpen(true);
+  // };
 
   return (
     <Box
@@ -17,7 +17,7 @@ export default function Footer({ setOpen }) {
         width: "100%",
       }}
     >
-      <CssBaseline />
+      {/* <CssBaseline /> */}
 
       <Box
         component="footer"
@@ -27,13 +27,13 @@ export default function Footer({ setOpen }) {
           backgroundColor: "transparent",
         }}
       >
-        <Box>
-          <Grid container spacing={3} alignItems="center">
-            <Grid sx={{ fontSize: "15px" }} item xs={12} md={10}>
-              © WithU 2022
-            </Grid>
-            <Grid item xs={1} md={1}>
-              <Box sx={{ color: "black" }}>
+        <Box sx={{ fontSize: "15px" }}>
+          © WithU 2022
+          {/* <Grid container spacing={3} alignItems="center"> */}
+          {/* <Grid sx={{ fontSize: "15px" }} item xs={12} md={10}> */}
+          {/* <Grid sx={{ fontSize: "15px" }}>© WithU 2022</Grid> */}
+          {/* <Grid item xs={1} md={1}> */}
+          {/* <Box sx={{ color: "black" }}>
                 <Typography sx={{ textAlign: "center" }} component="div">
                   <Link
                     href="/faq"
@@ -45,17 +45,17 @@ export default function Footer({ setOpen }) {
                     FAQ
                   </Link>
                 </Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={1}>
+              </Box> */}
+          {/* </Grid> */}
+          {/* <Grid item xs={12} md={1}>
               <Button
                 sx={{ color: "black", textTransform: "none", fontSize: "15px" }}
                 onClick={openContactModal}
               >
                 Contact
               </Button>
-            </Grid>
-          </Grid>
+            </Grid> */}
+          {/* </Grid> */}
         </Box>
       </Box>
     </Box>

@@ -1,9 +1,11 @@
 import React from "react";
 import {
   AppBar,
+  Box,
   Button,
+  Link,
   // Tab,
-  Tabs,
+  //Tabs,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -40,6 +42,11 @@ export default function ResponsiveNavbar({ setOpen }) {
     setOpen(true);
   };
   const loggedIn = !!localStorage.getItem("id_token");
+
+  const openContactModal = () => {
+    console.log("modal clicked fromat footer");
+    setOpen(true);
+  };
   return (
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
@@ -69,6 +76,22 @@ export default function ResponsiveNavbar({ setOpen }) {
               Login/SignUp
             </Button>
           )}
+          {/* add FAQ and contact here */}
+          <Box sx={{ color: "black" }}>
+            <Typography sx={{ textAlign: "center" }} component="div">
+              <Link
+                href="/faq"
+                underline="none"
+                fontSize="15px"
+                sx={buttonStyles}
+              >
+                FAQ
+              </Link>
+            </Typography>
+          </Box>
+          <Button sx={buttonStyles} onClick={openContactModal}>
+            Contact
+          </Button>
         </Toolbar>
       </AppBar>
     </React.Fragment>
