@@ -14,7 +14,7 @@ const SignupForm = () => {
   };
 
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [password, setPassword] = useState("");
   const [hiddenPassword, setHiddenPassword] = useState("");
@@ -23,6 +23,16 @@ const SignupForm = () => {
 
   const [addUser] = useMutation(ADDUSER);
 
+  const validateInput = (currPassowrd, currConfirmPassword) => {
+    if (
+      currPassowrd &&
+      currPassowrd.length > 0 &&
+      currPassowrd == currConfirmPassword
+    ) {
+      return true;
+    }
+    return false;
+  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     console.log(event.target.value);
@@ -40,6 +50,8 @@ const SignupForm = () => {
       .map(() => "*")
       .join("");
     setHiddenPassword(cryptedPassword);
+
+    setValidated(validateInput(newPassword, confirmedPassword));
   };
 
   const handleConfirmedPasswordChange = (event) => {
@@ -53,6 +65,7 @@ const SignupForm = () => {
       .map(() => "*")
       .join("");
     setHiddenConfirmedPassword(cryptedPassword);
+    setValidated(validateInput(password, newPassword));
   };
 
   console.log(userFormData);
@@ -121,6 +134,7 @@ const SignupForm = () => {
         variant="contained"
         sx={{ marginTop: "1rem" }}
         onClick={handleFormSubmit}
+        disabled={!validated}
       >
         Sign Up
       </Button>
