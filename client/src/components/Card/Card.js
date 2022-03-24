@@ -59,7 +59,7 @@ export default function MediaCard({
           {description}
         </Typography>
       </CardContent>
-      <Input defaultValue="Hello world" inputProps={} />
+      {/* <Input defaultValue="Hello world" inputProps={} /> */}
       <FlagCircleRoundedIcon />
       <FlagCircleRoundedIcon />
       <FlagCircleRoundedIcon />

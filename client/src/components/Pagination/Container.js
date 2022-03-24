@@ -9,7 +9,10 @@ import Pagination from "./Pagination";
 const CARDS_PER_PAGE = 2;
 const Container = ({ tags }) => {
     const tagNamesArray = tags.split(".");
-    const { loading, data, error } = useQuery(GET_PUBLISHED_CARDS_BY_ALL_TAGS, { variables: { tagNamesArray } });
+    const { loading, data, error } = useQuery(GET_PUBLISHED_CARDS_BY_ALL_TAGS,
+        {
+            variables: { tagNamesArray }
+        });
     const [currPage, setCurrPage] = useState(-1);
     const [totalCards, setTotalCards] = useState([]);
     let currCards = [];
@@ -62,7 +65,7 @@ const Container = ({ tags }) => {
             {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} language= {c.language} />)};
             {/* <button onClick={()=>handleClick(-1)} > Dec </button>
             <button onClick={()=>handleClick(1)} >Inc</button> */}
-            
+
                 <Pagination count={Math.ceil(totalCards.length / CARDS_PER_PAGE)} updatePage={updatePage} />
             </div>
 

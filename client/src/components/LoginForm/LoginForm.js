@@ -12,22 +12,34 @@ const LoginForm = () => {
     },
   };
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [password, setPassword] = useState("");
   const [hiddenPassword, setHiddenPassword] = useState("");
 
   const [login] = useMutation(LOGIN);
 
-  const handleInputChange = (event) => {
+  const validateInput = (currPassowrd, email) => {
+    if (
+      currPassowrd &&
+      currPassowrd.length > 0 &&
+      email &&
+      email.length > 0 &&
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleEmailChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.value);
     setUserFormData({ ...userFormData, [name]: value });
+    setValidated(validateInput(password, value));
   };
 
   const handlePasswordChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.value);
     const newPassword = password + value.split("").pop();
     setPassword(newPassword);
     setUserFormData({ ...userFormData, password: newPassword });
@@ -36,9 +48,8 @@ const LoginForm = () => {
       .map(() => "*")
       .join("");
     setHiddenPassword(cryptedPassword);
+    setValidated(validateInput(newPassword, userFormData.email));
   };
-
-  console.log(userFormData);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -79,7 +90,7 @@ const LoginForm = () => {
         required
         sx={{ marginTop: "1rem" }}
         value={userFormData.email}
-        onChange={handleInputChange}
+        onChange={handleEmailChange}
       />
       <TextField
         placeholder="Password"
@@ -94,6 +105,7 @@ const LoginForm = () => {
         variant="contained"
         sx={{ marginTop: "1rem" }}
         onClick={handleFormSubmit}
+        disabled={!validated}
       >
         Log In
       </Button>
