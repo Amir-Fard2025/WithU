@@ -15,7 +15,7 @@ export default function Search() {
         return filter.search.toLowerCase();
       })
       .join(".");
-    window.location.replace(`/results/${formatedFilters}`);
+    window.location.assign(`/results/${formatedFilters}`);
   };
 
   return (
