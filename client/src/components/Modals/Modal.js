@@ -38,6 +38,15 @@ const style = {
 const styleField = {
   width: 400,
   marginBottom: "20px",
+  "& fieldset": {
+    borderRadius: "20px",
+  },
+};
+
+const styleDropdown = {
+  "& fieldset": {
+    borderRadius: "20px",
+  },
 };
 
 const button = {
