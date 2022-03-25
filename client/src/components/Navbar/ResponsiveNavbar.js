@@ -3,7 +3,6 @@ import {
   AppBar,
   Box,
   Button,
-  Link,
   // Tab,
   //Tabs,
   Toolbar,
@@ -14,6 +13,7 @@ import Auth from "../../utils/auth";
 //import LoginModal from "../LoginModal/LoginModal";
 import logo from "../../images/logopng.png";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const buttonStyles = {
   paddingTop: "0.75rem",
@@ -61,11 +61,14 @@ export default function ResponsiveNavbar({ setOpen }) {
           </div>
           <div style={{ marginLeft: "auto" }}></div>
           {loggedIn ? (
-            <Button variant="text" sx={buttonStyles} href="/dashboard">
-              Dashboard
-            </Button>
+            <Link to="/dashboard">
+              <Button variant="text" sx={buttonStyles} >
+                Dashboard
+              </Button>
+            </Link>
+
           ) : (
-            <Button></Button>
+            ""
           )}
           {loggedIn ? (
             <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
@@ -80,12 +83,14 @@ export default function ResponsiveNavbar({ setOpen }) {
           <Box sx={{ color: "black" }}>
             <Typography sx={{ textAlign: "center" }} component="div">
               <Link
-                href="/faq"
+                to="/faq"
                 underline="none"
                 fontSize="15px"
-                sx={buttonStyles}
+                style={buttonStyles}
               >
-                FAQ
+                <Button variant="text" sx={buttonStyles}>
+                  FAQ
+                </Button>
               </Link>
             </Typography>
           </Box>
