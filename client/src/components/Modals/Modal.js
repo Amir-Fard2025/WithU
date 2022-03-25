@@ -303,7 +303,7 @@ export default function BasicModal() {
             </>
           ) : (
             <InputLabel sx={styleFirstLogin} id="demo-multiple-checkbox-label">
-              Login / SignUp first and contribute :)
+              Login / Sign Up first and contribute :)
             </InputLabel>
           )}
         </Box>

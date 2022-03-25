@@ -44,7 +44,7 @@ const LoginModal = ({ open, onClose }) => {
             id="login-btn"
             onClick={() => setDisplayLoginForm(true)}
           >
-            Log in
+            Login
           </Button>
           <Button
             sx={styleButton}
