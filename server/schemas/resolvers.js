@@ -78,7 +78,7 @@ const resolvers = {
     getAllUserCreatedCards: async (parent, args, context) => {
       // if (context.user) {
         // const _id = context.user._id;
-        const _id = "623b9a4a71fd3484e0f126de"
+        const _id = "623df616efa280cf90a63466"
         console.log("id: ",_id)
         const { createdCards } = await User.findOne({ _id })
           .populate("createdCards");
@@ -90,7 +90,7 @@ const resolvers = {
     getAllUserLikedCards: async (parent, args, context) => {
       // if (context.user) {
         // const _id = context.user._id;
-        const _id = "623b9a4a71fd3484e0f126de";
+        const _id = "623df616efa280cf90a63466";
         console.log(_id)
         const { likedCards } = await User.findOne({ _id })
           .populate("likedCards");

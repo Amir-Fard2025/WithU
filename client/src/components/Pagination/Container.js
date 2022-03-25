@@ -13,13 +13,15 @@ const CARDS_PER_PAGE = 2;
 const Container = ({ variables, query, dataParameter, changeBool }) => {
     
     console.log("changeBool out: ", changeBool)
-    useEffect(() => {
-        refetch();
-        console.log("Refetched")
-        console.log("changeBool in: ", changeBool)
-    }, [changeBool])
+    // useEffect(() => {
+    //     refetch();
+    //     console.log("Refetched")
+    //     console.log("changeBool in: ", changeBool)
+    // }, [])
 
-    const { loading, data, error, refetch } = useQuery(query,
+    console.log("Fetching query: ", query);
+
+    const { loading, data, error } = useQuery(query,
         {
             variables
         });
@@ -34,7 +36,7 @@ const Container = ({ variables, query, dataParameter, changeBool }) => {
         setTotalCards(data[dataParameter]);
         setCurrPage(0);
     }
-    if (currPage > -1) {
+    if (currPage > -1 && !loading && data) {
         const startingCardIndex = (currPage) * CARDS_PER_PAGE
         currCards = data[dataParameter].slice(startingCardIndex, startingCardIndex + CARDS_PER_PAGE);
     }
