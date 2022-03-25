@@ -66,6 +66,7 @@ export default function MediaCard({
   languages,
   like,
 }) {
+  console.log(screenshot)
   const loggedIn = !!localStorage.getItem("id_token");
 
   return (
@@ -84,8 +85,8 @@ export default function MediaCard({
               size="small"
               sx={circle}
               aria-label="edit"
-              // onClick={handleOpen}
-              // style={button}
+            // onClick={handleOpen}
+            // style={button}
             >
               <EditIcon className="edit" />
 
@@ -96,8 +97,8 @@ export default function MediaCard({
               size="small"
               sx={circle}
               aria-label="delete"
-              // onClick={handleOpen}
-              // style={button}
+            // onClick={handleOpen}
+            // style={button}
             >
               <DeleteIcon className="delete" />
               {/* <AddIcon className="iconModal" /> */}
@@ -110,7 +111,8 @@ export default function MediaCard({
           sx={styleMediaCard}
           component="img"
           height="140"
-          image={"screenshots/" + title.toLowerCase().replace(" ", "") + ".png"}
+          // image={"screenshots/" + title.toLowerCase().replace(" ", "") + ".png"}
+          image={screenshot}
           alt="website image"
         />
       </div>
