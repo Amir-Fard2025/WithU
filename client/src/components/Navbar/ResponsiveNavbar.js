@@ -66,7 +66,7 @@ export default function ResponsiveNavbar({ setOpen }) {
             </Button>
           ) : (
             <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-              Login/SignUp
+              Login / Sign Up
             </Button>
           )}
         </Toolbar>
