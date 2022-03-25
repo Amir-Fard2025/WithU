@@ -15,8 +15,6 @@ export default function TextAlignment() {
           marginTop: "10px",
           fontFamily: "Roboto",
           fontSize: "calc(7px + 2vw)",
-          textDecorationLine: "underline",
-          textDecorationThickness: "2px",
         }}
       >
         One platform for many affected souls.

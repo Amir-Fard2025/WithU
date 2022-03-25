@@ -60,7 +60,7 @@ const Container = ({ variables, query, dataParameter }) => {
           flexDirection: "row",
           justifyContent: "space-evenly",
           alignContent: "center",
-          marginTop: "10vh",
+          marginTop: "18vh",
         }}
       >
         {currCards.map((c) => (

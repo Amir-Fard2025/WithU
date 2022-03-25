@@ -1,5 +1,5 @@
 import Container from "../components/Pagination/Container";
-// import BasicModal from "../components/Modals/Modal"
+import BasicModal from "../components/Modals/Modal";
 import { useParams } from "react-router-dom";
 import { GET_PUBLISHED_CARDS_BY_ALL_TAGS } from "../utils/queries";
 
@@ -21,7 +21,7 @@ export default function ResultsPage() {
         query={GET_PUBLISHED_CARDS_BY_ALL_TAGS}
         dataParameter={dataParameter}
       />
-      {/* <BasicModal /> */}
+      <BasicModal />
     </div>
   );
 }

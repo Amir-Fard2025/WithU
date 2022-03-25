@@ -3,10 +3,21 @@ import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import "./searchBar.css";
 import { useNavigate } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 
 // const size = {
 //   transform: "scale(1.1)",
 // };
+const useStyles = makeStyles({
+  option: {
+    backgroundColor: "#FFFC3A ",
+    opacity: "0.7",
+    color: "black",
+    "&:hover": {
+      backgroundColor: "#3ABCFF !important",
+    },
+  },
+});
 
 export default function Search() {
   const [filters, setFilters] = useState([topResearch[13]]);
@@ -25,6 +36,8 @@ export default function Search() {
       .join(".");
     history(`/results/${formatedFilters}`);
   };
+
+  const styles = useStyles();
 
   return (
     <>
@@ -53,9 +66,20 @@ export default function Search() {
             onChange={(event, value) => {
               setFilters(value);
             }}
+            options={topResearch}
+            classes={{
+              option: styles.option,
+            }}
             multiple
             id="tags-standard"
-            options={topResearch}
+            renderOption={(props, option) => {
+              const { search, color } = option;
+              return (
+                <span {...props} style={{ backgroundColor: color }}>
+                  {search}
+                </span>
+              );
+            }}
             getOptionLabel={(option) => option.search}
             renderInput={(params) => {
               console.log(params);
