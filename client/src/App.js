@@ -13,6 +13,8 @@ import Card from "./components/Card/Card";
 import Footer from "./components/Footer/Footer";
 import ContactModal from "./components/ContactModal/ContactModal";
 import AdminSidePage from "./pages/AdminSidePage";
+import ResponsiveAppBarNew from "./components/Navbar/ResponsiveNavbarNew";
+import { useMediaQuery } from "@mui/material";
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -22,6 +24,7 @@ const client = new ApolloClient({
 function App() {
   const [open, setOpen] = useState(false);
   const [openContactForm, setOpenContactForm] = useState(false);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   return (
     <ApolloProvider client={client}>
@@ -33,7 +36,17 @@ function App() {
           width: "auto",
         }}
       >
-        <ResponsiveNavbar setOpen={setOpen} />
+        {isMobile ? (
+          <ResponsiveAppBarNew
+            setOpen={setOpen}
+            setOpenContactForm={setOpenContactForm}
+          />
+        ) : (
+          <ResponsiveNavbar
+            setOpen={setOpen}
+            setOpenContactForm={setOpenContactForm}
+          />
+        )}
         <LoginModal open={open} onClose={() => setOpen(false)} />
         <BrowserRouter>
           <Routes>
@@ -45,7 +58,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         {/* <BasicModal /> */}
-        <Footer setOpen={setOpenContactForm} />
+        <Footer />
         <ContactModal
           open={openContactForm}
           onClose={() => setOpenContactForm(false)}
