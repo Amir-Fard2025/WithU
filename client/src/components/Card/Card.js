@@ -10,6 +10,10 @@ import FlagCircleRoundedIcon from "@mui/icons-material/FlagCircleRounded";
 import { positions } from "@mui/system";
 import Flags from "country-flag-icons/react/3x2";
 import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+// import { LikeButton } from "@lyket/react";
 
 const styleCard = {
   maxWidth: "400px",
@@ -23,6 +27,47 @@ const styleCard = {
   backgroundColor: "rgba(255, 255, 255, 0.212)",
 };
 
+const styleEdit = {
+  color: "#0288d1",
+  backgroundcolor: "yelow",
+  opacity: "80%",
+  border: 2,
+  borderColor: "#0288d1",
+  display: "right",
+  margin: "10px",
+
+  marginTop: "50px",
+  "&:hover": {
+    color: "red",
+  },
+};
+
+const styleIconEdit = {
+  "&:hover": {
+    color: "red",
+  },
+};
+
+const styleDelete = {
+  color: "#0288d1",
+  backgroundcolor: "transparent",
+  border: 2,
+  borderColor: "#0288d1",
+  display: "right",
+  margin: "10px",
+
+  marginTop: "50px",
+  "&:hover": {
+    color: "red",
+  },
+};
+
+const styleIconDelete = {
+  "&:hover": {
+    color: "red",
+  },
+};
+
 const styleCardContent = {
   backgroundColor: "white",
   padding: "10px",
@@ -33,7 +78,7 @@ const styleCardContent = {
 
 const styleMediaCard = {
   margin: "10px",
-  marginTop: "50px",
+  marginTop: "10px",
   border: 1,
   borderRadius: "20px",
 };
@@ -53,6 +98,34 @@ export default function MediaCard({
 }) {
   return (
     <Card sx={styleCard}>
+      <div
+        style={{
+          display: "left",
+        }}
+      >
+        <Box></Box>
+        <Fab
+          size="small"
+          sx={styleEdit}
+          aria-label="edit"
+          // onClick={handleOpen}
+          // style={button}
+        >
+          <EditIcon sx={styleIconEdit} />
+
+          {/* <AddIcon className="iconModal" /> */}
+        </Fab>
+        <Fab
+          size="small"
+          sx={styleDelete}
+          aria-label="delete"
+          // onClick={handleOpen}
+          // style={button}
+        >
+          <DeleteIcon sx={styleIconDelete} />
+          {/* <AddIcon className="iconModal" /> */}
+        </Fab>
+      </div>
       <div>
         <CardMedia
           sx={styleMediaCard}
@@ -100,6 +173,12 @@ export default function MediaCard({
             <Flags.PL title="poland" />
           </Box>
         )}
+
+        {/* <LikeButton
+          id="how-to-reduce-footprint"
+          namespace="post"
+          component={LikeButton.themes.Twitter}
+        /> */}
       </div>
     </Card>
   );
