@@ -82,26 +82,26 @@ const resolvers = {
       })
     },
     getAllUserCreatedCards: async (parent, args, context) => {
-      // if (context.user) {
-        // const _id = context.user._id;
-        const _id = "623df616efa280cf90a63466"
+      if (context.user) {
+        const _id = context.user._id;
+        // const _id = "623df616efa280cf90a63466"
         console.log("id: ",_id)
         const { createdCards } = await User.findOne({ _id })
           .populate("createdCards");
         return createdCards
-      // }
+      }
       throw new AuthenticationError("Please login first!");
     },
 
     getAllUserLikedCards: async (parent, args, context) => {
-      // if (context.user) {
-        // const _id = context.user._id;
-        const _id = "623df616efa280cf90a63466";
+      if (context.user) {
+        const _id = context.user._id;
+        // const _id = "623df616efa280cf90a63466";
         console.log(_id)
         const { likedCards } = await User.findOne({ _id })
           .populate("likedCards");
         return likedCards
-      // }
+      }
       throw new AuthenticationError("Please login first!");
     },
 

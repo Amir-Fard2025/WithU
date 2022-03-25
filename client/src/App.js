@@ -35,7 +35,8 @@ function App() {
           height: "100vh",
           width: "auto",
         }}
-      >
+        >
+        <BrowserRouter>
         {isMobile ? (
           <ResponsiveAppBarNew
             setOpen={setOpen}
@@ -48,7 +49,6 @@ function App() {
           />
         )}
         <LoginModal open={open} onClose={() => setOpen(false)} />
-        <BrowserRouter>
           <Routes>
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/results/:tags" element={<ResultsPage />} />
