@@ -123,24 +123,17 @@ export default function Search() {
 
 // Top 13 Research dummies
 const topResearch = [
-  { search: "Ukraine" },
-  { search: "Children" },
-  { search: "Finance" },
-  { search: "Shelters" },
-  { search: "Germany" },
-  { search: "Animals" },
-  { search: "Refugees" },
-  {
-    search: "Medical",
-  },
+  { search: "Medical" },
+  { search: "Housing" },
   { search: "Transport" },
+  { search: "Legal" },
+  { search: "Borders" },
+  { search: "Animals" },
+  { search: "Woman" },
+  { search: "Children" },
+  { search: "Admin" },
+  { search: "Donations" },
+  { search: "Peace" },
+  { search: "Jobs" },
   { search: "Border" },
-  {
-    search: "Stay",
-  },
-  {
-    search: "Legal",
-  },
-  { search: "Place" },
-  { search: "Help" },
 ];

@@ -35,14 +35,14 @@ Crowdsourced information platform as a MERN stack single-page application.
 
 ### Project Link
 
-[Link](https://) to our live app.
+[Link](https://mysterious-springs-56819.herokuapp.com/) to our live app.
 These are our project's [presentation](https://docs.google.com/presentation/d/1T8Ap8jjG7QYzMlNbsrQl5TnSuf05T5OFhGCes8wt5zc/edit#slide=id.g11e6c9f5e49_0_67) and our [GitHub repo](https://github.com/Amir-Fard2025/WithU/tree/dev).
 
 <br>
 
 ### Getting Started
 
-This is a live website, therefore accessible directly on its [live URL](https://).
+This is a live website, therefore accessible directly on its [live URL](https://mysterious-springs-56819.herokuapp.com/).
 Should you like to experiment and check the code, feel free to clone the repo to your local machine and open the project in your VSCode:
 
 ```
@@ -144,9 +144,11 @@ As a world citizen, I want to contribute to making it easier for the innocent ci
 ### Plans For Improvement
 
 - developing a mobile app
--
--
--
+- add moderator environment
+- localise into more languages
+- direct donation options
+- chatbot for instant guidance
+- comments reviews
 
 <br>
 
@@ -154,24 +156,26 @@ As a world citizen, I want to contribute to making it easier for the innocent ci
 
 - #### Homepage
 
-  ![Image](./client/)
+  ![Image](./client/src/images/home.png)
+
+  ![Image](./client/src/images/home-mobile-with-burger.png)
 
 - #### Results Page
 
-  ![Image](./client/)
+  ![Image](./client/src/images)
 
 - #### Sign In/ Sign Up
 
-  ![Image](./client/)
+  ![Image](./client/src/images/login.png)
 
 - #### User Dashboard
 
-  ![Image](./client/)
+  ![Image](./client/src/images)
 
 - #### Contact
 
-  ![Image](./client/)
+  ![Image](./client/src/images)
 
 - #### FAQ
 
-  ![Image](./client/)
+  ![Image](./client/src/images/faq-web.png)
