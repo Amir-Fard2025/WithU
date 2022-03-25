@@ -144,14 +144,26 @@ export default function BasicModal() {
     tag_id: "",
     language: "",
   });
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
 
   const [addResourcesCard] = useMutation(ADDRESOURCE);
+
+  const validateInput = (currTitle) => {
+    if (currTitle && currTitle.length > 0) {
+      return true;
+    }
+    return false;
+  };
+  // const handleTitleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setUserFormData({ ...userFormData, [name]: value });
+  // };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     console.log(event.target.value);
     setUserFormData({ ...userFormData, [name]: value });
+    setValidated(validateInput(value));
   };
   console.log(userFormData); // each char goes on a separate line
 
@@ -209,6 +221,7 @@ export default function BasicModal() {
                 name="title"
                 label="Title"
                 variant="outlined"
+                required
                 value={userFormData.title}
                 onChange={handleInputChange}
               />
@@ -218,6 +231,7 @@ export default function BasicModal() {
                 name="description"
                 label="Description"
                 variant="outlined"
+                required
                 value={userFormData.description}
                 onChange={handleInputChange}
               />
@@ -227,10 +241,12 @@ export default function BasicModal() {
                 name="url"
                 label="URL"
                 variant="outlined"
+                required
                 value={userFormData.url}
                 onChange={handleInputChange}
               />
 
+<<<<<<< HEAD
               <FormControl sx={styleDropdown}>
                 <InputLabel
                   sx={styleDropdown}
@@ -238,9 +254,14 @@ export default function BasicModal() {
                 >
                   Tag
                 </InputLabel>
+=======
+              <FormControl sx={{ width: 400 }} required>
+                <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+>>>>>>> dev
                 <Select
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
+                  name="tag_id"
                   multiple
                   value={tags}
                   onChange={handleChangement}
@@ -256,13 +277,19 @@ export default function BasicModal() {
                   ))}
                 </Select>
               </FormControl>
+<<<<<<< HEAD
               <FormControl sx={styleDropdown}>
                 <InputLabel id="demo-multiple-checkbox-label">
+=======
+              <FormControl sx={{ width: 400 }}>
+                <InputLabel id="demo-multiple-checkbox-label" required>
+>>>>>>> dev
                   Language
                 </InputLabel>
                 <Select
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
+                  name="language"
                   multiple
                   value={personLanguage}
                   onChange={handleChange}
@@ -294,8 +321,18 @@ export default function BasicModal() {
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
+<<<<<<< HEAD
               <>
                 <Fab sx={styleFab} onClick={handleFormSubmit} style={button}>
+=======
+              <Stack direction="row" spacing={2}>
+                <Button
+                  variant="outlined"
+                  onClick={handleFormSubmit}
+                  disabled={!validated}
+                  endIcon={<SendIcon />}
+                >
+>>>>>>> dev
                   Add
                   {/* <AddIcon className="iconModal" /> */}
                 </Fab>
