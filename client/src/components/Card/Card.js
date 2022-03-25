@@ -1,13 +1,13 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
+// import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Input from "@mui/material/Input";
+// import Button from "@mui/material/Button";
+// import Input from "@mui/material/Input";
 import Typography from "@mui/material/Typography";
-import FlagCircleRoundedIcon from "@mui/icons-material/FlagCircleRounded";
-import { positions } from "@mui/system";
+// import FlagCircleRoundedIcon from "@mui/icons-material/FlagCircleRounded";
+// import { positions } from "@mui/system";
 import Flags from "country-flag-icons/react/3x2";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
@@ -18,8 +18,8 @@ import "./Card.css";
 
 const styleCard = {
   maxWidth: "400px",
-  maxHeight: "530px",
-  minWidth: "40%",
+  maxHeight: "380px",
+  minWidth: "30%",
   borderRadius: "20px",
   boxShadow: 2,
   backgroundColor: "transparent",

@@ -25,7 +25,7 @@ export default function Footer({ setOpen }) {
           // display: "flex",
         }}
       >
-        <Box sx={{ textAlign: "center" }}>© WithU 2022</Box>
+        <Box sx={{ textAlign: "center", color: "#2874A6" }}>© WithU 2022</Box>
       </Box>
     </Box>
   );

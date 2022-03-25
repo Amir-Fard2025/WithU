@@ -21,7 +21,7 @@ const styleFab = {
   textTransform: "capitalize",
   border: "solid",
   borderColor: "rgba(66, 133, 244, 0.624)",
-
+  marginLeft: "140px",
   "&:hover": {
     color: "#0288d1",
     opacity: "70%",
