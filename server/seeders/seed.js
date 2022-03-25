@@ -5,6 +5,7 @@ const userSeeds = require("./userSeeds.json");
 const resourceSeeds = require("./resourceSeeds.json");
 const tagSeeds = require("./tagSeeds.json");
 const CARD_PER_USER = 6;
+const generateScreenshot = require("../utils/screenshot.js");
 
 // needs to connect to the database, right?
 const generateRandom = (min, max) => {
@@ -23,8 +24,13 @@ const generateRandom = (min, max) => {
   return rand;
 };
 
-const addNewEntriesToSeeds = (parentSeeds, newChildEntries, field, childDuplicationBool) => {
-  let newChildEntriesArray = [...newChildEntries]
+const addNewEntriesToSeeds = (
+  parentSeeds,
+  newChildEntries,
+  field,
+  childDuplicationBool
+) => {
+  let newChildEntriesArray = [...newChildEntries];
   return parentSeeds.map((parentSeed) => {
     let addedEntriesObj = {};
     addedEntriesObj[field] = [];
@@ -37,9 +43,11 @@ const addNewEntriesToSeeds = (parentSeeds, newChildEntries, field, childDuplicat
       addedEntriesObj[field].push(childEntry);
       if (childDuplicationBool) {
         delete newChildEntriesArray[i];
-        newChildEntriesArray = newChildEntriesArray.filter(entry => entry !== undefined);
+        newChildEntriesArray = newChildEntriesArray.filter(
+          (entry) => entry !== undefined
+        );
       }
-      counter++
+      counter++;
     }
     return { ...parentSeed, ...addedEntriesObj };
   });
@@ -47,32 +55,30 @@ const addNewEntriesToSeeds = (parentSeeds, newChildEntries, field, childDuplicat
 
 const addCardsToTagsAndTagsToCards = async (newTags, newCards) => {
   const newTagsIdsByName = {};
-  newTags.forEach(tagObj => {
+  newTags.forEach((tagObj) => {
     newTagsIdsByName[tagObj.tagName] = tagObj._id;
-  })
-  //Itirate over each card to check the tags in eachCard 
-  newCards.forEach(async card => {
+  });
+  //Itirate over each card to check the tags in eachCard
+  newCards.forEach(async (card) => {
     const cardId = card._id;
     let tagIdArr = [];
-    card.tags.forEach(async tagName => {
+    card.tags.forEach(async (tagName) => {
       const tagId = newTagsIdsByName[tagName];
-      if (tagIdArr.includes(tagId.toString())) return
+      if (tagIdArr.includes(tagId.toString())) return;
       await Tag.findOneAndUpdate(
         { tagName },
         { $push: { resourceCards: cardId } }
-      )
-      tagIdArr.push(tagId.toString())
-    })
-    if (tagIdArr.length == 0) return
+      );
+      tagIdArr.push(tagId.toString());
+    });
+    if (tagIdArr.length == 0) return;
     await ResourceCard.findOneAndUpdate(
       { _id: cardId },
       { $addToSet: { tag_id: { $each: tagIdArr } } }
-    )
+    );
     tagIdArr = [];
-  })
-}
-
-
+  });
+};
 
 db.once("open", async () => {
   try {
@@ -80,12 +86,33 @@ db.once("open", async () => {
     await Tag.deleteMany({});
     await ResourceCard.deleteMany({});
     const newTags = await Tag.create(tagSeeds, { validateBeforeSave: true });
-    const newCards = await ResourceCard.create(resourceSeeds, { validateBeforeSave: true });
+    const newCards = await ResourceCard.create(
+      resourceSeeds.map((card) => {
+        const screenshotName = card.title.toLowerCase().replace(" ", "");
+        generateScreenshot(
+          card.url,
+          "public/screenshots/" + screenshotName + ".png"
+        );
+        card.screenshot = `/screenshots/${screenshotName}.png`;
+      }),
+
+      { validateBeforeSave: true }
+    );
 
     await addCardsToTagsAndTagsToCards(newTags, newCards);
 
-    const updatedUserSeedsCreatedCards = addNewEntriesToSeeds(userSeeds, newCards, "createdCards", true);
-    const updatedUserSeedsLikedCards = addNewEntriesToSeeds(updatedUserSeedsCreatedCards, newCards, "likedCards", false);
+    const updatedUserSeedsCreatedCards = addNewEntriesToSeeds(
+      userSeeds,
+      newCards,
+      "createdCards",
+      true
+    );
+    const updatedUserSeedsLikedCards = addNewEntriesToSeeds(
+      updatedUserSeedsCreatedCards,
+      newCards,
+      "likedCards",
+      false
+    );
     await User.create(updatedUserSeedsLikedCards, { validateBeforeSave: true });
     console.log("all done!");
     process.exit(0);
