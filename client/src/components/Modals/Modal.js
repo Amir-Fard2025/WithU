@@ -295,13 +295,7 @@ export default function BasicModal() {
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
               <>
-                <Fab
-                  direction="row"
-                  spacing={2}
-                  sx={styleFab}
-                  onClick={handleFormSubmit}
-                  style={button}
-                >
+                <Fab sx={styleFab} onClick={handleFormSubmit} style={button}>
                   Add
                   {/* <AddIcon className="iconModal" /> */}
                 </Fab>

@@ -81,8 +81,6 @@ const ContactModal = ({ open, onClose }) => {
             sx={{ marginTop: "1rem" }}
           />
           <Fab
-            direction="row"
-            spacing={2}
             sx={styleFab}
             // onClick={handleFormSubmit}
             // style={button}
