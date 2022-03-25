@@ -20,31 +20,51 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+
 import Auth from "../../utils/auth";
 import "./Modal.css";
+
+const styleFirstLogin = {
+  textAlign: "center",
+  // width: "40%",
+  opacity: "0.7",
+  borderColor: "transparent",
+  borderRadius: "10px",
+  // marginLeft: "30%",
+  color: "#2874A6",
+  // marginTop: "10px",
+  fontFamily: "Roboto",
+  fontSize: "calc(7px + 2vw)",
+};
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
+  right: "50%",
   transform: "translate(-50%, -50%)",
   width: 480,
   bgcolor: "white",
   opacity: "0.9",
   border: "0px solid",
   borderRadius: "20px",
-  p: 4,
+  paddingTop: 5,
+  paddingBottom: 12,
+  paddingLeft: 5,
 };
 
 const styleField = {
   width: 400,
   marginBottom: "20px",
+  color: "#0288d1",
   "& fieldset": {
     borderRadius: "20px",
   },
 };
 
 const styleDropdown = {
+  width: 400,
+  marginBottom: "20px",
   "& fieldset": {
     borderRadius: "20px",
   },
@@ -68,19 +88,13 @@ const button = {
   hover: "scale(1.1)",
 };
 
-const styleButton = {
-  color: "white",
-  backgroundColor: "#0288d1",
-  borderStyle: "solid",
-  border: 1,
-  opacity: "0.7",
-  marginTop: "10px",
-  padding: "10px",
+const styleFab = {
+  marginTop: "95px",
+  color: "#0288d1",
+  textTransform: "capitalize",
   "&:hover": {
-    backgroundColor: "yellow",
     color: "#0288d1",
-    opacity: "50%",
-    borderRadius: "20px",
+    opacity: "70%",
   },
 };
 
@@ -217,8 +231,13 @@ export default function BasicModal() {
                 onChange={handleInputChange}
               />
 
-              <FormControl sx={{ width: 400 }}>
-                <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+              <FormControl sx={styleDropdown}>
+                <InputLabel
+                  sx={styleDropdown}
+                  id="demo-multiple-checkbox-label"
+                >
+                  Tag
+                </InputLabel>
                 <Select
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
@@ -237,7 +256,7 @@ export default function BasicModal() {
                   ))}
                 </Select>
               </FormControl>
-              <FormControl sx={{ width: 400 }}>
+              <FormControl sx={styleDropdown}>
                 <InputLabel id="demo-multiple-checkbox-label">
                   Language
                 </InputLabel>
@@ -275,19 +294,22 @@ export default function BasicModal() {
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
-              <Stack direction="row" spacing={2}>
-                <Chip
-                  label="Add"
-                  sx={styleButton}
-                  variant="contained"
+              <>
+                <Fab
+                  direction="row"
+                  spacing={2}
+                  sx={styleFab}
                   onClick={handleFormSubmit}
-                  endIcon={<SendIcon />}
-                />
-              </Stack>
+                  style={button}
+                >
+                  Add
+                  {/* <AddIcon className="iconModal" /> */}
+                </Fab>
+              </>
             </>
           ) : (
-            <InputLabel id="demo-multiple-checkbox-label">
-              You need to login first to add a card!
+            <InputLabel sx={styleFirstLogin} id="demo-multiple-checkbox-label">
+              Login / SignUp first and contribute :)
             </InputLabel>
           )}
         </Box>
