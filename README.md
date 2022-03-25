@@ -57,10 +57,10 @@ Install all dependencies by typing in the terminal:
 
 Seed data in the database and start the app by running:
 
-`cd server`
-`npm run seed`
-`cd ..`
-`npm run dev`
+`cd server` <br>
+`npm run seed` <br>
+`cd ..` <br>
+`npm run dev` <br>
 
 <br>
 
