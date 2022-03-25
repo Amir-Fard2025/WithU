@@ -18,8 +18,8 @@ const LoginModal = ({ open, onClose }) => {
       left: "50%",
       transform: "translate(-50%, -50%)",
       width: 400,
-      bgcolor: "background.paper",
-      opacity: "0.7",
+      bgcolor: "white",
+      opacity: "0.9",
       border: "0px solid",
       borderRadius: "20px",
       color: "black",
@@ -28,15 +28,30 @@ const LoginModal = ({ open, onClose }) => {
     },
   };
 
+  const styleButton = {
+    textTransform: "capitalize",
+    "&:hover": {
+      color: "#0288d1",
+    },
+  };
+
   return (
     <Modal open={open} onClose={onClose}>
       <Box sx={style.modalStyles}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          <Button id="login-btn" onClick={() => setDisplayLoginForm(true)}>
-            Log in
+          <Button
+            sx={styleButton}
+            id="login-btn"
+            onClick={() => setDisplayLoginForm(true)}
+          >
+            Login
           </Button>
-          <Button id="signup-btn" onClick={() => setDisplayLoginForm(false)}>
-            Sign Up
+          <Button
+            sx={styleButton}
+            id="signup-btn"
+            onClick={() => setDisplayLoginForm(false)}
+          >
+            Sign up
           </Button>
         </Typography>
         {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
