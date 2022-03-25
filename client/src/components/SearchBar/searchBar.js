@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import "./searchBar.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // const size = {
 //   transform: "scale(1.1)",
@@ -12,7 +12,9 @@ export default function Search() {
   const [filters, setFilters] = useState([topResearch[13]]);
   const history = useNavigate();
   String.prototype.toProperCase = function () {
-    return this.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+    return this.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
   };
 
   const onSubmit = () => {
@@ -55,8 +57,6 @@ export default function Search() {
             id="tags-standard"
             options={topResearch}
             getOptionLabel={(option) => option.search}
-
-
             renderInput={(params) => {
               console.log(params);
               return (
@@ -74,12 +74,12 @@ export default function Search() {
             variant="outlined"
             className="my-buttton"
             onClick={onSubmit}
-          // sx={{
-          //   display: "flex",
-          //   backgroundColor: "yellow",
-          //   opacity: "0.7",
-          //   height: "4vh",
-          // }}
+            // sx={{
+            //   display: "flex",
+            //   backgroundColor: "yellow",
+            //   opacity: "0.7",
+            //   height: "4vh",
+            // }}
           >
             <Typography
               className="typo"
@@ -99,24 +99,17 @@ export default function Search() {
 
 // Top 13 Research dummies
 const topResearch = [
-  { search: "Ukraine" },
-  { search: "Children" },
-  { search: "Finance" },
-  { search: "Shelters" },
-  { search: "Germany" },
-  { search: "Animals" },
-  { search: "Refugees" },
-  {
-    search: "Medical",
-  },
+  { search: "Medical" },
+  { search: "Housing" },
   { search: "Transport" },
+  { search: "Legal" },
+  { search: "Borders" },
+  { search: "Animals" },
+  { search: "Woman" },
+  { search: "Children" },
+  { search: "Admin" },
+  { search: "Donations" },
+  { search: "Peace" },
+  { search: "Jobs" },
   { search: "Border" },
-  {
-    search: "Stay",
-  },
-  {
-    search: "Legal",
-  },
-  { search: "Place" },
-  { search: "Help" },
 ];
