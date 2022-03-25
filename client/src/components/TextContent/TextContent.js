@@ -10,8 +10,6 @@ export default function TextAlignment() {
           textAlign: "center",
           width: "40%",
           opacity: "0.7",
-          borderColor: "transparent",
-          borderRadius: "10px",
           marginLeft: "30%",
           color: "#2874A6",
           marginTop: "10px",

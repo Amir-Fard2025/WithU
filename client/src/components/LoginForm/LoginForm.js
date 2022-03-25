@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
 import Auth from "../../utils/auth";
 import { LOGIN } from "../../utils/mutations";
@@ -24,6 +24,7 @@ const styleFab = {
     color: "#0288d1",
     opacity: "70%",
   },
+  marginLeft: "140px",
 };
 
 const LoginForm = () => {
@@ -123,14 +124,20 @@ const LoginForm = () => {
         value={hiddenPassword}
         onChange={handlePasswordChange}
       />
-      <Fab
-        sx={styleFab}
-        onClick={handleFormSubmit}
-        disabled={!validated}
-        // style={button}
-      >
-        Send
-      </Fab>
+      <div sx={{ border: "solid", borderColor: "red" }}>
+        <Fab
+          sx={styleFab}
+          onClick={handleFormSubmit}
+          disabled={!validated}
+          // style={button}
+        >
+          <Typography
+            sx={{ color: "rgba(66, 133, 244, 0.624)", cursor: "pointer" }}
+          >
+            Send
+          </Typography>
+        </Fab>
+      </div>
       {/* <Button
         variant="contained"
         sx={{ marginTop: "1rem" }}
