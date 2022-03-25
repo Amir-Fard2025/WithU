@@ -19,6 +19,7 @@ import "./Card.css";
 const styleCard = {
   maxWidth: "400px",
   maxHeight: "530px",
+  minWidth: "40%",
   borderRadius: "20px",
   boxShadow: 2,
   backgroundColor: "transparent",

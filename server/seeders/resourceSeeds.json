@@ -1,37 +1,447 @@
 [
   {
-    "title": "Energy",
-    "description": "Give us the power!",
-    "url": "https://goodnews.eu/unabhaengige-energieversorgung-vor-2030-moeglich/",
+    "title": "nilo.health",
+    "description": "Therapy with the psychologist Natalia Braun",
+    "url": "https://try.nilohealth.com/ukrainian-support-roundtable/",
     "status": "published",
-    "language": ["De"]
+    "language": [
+      "De",
+      "En",
+      "Ru"
+    ],
+    "tags": [
+      "Medical"
+    ]
   },
   {
-    "title": "Coral",
-    "description": "Corals are so beautiful!",
-    "url": "https://goodnews.eu/en/good-news/climate-resilient-coral-species-offer-hope-bongos-are-back-in-kenya-meet-the-mediator-robot/",
+    "title": "Krisenchat",
+    "description": "Free chat counselling 24/7 for those under 25 years old",
+    "url": "https://krisenchat.de/",
     "status": "published",
-    "language": ["En"]
+    "language": [
+      "De",
+      "Ru",
+      "Ua"
+    ],
+    "tags": [
+      "Medical",
+      "Children"
+    ]
   },
   {
-    "title": "Tech",
-    "description": "Creative ways tech is used to",
-    "url": "https://goodnews.eu/en/good-news/creative-ways-tech-is-used-to-help-airbnb-offers-free-housing-to-refugees-ultrasound-can-detect-prostate-cancer/",
+    "title": "prykhystok",
+    "description": "Housing for refugees",
+    "url": "https://prykhystok.in.ua/",
     "status": "published",
-    "language": ["En"]
+    "language": [
+      "De",
+      "Ru",
+      "Ua",
+      "En",
+      "Pl"
+    ],
+    "tags": [
+      "Housing",
+      "Admin"
+    ]
   },
   {
-    "title": "Money collection",
-    "description": "We are collecting money for ukraine",
-    "url": "https://goodnews.eu/en/good-news/creative-ways-tech-is-used-to-help-airbnb-offers-free-housing-to-refugees-ultrasound-can-detect-prostate-cancer/",
-    "status": "unpublished",
-    "language": ["En", "Ua", "Ru"]
+    "title": "prykhystok",
+    "description": "Housing for refugees",
+    "url": "https://prykhystok.in.ua/",
+    "status": "published",
+    "language": [
+      "De",
+      "Ru",
+      "Ua",
+      "En",
+      "Pl"
+    ],
+    "tags": [
+      "Housing",
+      "Admin"
+    ]
   },
   {
-    "title": "Safe Passage",
-    "description": "We are securing safe passage to people out of ukraine",
-    "url": "https://goodnews.eu/en/good-news/creative-ways-tech-is-used-to-help-airbnb-offers-free-housing-to-refugees-ultrasound-can-detect-prostate-cancer/",
-    "status": "unpublished",
-    "language": ["En", "Ua", "Ru"]
+    "title": "UkraineNow",
+    "description": "Help civilians to find transport, hosting, volunteering and donations",
+    "url": "https://www.ukrainenow.org/",
+    "status": "published",
+    "language": [
+      "Ua",
+      "En"
+    ],
+    "tags": [
+      "Housing",
+      "Admin",
+      "Transport",
+      "Donations"
+    ]
+  },
+  {
+    "title": "UkraineNow",
+    "description": "Help civilians to find transport, hosting, volunteering and donations",
+    "url": "https://www.ukrainenow.org/",
+    "status": "published",
+    "language": [
+      "Ua",
+      "En"
+    ],
+    "tags": [
+      "Housing",
+      "Admin",
+      "Transport",
+      "Donations"
+    ]
+  },
+  {
+    "title": "Unterkunft Ukraine",
+    "description": "Offer or obtain housing",
+    "url": "https://unterkunft-ukraine.de/",
+    "status": "published",
+    "language": [
+      "Ua",
+      "En",
+      "De",
+      "Ru"
+    ],
+    "tags": [
+      "Housing"
+    ]
+  },
+  {
+    "title": "Host4Ukraine",
+    "description": "Offer or obtain housing",
+    "url": "https://www.host4ukraine.com/",
+    "status": "published",
+    "language": [
+      "Ua",
+      "En"
+    ],
+    "tags": [
+      "Housing"
+    ]
+  },
+  {
+    "title": "IOM Romania",
+    "description": "Useful information for people entering Romania from Ukraine",
+    "url": "https://romania.iom.int/news/useful-information-people-entering-romania-ukraine",
+    "status": "published",
+    "language": [
+      "En"
+    ],
+    "tags": [
+      "Admin",
+      "Legal"
+    ]
+  },
+  {
+    "title": "Action Medeor",
+    "description": "Receiving donations for medical provisions",
+    "url": "https://medeor.de/de/",
+    "status": "published",
+    "language": [
+      "En",
+      "De"
+    ],
+    "tags": [
+      "Medical",
+      "Donations"
+    ]
+  },
+  {
+    "title": "Help.Ukraine.Center",
+    "description": "Humanitarian and medical aid to Ukraine",
+    "url": "https://helpukraine.center/",
+    "status": "published",
+    "language": [
+      "En",
+      "De",
+      "Ua"
+    ],
+    "tags": [
+      "Medical",
+      "Donations"
+    ]
+  },
+  {
+    "title": "Koleo",
+    "description": " All train timetables in Poland and tickets for most regional trains",
+    "url": "https://magazyn.koleo.pl/ukraina/",
+    "status": "published",
+    "language": [
+      "Pl",
+      "Ua"
+    ],
+    "tags": [
+      "Transport"
+    ]
+  },
+  {
+    "title": "Stand with Ukraine",
+    "description": "Flee the war on Ukraine, general and legal information (Poland)",
+    "url": "https://ukraina.grupagranica.pl/",
+    "status": "published",
+    "language": [
+      "Pl",
+      "Ua"
+    ],
+    "tags": [
+      "Legal",
+      "Admin"
+    ]
+  },
+  {
+    "title": "StandWithUkraine",
+    "description": "Protest organisation",
+    "url": "https://standwithukraine.live/",
+    "status": "published",
+    "language": [
+      "En"
+    ],
+    "tags": [
+      "Peace"
+    ]
+  },
+  {
+    "title": "dopomoha",
+    "description": "Map with different resources and information",
+    "url": "https://dopomoha.pl/en/",
+    "status": "published",
+    "language": [
+      "En",
+      "Pl",
+      "Ua"
+    ],
+    "tags": [
+      "Borders",
+      "Admin"
+    ]
+  },
+  {
+    "title": "forumZFD",
+    "description": "Peace organisation receiving donations and offering aid",
+    "url": "https://www.forumzfd.de/de",
+    "status": "published",
+    "language": [
+      "De"
+    ],
+    "tags": [
+      "Peace",
+      "Donations"
+    ]
+  },
+  {
+    "title": "LeaveNoOneBehind",
+    "description": "Peace organisation receiving donations, coordinating and offering aid",
+    "url": "https://ukraine.lnob.net/en/",
+    "status": "published",
+    "language": [
+      "De",
+      "En"
+    ],
+    "tags": [
+      "Peace",
+      "Donations"
+    ]
+  },
+  {
+    "title": "Bundesamt für Migration und Flüchtlinge",
+    "description": "German Agency for Migration and Refugees ",
+    "url": "https://www.bamf.de/DE/Themen/AsylFluechtlingsschutz/ResettlementRelocation/InformationenEinreiseUkraine/informationen-einreise-ukraine-node.html",
+    "status": "published",
+    "language": [
+      "De",
+      "En",
+      "Ru",
+      "Ua"
+    ],
+    "tags": [
+      "Admin",
+      "Legal"
+    ]
+  },
+  {
+    "title": "Wunderflats",
+    "description": "Temporary housing for Ukranians in Germany",
+    "url": "https://wunderflats.com/page/ukraine/tenants-in-need-en",
+    "status": "published",
+    "language": [
+      "En",
+      "Ru",
+      "Ua"
+    ],
+    "tags": [
+      "Housing"
+    ]
+  },
+  {
+    "title": "Deutsche Bahn",
+    "description": "Information and train tickets for Ukranian refugees",
+    "url": "https://www.bahn.de/info/helpukraine/",
+    "status": "published",
+    "language": [
+      "En",
+      "Ru",
+      "Ua",
+      "Pl"
+    ],
+    "tags": [
+      "Transport"
+    ]
+  },
+  {
+    "title": "Pomagam Ukraine",
+    "description": "Governmental - offer or receive aid in Poland",
+    "url": "https://pomagamukrainie.gov.pl/",
+    "status": "published",
+    "language": [
+      "En",
+      "Ua",
+      "Pl"
+    ],
+    "tags": [
+      "Admin",
+      "Donations"
+    ]
+  },
+  {
+    "title": "dopomoga.zone",
+    "description": "Platform to offer and receive legal support, job offers, accomodation, etc",
+    "url": "https://dopomoga.8tra.de/",
+    "status": "published",
+    "language": [
+      "En",
+      "Pl"
+    ],
+    "tags": [
+      "Admin",
+      "Legal",
+      "Housing",
+      "Jobs"
+    ]
+  },
+  {
+    "title": "Open Cages",
+    "description": "How to help animals, contacts and more information",
+    "url": "https://opencages.org/blog/help-animals-in-ukraine",
+    "status": "published",
+    "language": [
+      "En"
+    ],
+    "tags": [
+      "Animals"
+    ]
+  },
+  {
+    "title": "Open Cages",
+    "description": "How to help animals, contacts and more information",
+    "url": "https://opencages.org/blog/help-animals-in-ukraine",
+    "status": "published",
+    "language": [
+      "En"
+    ],
+    "tags": [
+      "Animals"
+    ]
+  },
+  {
+    "title": "UAnimals",
+    "description": "Receiving donations and offering aid to animals",
+    "url": "https://readymag.com/u1900443331/3464766/",
+    "status": "published",
+    "language": [
+      "En"
+    ],
+    "tags": [
+      "Animals",
+      "Donations"
+    ]
+  },
+  {
+    "title": "Darujme",
+    "description": "Receiving donations and offering aid to animals",
+    "url": "https://www.darujme.cz/projekt/1206004?locale=en",
+    "status": "published",
+    "language": [
+      "En"
+    ],
+    "tags": [
+      "Animals",
+      "Donations"
+    ]
+  },
+  {
+    "title": "UGT Request",
+    "description": "Request provisions to map the need around your area",
+    "url": "https://requests.ugtf.app/",
+    "status": "published",
+    "language": [
+      "En",
+      "Ua"
+    ],
+    "tags": [
+      "Donations",
+      "Medical",
+      "Border"
+    ]
+  },
+  {
+    "title": "Omek Ukraine Resource List",
+    "description": "Latest information and resources collected from the community",
+    "url": "https://omek.carrd.co/",
+    "status": "published",
+    "language": [
+      "En",
+      "Ua"
+    ],
+    "tags": [
+      "Housing",
+      "Medical",
+      "Border",
+      "Legal",
+      "Peace",
+      "Woman"
+    ]
+  },
+  {
+    "title": "Host a Sister",
+    "description": "Facebook group destined for women to host other women",
+    "url": "https://www.facebook.com/groups/hostasister/",
+    "status": "published",
+    "language": [
+      "En"
+    ],
+    "tags": [
+      "Housing",
+      "Woman"
+    ]
+  },
+  {
+    "title": "mapahelp",
+    "description": "Shelters across Europe",
+    "url": "https://mapahelp.me/",
+    "status": "published",
+    "language": [
+      "En",
+      "Ua",
+      "Ru"
+    ],
+    "tags": [
+      "Housing"
+    ]
+  },
+  {
+    "title": "UA Talents",
+    "description": "Ukranians looking for jobs - post or find a job!",
+    "url": "https://www.uatalents.com/",
+    "status": "published",
+    "language": [
+      "En",
+      "Ua"
+    ],
+    "tags": [
+      "Jobs"
+    ]
   }
 ]

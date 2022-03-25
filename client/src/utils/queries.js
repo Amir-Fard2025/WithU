@@ -40,3 +40,33 @@ query GetPublishedCardsByAllTagNames($tagNamesArray: [String!]!) {
   }
 }
 `
+
+export const GET_LIKED_CARDS_BY_USER_ID = gql`
+query GetAllUserLikedCards {
+  getAllUserLikedCards {
+    id
+    title
+    description
+    url
+    language
+    tag_id
+    like
+    screenshot
+    status
+  }
+}`
+
+export const GET_CREATED_CARDS_BY_USER_ID = gql`
+query GetAllUserCreatedCards {
+  getAllUserCreatedCards {
+    id
+    title
+    description
+    url
+    language
+    like
+    tag_id
+    screenshot
+    status
+  }
+}`

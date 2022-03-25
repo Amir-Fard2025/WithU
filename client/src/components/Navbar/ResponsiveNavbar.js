@@ -61,7 +61,7 @@ export default function ResponsiveNavbar({ setOpen }) {
           </div>
           <div style={{ marginLeft: "auto" }}></div>
           {loggedIn ? (
-            <Button variant="text" sx={buttonStyles}>
+            <Button variant="text" sx={buttonStyles} href="/dashboard">
               Dashboard
             </Button>
           ) : (
