@@ -13,7 +13,7 @@ export default function DashboardPage() {
 
 
   return (
-    <div style={{ border: "solid 1px green", position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -30%)" }}>
+    <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -30%)" }}>
       <Button id="created-cards-btn" onClick={() => {
         setDisplayCreatedArray(true)
         // dataParameter = "getAllUserCreatedCards";

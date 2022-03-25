@@ -8,7 +8,7 @@ export default function ResultsPage() {
   const variables = { tagNamesArray: tags.split(".") };
   const dataParameter = "getPublishedCardsByAllTagNames";
   return (
-    <div>
+    <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -30%)" }} >
       <Container
         variables={variables}
         query={GET_PUBLISHED_CARDS_BY_ALL_TAGS}

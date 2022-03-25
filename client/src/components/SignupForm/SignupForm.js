@@ -2,8 +2,31 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/material";
+import Fab from "@mui/material/Fab";
 import Auth from "../../utils/auth";
 import { ADDUSER } from "../../utils/mutations";
+
+const styleField = {
+  marginTop: "1rem",
+  color: "#0288d1",
+  "& fieldset": {
+    borderRadius: "20px",
+  },
+};
+
+const styleFab = {
+  marginTop: "20px",
+  color: "#0288d1",
+  backgroundColor: "transparent",
+  textTransform: "capitalize",
+  border: "solid",
+  borderColor: "rgba(66, 133, 244, 0.624)",
+
+  "&:hover": {
+    color: "#0288d1",
+    opacity: "70%",
+  },
+};
 
 const SignupForm = () => {
   const style = {
@@ -14,7 +37,7 @@ const SignupForm = () => {
   };
 
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [password, setPassword] = useState("");
   const [hiddenPassword, setHiddenPassword] = useState("");
@@ -23,15 +46,32 @@ const SignupForm = () => {
 
   const [addUser] = useMutation(ADDUSER);
 
-  const handleInputChange = (event) => {
+  const validateInput = (currPassowrd, currConfirmPassword, email) => {
+    if (
+      currPassowrd &&
+      currPassowrd.length > 0 &&
+      currPassowrd == currConfirmPassword
+    ) {
+      // validate email
+      if (
+        email &&
+        email.length > 0 &&
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+      ) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  };
+  const handleEmailChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.value);
     setUserFormData({ ...userFormData, [name]: value });
+    setValidated(validateInput(password, confirmedPassword, value));
   };
 
   const handlePasswordChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.value);
     const newPassword = password + value.split("").pop();
     setPassword(newPassword);
     setUserFormData({ ...userFormData, password: newPassword });
@@ -40,11 +80,14 @@ const SignupForm = () => {
       .map(() => "*")
       .join("");
     setHiddenPassword(cryptedPassword);
+
+    setValidated(
+      validateInput(newPassword, confirmedPassword, userFormData.email)
+    );
   };
 
   const handleConfirmedPasswordChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.value);
     const newPassword = confirmedPassword + value.split("").pop();
     setConfirmedPassword(newPassword);
     setUserFormData({ ...userFormData, confirmedPassword: newPassword });
@@ -53,6 +96,7 @@ const SignupForm = () => {
       .map(() => "*")
       .join("");
     setHiddenConfirmedPassword(cryptedPassword);
+    setValidated(validateInput(password, newPassword, userFormData.email));
   };
 
   console.log(userFormData);
@@ -95,16 +139,16 @@ const SignupForm = () => {
         name="email"
         label="E-mail"
         required
-        sx={{ marginTop: "1rem" }}
+        sx={styleField}
         value={userFormData.email}
-        onChange={handleInputChange}
+        onChange={handleEmailChange}
       />
       <TextField
         placeholder="Password"
         name="password"
         label="Password"
         required
-        sx={{ marginTop: "1rem" }}
+        sx={styleField}
         value={hiddenPassword}
         onChange={handlePasswordChange}
       />
@@ -113,17 +157,26 @@ const SignupForm = () => {
         name="password"
         label="Confirm password"
         required
-        sx={{ marginTop: "1rem" }}
+        sx={styleField}
         value={hiddenConfirmedPassword}
         onChange={handleConfirmedPasswordChange}
       />
-      <Button
+      <Fab
+        sx={styleFab}
+        onClick={handleFormSubmit}
+        disabled={!validated}
+        // style={button}
+      >
+        Send
+      </Fab>
+      {/* <Button
         variant="contained"
         sx={{ marginTop: "1rem" }}
         onClick={handleFormSubmit}
+        disabled={!validated}
       >
-        Sign Up
-      </Button>
+        Send
+      </Button> */}
     </Box>
   );
 };

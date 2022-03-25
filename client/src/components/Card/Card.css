@@ -1,0 +1,16 @@
+.icons {
+  margin: 10px;
+  float: right;
+  display: flex;
+  flex-direction: row;
+}
+
+.edit:hover {
+  color: green;
+  opacity: 0.7;
+}
+
+.delete:hover {
+  color: red;
+  opacity: 0.7;
+}

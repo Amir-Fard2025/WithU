@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/Amir-Fard2025/WithU#readme",
   "dependencies": {
+    "@lyket/react": "^1.4.8",
     "concurrently": "^7.0.0",
+    "country-flag-icons": "^1.4.25",
     "react-router-dom": "^6.2.2",
     "styled-components": "^5.3.3"
   }

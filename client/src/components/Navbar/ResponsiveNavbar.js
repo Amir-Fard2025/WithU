@@ -1,16 +1,19 @@
 import React from "react";
 import {
   AppBar,
+  Box,
   Button,
+  Link,
   // Tab,
-  Tabs,
+  //Tabs,
   Toolbar,
   Typography,
-  Label,
 } from "@mui/material";
 import { useState } from "react";
 import Auth from "../../utils/auth";
 //import LoginModal from "../LoginModal/LoginModal";
+import logo from "../../images/logopng.png";
+import "./Navbar.css";
 
 const buttonStyles = {
   paddingTop: "0.75rem",
@@ -29,10 +32,6 @@ const buttonStyles = {
 const typographyStyle = {
   fontSize: "2rem",
   color: "white",
-  "&:hover": {
-    color: "#ffeb3b",
-    backgroundColor: "transparent",
-  },
 };
 
 export default function ResponsiveNavbar({ setOpen }) {
@@ -43,30 +42,56 @@ export default function ResponsiveNavbar({ setOpen }) {
     setOpen(true);
   };
   const loggedIn = !!localStorage.getItem("id_token");
+
+  const openContactModal = () => {
+    console.log("modal clicked fromat footer");
+    setOpen(true);
+  };
   return (
     <React.Fragment>
       <AppBar elevation={0} sx={{ background: "transparent" }}>
         <Toolbar>
-          <Typography sx={typographyStyle}>WithU</Typography>
-
-          <Tabs
-            variant="text"
-            onClick={openLoginModal}
-            sx={{ marginLeft: "auto" }}
-          ></Tabs>
-
-          <Button variant="text" sx={buttonStyles}>
-            Dashboard
-          </Button>
+          <div>
+            <img src={logo} alt="logo" className="logopng"></img>
+            <a href="/" style={{ textDecoration: "none" }}>
+              <Typography className="title" sx={typographyStyle}>
+                WithU{" "}
+              </Typography>
+            </a>
+          </div>
+          <div style={{ marginLeft: "auto" }}></div>
+          {loggedIn ? (
+            <Button variant="text" sx={buttonStyles} href="/dashboard">
+              Dashboard
+            </Button>
+          ) : (
+            <Button></Button>
+          )}
           {loggedIn ? (
             <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
               Logout
             </Button>
           ) : (
             <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-              Login/SignUp
+              Login / Sign Up
             </Button>
           )}
+          {/* add FAQ and contact here */}
+          <Box sx={{ color: "black" }}>
+            <Typography sx={{ textAlign: "center" }} component="div">
+              <Link
+                href="/faq"
+                underline="none"
+                fontSize="15px"
+                sx={buttonStyles}
+              >
+                FAQ
+              </Link>
+            </Typography>
+          </Box>
+          <Button sx={buttonStyles} onClick={openContactModal}>
+            Contact
+          </Button>
         </Toolbar>
       </AppBar>
     </React.Fragment>

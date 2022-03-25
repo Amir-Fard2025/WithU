@@ -30,7 +30,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
         />
         <Chip
           style={colors}
@@ -38,7 +37,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
         />
         <Chip
           style={colors}
@@ -47,7 +45,6 @@ export default function ClickableLinkChips() {
           href="#basic-chip"
           variant="filled"
           color="primary"
-          clickable
         />
         <Chip
           style={colors}
@@ -55,7 +52,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
           color="primary"
         />
         <Chip
@@ -64,7 +60,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
           color="primary"
         />
       </>
@@ -75,7 +70,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
           color="primary"
         />
         <Chip
@@ -84,7 +78,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
           color="primary"
         />
         <Chip
@@ -93,7 +86,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
           color="primary"
         />
         <Chip
@@ -102,7 +94,6 @@ export default function ClickableLinkChips() {
           component="a"
           href="#basic-chip"
           variant="filled"
-          clickable
           color="primary"
         />
       </>
