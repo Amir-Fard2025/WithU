@@ -32,21 +32,23 @@ const resolvers = {
     },
     getUnpublishedCards: async (parent, args) => {
       return await ResourceCard.find({
-        status: "unpublished"
+        status: "unpublished",
       });
     },
     getPublishedCardsByTagId: async (parent, args) => {
       return await ResourceCard.find({
         tag_id: { $in: [args.tagId] },
-        status: "published"
+        status: "published",
       });
     },
     getPublishedCardsByTagName: async (parent, { tagName }) => {
-      const { resourceCards } = await Tag.findOne({
-        tagName
-      }).populate("resourceCards")
+      const { resourceCards } = await Tag.find({
+        tagName,
+      }).populate("resourceCards");
 
-      return resourceCards.filter(resourceCard => resourceCard.status == "published")
+      return resourceCards.filter(
+        (resourceCard) => resourceCard.status == "published"
+      );
     },
     getPublishedCardsByAllTagNames: async (parent, { tagNamesArray }) => {
       let returnArray = [];
@@ -54,17 +56,22 @@ const resolvers = {
 
       for (let tagName of tagNamesArray) {
         const { resourceCards } = await Tag.findOne({
-          tagName
-        }).populate("resourceCards")
-        const publishedArray = resourceCards.filter(resourceCard => resourceCard.status == "published" && !ids.includes(resourceCard._id.toString()));
+          tagName,
+        }).populate("resourceCards");
+        const publishedArray = resourceCards.filter(
+          (resourceCard) =>
+            resourceCard.status == "published" &&
+            !ids.includes(resourceCard._id.toString())
+        );
         returnArray = [...returnArray, ...publishedArray];
-        ids = returnArray.map(entry => entry._id.toString());
-        console.log(ids)
+        ids = returnArray.map((entry) => entry._id.toString());
+        console.log(ids);
       }
 
-      console.log("return array: ", returnArray)
-      return returnArray
+      console.log("return array: ", returnArray);
+      return returnArray;
     },
+
     getAllTags: async (parent, args) => {
       return await Tag.find();
     },
@@ -73,7 +80,32 @@ const resolvers = {
       return await ResourceCard.find({
         status
       })
-    }
+    },
+    getAllUserCreatedCards: async (parent, args, context) => {
+      // if (context.user) {
+        // const _id = context.user._id;
+        const _id = "623df616efa280cf90a63466"
+        console.log("id: ",_id)
+        const { createdCards } = await User.findOne({ _id })
+          .populate("createdCards");
+        return createdCards
+      // }
+      throw new AuthenticationError("Please login first!");
+    },
+
+    getAllUserLikedCards: async (parent, args, context) => {
+      // if (context.user) {
+        // const _id = context.user._id;
+        const _id = "623df616efa280cf90a63466";
+        console.log(_id)
+        const { likedCards } = await User.findOne({ _id })
+          .populate("likedCards");
+        return likedCards
+      // }
+      throw new AuthenticationError("Please login first!");
+    },
+
+
   },
 
   Mutation: {
@@ -111,11 +143,12 @@ const resolvers = {
         try {
           let screenshot;
           try {
-
             const screenshotName = title.toLowerCase().replace(" ", "");
-            generateScreenshot(url, "public/screenshots/" + screenshotName + ".png");
+            generateScreenshot(
+              url,
+              "public/screenshots/" + screenshotName + ".png"
+            );
             screenshot = `/screenshots/${screenshotName}.png`;
-
           } catch (err) {
             console.log("Error while generating a screenshot");
             screenshot = `/default.png`;
@@ -181,16 +214,30 @@ const resolvers = {
           const resourceCard = await ResourceCard.findOne({
             _id: cardId,
           });
-          const resourceCardUserLikesIdsStrings = resourceCard.userLikes.map(obj => obj.toString())
+          const resourceCardUserLikesIdsStrings = resourceCard.userLikes.map(
+            (obj) => obj.toString()
+          );
           if (resourceCardUserLikesIdsStrings.includes(userId)) {
             console.log("unlike");
-            await ResourceCard.findOneAndUpdate({ _id: cardId }, { $pull: { userLikes: userId } })
-            await User.findOneAndUpdate({ _id: userId }, { $pull: { likedCards: cardId } })
+            await ResourceCard.findOneAndUpdate(
+              { _id: cardId },
+              { $pull: { userLikes: userId } }
+            );
+            await User.findOneAndUpdate(
+              { _id: userId },
+              { $pull: { likedCards: cardId } }
+            );
             return true;
           } else {
             console.log("like");
-            await ResourceCard.findOneAndUpdate({ _id: cardId }, { $addToSet: { userLikes: userId } })
-            await User.findOneAndUpdate({ _id: userId }, { $addToSet: { likedCards: cardId } })
+            await ResourceCard.findOneAndUpdate(
+              { _id: cardId },
+              { $addToSet: { userLikes: userId } }
+            );
+            await User.findOneAndUpdate(
+              { _id: userId },
+              { $addToSet: { likedCards: cardId } }
+            );
             return true;
           }
         } catch (err) {

@@ -5,7 +5,7 @@ const resourceCardSchema = new Schema({
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 25,
+    maxlength: 50,
     trim: true,
   },
   description: {
@@ -32,6 +32,12 @@ const resourceCardSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+  ],
+  tags: [
+    {
+      type: String,
+      required: true,
+    }
   ],
   tag_id: [
     {

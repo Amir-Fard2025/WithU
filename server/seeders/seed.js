@@ -3,7 +3,8 @@ const db = require("../config/connection");
 const { User, ResourceCard, Tag } = require("../models");
 const userSeeds = require("./userSeeds.json");
 const resourceSeeds = require("./resourceSeeds.json");
-const tags = require("./tagSeeds.json");
+const tagSeeds = require("./tagSeeds.json");
+const CARD_PER_USER = 6;
 
 // needs to connect to the database, right?
 const generateRandom = (min, max) => {
@@ -22,44 +23,69 @@ const generateRandom = (min, max) => {
   return rand;
 };
 
-// const prepareResourceSeeds = (resourceSeeds, newTags) => {
-//   return resourceSeeds.map((rs) => {
-//     return { ...rs, tag_id: [newTags[generateRandom(0, tags.length - 1)]._id] };
-//   });
-// };
-const addNewEntriesToSeeds = (parentSeeds, newChildEntries, field) => {
+const addNewEntriesToSeeds = (parentSeeds, newChildEntries, field, childDuplicationBool) => {
+  let newChildEntriesArray = [...newChildEntries]
   return parentSeeds.map((parentSeed) => {
     let addedEntriesObj = {};
-    addedEntriesObj[field] = [newChildEntries[generateRandom(0, tags.length - 1)]._id];
+    addedEntriesObj[field] = [];
+
+    let counter = 0;
+
+    while (newChildEntriesArray.length != 0 && counter < CARD_PER_USER) {
+      const i = generateRandom(0, newChildEntriesArray.length - 1);
+      const childEntry = newChildEntriesArray[i];
+      addedEntriesObj[field].push(childEntry);
+      if (childDuplicationBool) {
+        delete newChildEntriesArray[i];
+        newChildEntriesArray = newChildEntriesArray.filter(entry => entry !== undefined);
+      }
+      counter++
+    }
     return { ...parentSeed, ...addedEntriesObj };
   });
 };
 
-const addCardsToTags = async (tagSeeds, cardSeeds) => {
-  tagSeeds.forEach(async tagSeed => {
-    const _id = tagSeed._id;
-    cardSeeds.forEach(async cardSeed => {
-      if (cardSeed.tag_id.includes(_id)) {
-        const cardSeeId = cardSeed._id
-        await Tag.findOneAndUpdate({ _id }, { $push: { resourceCards: cardSeeId } })
-      }
+const addCardsToTagsAndTagsToCards = async (newTags, newCards) => {
+  const newTagsIdsByName = {};
+  newTags.forEach(tagObj => {
+    newTagsIdsByName[tagObj.tagName] = tagObj._id;
+  })
+  //Itirate over each card to check the tags in eachCard 
+  newCards.forEach(async card => {
+    const cardId = card._id;
+    let tagIdArr = [];
+    card.tags.forEach(async tagName => {
+      const tagId = newTagsIdsByName[tagName];
+      if (tagIdArr.includes(tagId.toString())) return
+      await Tag.findOneAndUpdate(
+        { tagName },
+        { $push: { resourceCards: cardId } }
+      )
+      tagIdArr.push(tagId.toString())
     })
+    if (tagIdArr.length == 0) return
+    await ResourceCard.findOneAndUpdate(
+      { _id: cardId },
+      { $addToSet: { tag_id: { $each: tagIdArr } } }
+    )
+    tagIdArr = [];
   })
 }
+
+
 
 db.once("open", async () => {
   try {
     await User.deleteMany({});
     await Tag.deleteMany({});
-    const newTags = await Tag.create(tags, { validateBeforeSave: true });
     await ResourceCard.deleteMany({});
-    const updatedResourceSeeds = addNewEntriesToSeeds(resourceSeeds, newTags, "tag_id");
-    const newCards = await ResourceCard.create(updatedResourceSeeds, {
-      validateBeforeSave: true,
-    });
-    await addCardsToTags(newTags, newCards);
-    const updatedUserSeedsCreatedCards = addNewEntriesToSeeds(userSeeds, newCards, "createdCards");
-    const updatedUserSeedsLikedCards = addNewEntriesToSeeds(updatedUserSeedsCreatedCards, newCards, "likedCards");
+    const newTags = await Tag.create(tagSeeds, { validateBeforeSave: true });
+    const newCards = await ResourceCard.create(resourceSeeds, { validateBeforeSave: true });
+
+    await addCardsToTagsAndTagsToCards(newTags, newCards);
+
+    const updatedUserSeedsCreatedCards = addNewEntriesToSeeds(userSeeds, newCards, "createdCards", true);
+    const updatedUserSeedsLikedCards = addNewEntriesToSeeds(updatedUserSeedsCreatedCards, newCards, "likedCards", false);
     await User.create(updatedUserSeedsLikedCards, { validateBeforeSave: true });
     console.log("all done!");
     process.exit(0);

@@ -1,4 +1,4 @@
-<div ><a href="........"><img src="./server/public/images/POT-logo.png"/></a></div>
+<div ><a href="........"><img src="./client/src/images/logo-screen.png"/></a></div>
 
 <br>
 <h1> WithU </h1>
@@ -36,7 +36,7 @@ Crowdsourced information platform as a MERN stack single-page application.
 ### Project Link
 
 [Link](https://) to our live app.
-These are our project's [presentation](https://) and our [GitHub repo](https://github.com/Amir-Fard2025/WithU/tree/dev).
+These are our project's [presentation](https://docs.google.com/presentation/d/1T8Ap8jjG7QYzMlNbsrQl5TnSuf05T5OFhGCes8wt5zc/edit#slide=id.g11e6c9f5e49_0_67) and our [GitHub repo](https://github.com/Amir-Fard2025/WithU/tree/dev).
 
 <br>
 
@@ -57,7 +57,10 @@ Install all dependencies by typing in the terminal:
 
 Seed data in the database and start the app by running:
 
-`npm run start`
+`cd server` <br>
+`npm run seed` <br>
+`cd ..` <br>
+`npm run dev` <br>
 
 <br>
 
@@ -74,7 +77,7 @@ Seed data in the database and start the app by running:
 
 ### About The Project
 
-`WithU is a crowdsourced information platform aggregating resources that have been created to provide any kind of support to people affected by the war in Ukraine. It is meant for users who are seeking information, assistance or help as war refugees, their relatives, friends, or whoever else actively involved. Users can also create an account and actively add new useful resources to the platform. The resources are sorted into categories and can be also searched by respective tags. They can as well be ranked by other users.`
+`WithU is a crowdsourced information platform aggregating resources that have been created to provide any kind of support to people affected by the invasion on Ukraine. It is meant for users who are seeking information, assistance or help as war refugees, their relatives, friends, or whoever else actively involved. Users can also create an account and actively add new useful resources to the platform. The resources are sorted into categories and can be also searched by respective tags. They can as well be ranked by other users.`
 
 <br>
 
@@ -96,7 +99,7 @@ Seed data in the database and start the app by running:
 #### User Story
 
 ```md
-As an ordinary human being, I want to contribute to making it easier for the innocent civilians fleeing the war to orientate themselves in countries providing asylum and to reach the needed support and help.
+As a world citizen, I want to contribute to making it easier for the innocent civilians fleeing the war to orientate themselves in countries providing asylum and to reach the needed support and help.
 ```
 
 <br>
@@ -144,8 +147,6 @@ As an ordinary human being, I want to contribute to making it easier for the inn
 -
 -
 -
--
--
 
 <br>
 
@@ -167,7 +168,7 @@ As an ordinary human being, I want to contribute to making it easier for the inn
 
   ![Image](./client/)
 
-  - #### Contact
+- #### Contact
 
   ![Image](./client/)
 

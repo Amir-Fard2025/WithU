@@ -1,20 +1,41 @@
 [
   {
-    "tagName": "medical"
+    "tagName": "Medical"
   },
   {
-    "tagName": "stay"
+    "tagName": "Housing"
   },
   {
-    "tagName": "transport"
+    "tagName": "Transport"
   },
   {
-    "tagName": "animal"
+    "tagName": "Legal"
   },
   {
-    "tagName": "legal"
+    "tagName": "Borders"
   },
   {
-    "tagName": "money"
+    "tagName": "Animals"
+  },
+  {
+    "tagName": "Woman"
+  },
+  {
+    "tagName": "Children"
+  },
+  {
+    "tagName": "Admin"
+  },
+  {
+    "tagName": "Donations"
+  },
+  {
+    "tagName": "Peace"
+  },
+  {
+    "tagName": "Jobs"
+  },
+  {
+    "tagName": "Border"
   }
 ]
