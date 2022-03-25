@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Button, TextField } from "@mui/material";
+import Fab from "@mui/material/Fab";
 
 const ContactModal = ({ open, onClose }) => {
   const style = {
@@ -12,8 +13,8 @@ const ContactModal = ({ open, onClose }) => {
       left: "50%",
       transform: "translate(-50%, -50%)",
       width: 400,
-      bgcolor: "background.paper",
-      opacity: "0.7",
+      bgcolor: "white",
+      opacity: "0.9",
       border: "0px solid",
       borderRadius: "20px",
       color: "black",
@@ -23,6 +24,36 @@ const ContactModal = ({ open, onClose }) => {
     inputFields: {
       display: "flex",
       flexDirection: "column",
+      "& fieldset": {
+        borderRadius: "20px",
+      },
+    },
+  };
+
+  const styleText = {
+    textAlign: "center",
+    // width: "40%",
+    opacity: "0.7",
+    borderColor: "transparent",
+    borderRadius: "10px",
+    // marginLeft: "30%",
+    color: "#2874A6",
+    // marginTop: "10px",
+    fontFamily: "Roboto",
+    fontSize: "calc(7px + 2vw)",
+  };
+
+  const styleFab = {
+    marginTop: "20px",
+    color: "#0288d1",
+    backgroundColor: "transparent",
+    textTransform: "capitalize",
+    border: "solid",
+    borderColor: "rgba(66, 133, 244, 0.624)",
+
+    "&:hover": {
+      color: "#0288d1",
+      opacity: "70%",
     },
   };
 
@@ -30,8 +61,8 @@ const ContactModal = ({ open, onClose }) => {
     <Modal open={open} onClose={onClose}>
       <Box sx={style.modalStyles}>
         <Box sx={style.inputFields}>
-          <Typography sx={{ mt: 2 }}>
-            Leave us a message and we will get back to you ASAP!
+          <Typography sx={styleText}>
+            Leave us a message :) <br /> We will get back to you ASAP!
           </Typography>
           <TextField
             placeholder="E-mail"
@@ -49,9 +80,16 @@ const ContactModal = ({ open, onClose }) => {
             required
             sx={{ marginTop: "1rem" }}
           />
-          <Button variant="contained" sx={{ marginTop: "1rem" }}>
+          <Fab
+            sx={styleFab}
+            // onClick={handleFormSubmit}
+            // style={button}
+          >
             Send
-          </Button>
+          </Fab>
+          {/* <Button variant="contained" sx={{ marginTop: "1rem" }}>
+            Send
+          </Button> */}
         </Box>
       </Box>
     </Modal>

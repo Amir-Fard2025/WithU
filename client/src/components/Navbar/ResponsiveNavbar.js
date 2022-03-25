@@ -53,27 +53,27 @@ export default function ResponsiveNavbar({ setOpen }) {
         <Toolbar>
           <div>
             <img src={logo} alt="logo" className="logopng"></img>
-            <Typography className="title" sx={typographyStyle}>
-              WithU{" "}
-            </Typography>
+            <a href="/" style={{ textDecoration: "none" }}>
+              <Typography className="title" sx={typographyStyle}>
+                WithU{" "}
+              </Typography>
+            </a>
           </div>
           <div style={{ marginLeft: "auto" }}></div>
-          <Button variant="text" sx={buttonStyles}>
-            Dashboard
-          </Button>
           {loggedIn ? (
-            //   <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-            //     Login/SignUp
-            //   </Button>
-            // ) : (
-            //   <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
-            //     Logout
+            <Button variant="text" sx={buttonStyles}>
+              Dashboard
+            </Button>
+          ) : (
+            <Button></Button>
+          )}
+          {loggedIn ? (
             <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
               Logout
             </Button>
           ) : (
             <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-              Login/SignUp
+              Login / Sign Up
             </Button>
           )}
           {/* add FAQ and contact here */}
