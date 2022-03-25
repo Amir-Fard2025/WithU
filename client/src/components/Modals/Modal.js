@@ -25,13 +25,14 @@ import Auth from "../../utils/auth";
 import "./Modal.css";
 
 const styleFirstLogin = {
+  alignItems: "center",
+  justifyContent: "center",
   textAlign: "center",
   opacity: "0.7",
-  borderColor: "transparent",
   borderRadius: "10px",
   color: "#2874A6",
   fontFamily: "Roboto",
-  fontSize: "calc(7px + 2vw)",
+  fontSize: "calc(5px + 2vw)",
 };
 
 const style = {
@@ -46,8 +47,9 @@ const style = {
   border: "0px solid",
   borderRadius: "20px",
   paddingTop: 5,
-  paddingBottom: 12,
-  paddingLeft: 5,
+  paddingBottom: 5,
+  paddingLeft: 3,
+  paddingRight: 3,
 };
 
 const styleField = {
@@ -306,9 +308,9 @@ export default function BasicModal() {
               </>
             </>
           ) : (
-            <InputLabel sx={styleFirstLogin} id="demo-multiple-checkbox-label">
+            <Typography sx={styleFirstLogin} id="demo-multiple-checkbox-label">
               Login / Sign Up first and contribute :)
-            </InputLabel>
+            </Typography>
           )}
         </Box>
       </Modal>
