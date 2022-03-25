@@ -51,16 +51,14 @@ export default function ResponsiveNavbar({ setOpen }) {
             </Typography>
           </div>
           <div style={{ marginLeft: "auto" }}></div>
-          <Button variant="text" sx={buttonStyles}>
-            Dashboard
-          </Button>
           {loggedIn ? (
-            //   <Button variant="text" onClick={openLoginModal} sx={buttonStyles}>
-            //     Login/SignUp
-            //   </Button>
-            // ) : (
-            //   <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
-            //     Logout
+            <Button variant="text" sx={buttonStyles}>
+              Dashboard
+            </Button>
+          ) : (
+            <Button></Button>
+          )}
+          {loggedIn ? (
             <Button variant="text" sx={buttonStyles} onClick={Auth.logout}>
               Logout
             </Button>
