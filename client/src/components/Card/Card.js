@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import "./Card.css";
 // import { LikeButton } from "@lyket/react";
 
 const styleCard = {
@@ -20,52 +21,61 @@ const styleCard = {
   maxHeight: "530px",
   borderRadius: "20px",
   boxShadow: 2,
-  margin: 2,
   backgroundColor: "transparent",
   border: 1,
   borderColor: "yellow",
   backgroundColor: "rgba(255, 255, 255, 0.212)",
 };
 
-const styleEdit = {
-  color: "#0288d1",
-  backgroundcolor: "yelow",
-  opacity: "80%",
-  border: 2,
-  borderColor: "#0288d1",
-  display: "right",
-  margin: "10px",
+// const styleEdit = {
+//   color: "#0288d1",
+//   backgroundcolor: "yelow",
+//   opacity: "80%",
+//   border: 2,
+//   borderColor: "#0288d1",
+//   display: "right",
+//   margin: "10px",
 
-  marginTop: "50px",
-  "&:hover": {
-    color: "red",
-  },
-};
+//   marginTop: "50px",
+//   "&:hover": {
+//     color: "turquoise",
+//   },
+// };
 
-const styleIconEdit = {
-  "&:hover": {
-    color: "red",
-  },
-};
+// const styleIconEdit = {
+//   "&:hover": {
+//     color: "turquoise",
+//     cursor: "pointer",
+//   },
+// };
 
-const styleDelete = {
-  color: "#0288d1",
-  backgroundcolor: "transparent",
-  border: 2,
-  borderColor: "#0288d1",
-  display: "right",
-  margin: "10px",
+// const styleDelete = {
+//   color: "#0288d1",
+//   backgroundcolor: "transparent",
+//   border: 2,
+//   borderColor: "#0288d1",
+//   display: "right",
+//   margin: "10px",
 
-  marginTop: "50px",
-  "&:hover": {
-    color: "red",
-  },
-};
+//   marginTop: "50px",
+//   "&:hover": {
+//     color: "red",
+//   },
+// };
 
-const styleIconDelete = {
-  "&:hover": {
-    color: "red",
-  },
+// const styleIconDelete = {
+//   "&:hover": {
+//     color: "red",
+//   },
+// };
+const circle = {
+  backgroundColor: "transparent",
+  margin: "5px",
+  border: "solid",
+  color: "rgba(255, 255, 0, 0.7)",
+  // "&:hover": {
+  //   color: "red",
+  // },
 };
 
 const styleCardContent = {
@@ -79,8 +89,11 @@ const styleCardContent = {
 const styleMediaCard = {
   margin: "10px",
   marginTop: "10px",
+  marginRight: "10px",
+  padding: "10px",
   border: 1,
   borderRadius: "20px",
+  maxWidth: "95%",
 };
 
 const styleFlag = {
@@ -99,32 +112,37 @@ export default function MediaCard({
   return (
     <Card sx={styleCard}>
       <div
+        className="twoIcons"
         style={{
           display: "left",
         }}
       >
         <Box></Box>
-        <Fab
-          size="small"
-          sx={styleEdit}
-          aria-label="edit"
-          // onClick={handleOpen}
-          // style={button}
-        >
-          <EditIcon sx={styleIconEdit} />
+        <div className="icons">
+          <Fab
+            className="edit"
+            size="small"
+            sx={circle}
+            aria-label="edit"
+            // onClick={handleOpen}
+            // style={button}
+          >
+            <EditIcon className="edit" />
 
-          {/* <AddIcon className="iconModal" /> */}
-        </Fab>
-        <Fab
-          size="small"
-          sx={styleDelete}
-          aria-label="delete"
-          // onClick={handleOpen}
-          // style={button}
-        >
-          <DeleteIcon sx={styleIconDelete} />
-          {/* <AddIcon className="iconModal" /> */}
-        </Fab>
+            {/* <AddIcon className="iconModal" /> */}
+          </Fab>
+          <Fab
+            className="delete"
+            size="small"
+            sx={circle}
+            aria-label="delete"
+            // onClick={handleOpen}
+            // style={button}
+          >
+            <DeleteIcon className="delete" />
+            {/* <AddIcon className="iconModal" /> */}
+          </Fab>
+        </div>
       </div>
       <div>
         <CardMedia
@@ -136,7 +154,7 @@ export default function MediaCard({
         />
       </div>
       <CardContent sx={styleCardContent}>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h7" component="div">
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
