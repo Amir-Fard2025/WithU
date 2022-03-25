@@ -26,13 +26,10 @@ import "./Modal.css";
 
 const styleFirstLogin = {
   textAlign: "center",
-  // width: "40%",
   opacity: "0.7",
   borderColor: "transparent",
   borderRadius: "10px",
-  // marginLeft: "30%",
   color: "#2874A6",
-  // marginTop: "10px",
   fontFamily: "Roboto",
   fontSize: "calc(7px + 2vw)",
 };
@@ -297,24 +294,14 @@ export default function BasicModal() {
                   ))}
                 </Select>
               </FormControl>
-              {/* <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={topLabel}
-            sx={{ width: 400 }}
-            renderInput={(params) => <TextField {...params} label="Tags" />}
-          /> */}
-              {/* <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={languages}
-            sx={{ width: 400 }}
-            renderInput={(params) => <TextField {...params} label="Language" />}
-          /> */}
               <>
-                <Fab sx={styleFab} onClick={handleFormSubmit} style={button}>
+                <Fab
+                  sx={styleFab}
+                  onClick={handleFormSubmit}
+                  disabled={!validated}
+                  style={button}
+                >
                   Add
-                  {/* <AddIcon className="iconModal" /> */}
                 </Fab>
               </>
             </>
