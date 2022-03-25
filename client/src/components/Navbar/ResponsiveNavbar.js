@@ -46,9 +46,11 @@ export default function ResponsiveNavbar({ setOpen }) {
         <Toolbar>
           <div>
             <img src={logo} alt="logo" className="logopng"></img>
-            <Typography className="title" sx={typographyStyle}>
-              WithU{" "}
-            </Typography>
+            <a href="/" style={{ textDecoration: "none" }}>
+              <Typography className="title" sx={typographyStyle}>
+                WithU{" "}
+              </Typography>
+            </a>
           </div>
           <div style={{ marginLeft: "auto" }}></div>
           {loggedIn ? (
