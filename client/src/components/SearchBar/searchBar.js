@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { Autocomplete, TextField, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import "./searchBar.css";
+import { useNavigate } from 'react-router-dom';
+
 // const size = {
 //   transform: "scale(1.1)",
 // };
 
 export default function Search() {
   const [filters, setFilters] = useState([topResearch[13]]);
+  const history = useNavigate();
   String.prototype.toProperCase = function () {
     return this.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
   };
@@ -18,7 +21,7 @@ export default function Search() {
         return filter.search.toProperCase();
       })
       .join(".");
-    window.location.assign(`/results/${formatedFilters}`);
+    history(`/results/${formatedFilters}`);
   };
 
   return (
@@ -53,7 +56,7 @@ export default function Search() {
             options={topResearch}
             getOptionLabel={(option) => option.search}
 
-            
+
             renderInput={(params) => {
               console.log(params);
               return (
