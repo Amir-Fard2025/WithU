@@ -21,7 +21,9 @@
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
-    "node-server-screenshot": "^0.2.4"
+    "node-server-screenshot": "^0.2.4",
+    "webshot": "^0.18.0",
+    "webshot-node": "^0.18.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

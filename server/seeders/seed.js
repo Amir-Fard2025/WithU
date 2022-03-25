@@ -80,23 +80,24 @@ const addCardsToTagsAndTagsToCards = async (newTags, newCards) => {
   });
 };
 
+const addScreenShotsToCards = (card) => {
+  const screenshotName = card.title.toLowerCase().replace(/ /g, "");
+  console.log(screenshotName)
+  generateScreenshot(
+    card.url,
+    "../client/public/screenshots/" + screenshotName + ".png"
+  );
+  card.screenshot = `/screenshots/${screenshotName}.png`;
+}
+
 db.once("open", async () => {
   try {
     await User.deleteMany({});
     await Tag.deleteMany({});
     await ResourceCard.deleteMany({});
     const newTags = await Tag.create(tagSeeds, { validateBeforeSave: true });
-    const newCards = await ResourceCard.create(
-      resourceSeeds.map((card) => {
-        const screenshotName = card.title.toLowerCase().replace(" ", "");
-        generateScreenshot(
-          card.url,
-          "public/screenshots/" + screenshotName + ".png"
-        );
-        card.screenshot = `/screenshots/${screenshotName}.png`;
-      }),
-
-      { validateBeforeSave: true }
+    resourceSeeds.forEach(addScreenShotsToCards)
+    const newCards = await ResourceCard.create(resourceSeeds, { validateBeforeSave: true }
     );
 
     await addCardsToTagsAndTagsToCards(newTags, newCards);
