@@ -12,8 +12,8 @@ import Flags from "country-flag-icons/react/3x2";
 import Box from "@mui/material/Box";
 
 const styleCard = {
-  width: "400px",
-  height: "530px",
+  maxWidth: "400px",
+  maxHeight: "530px",
   borderRadius: "20px",
   boxShadow: 2,
   margin: 2,
