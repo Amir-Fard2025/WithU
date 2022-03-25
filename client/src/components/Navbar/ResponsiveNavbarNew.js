@@ -39,7 +39,6 @@ const ResponsiveAppBarNew = ({ setOpen, setOpenContactForm }) => {
           <Typography
             variant="h6"
             noWrap
-            con
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
