@@ -57,7 +57,10 @@ Install all dependencies by typing in the terminal:
 
 Seed data in the database and start the app by running:
 
-`npm run start`
+`cd server`
+`npm run seed`
+`cd ..`
+`npm run dev`
 
 <br>
 
@@ -74,7 +77,7 @@ Seed data in the database and start the app by running:
 
 ### About The Project
 
-`WithU is a crowdsourced information platform aggregating resources that have been created to provide any kind of support to people affected by the war in Ukraine. It is meant for users who are seeking information, assistance or help as war refugees, their relatives, friends, or whoever else actively involved. Users can also create an account and actively add new useful resources to the platform. The resources are sorted into categories and can be also searched by respective tags. They can as well be ranked by other users.`
+`WithU is a crowdsourced information platform aggregating resources that have been created to provide any kind of support to people affected by the invasion on Ukraine. It is meant for users who are seeking information, assistance or help as war refugees, their relatives, friends, or whoever else actively involved. Users can also create an account and actively add new useful resources to the platform. The resources are sorted into categories and can be also searched by respective tags. They can as well be ranked by other users.`
 
 <br>
 
@@ -96,7 +99,7 @@ Seed data in the database and start the app by running:
 #### User Story
 
 ```md
-As an ordinary human being, I want to contribute to making it easier for the innocent civilians fleeing the war to orientate themselves in countries providing asylum and to reach the needed support and help.
+As a world citizen, I want to contribute to making it easier for the innocent civilians fleeing the war to orientate themselves in countries providing asylum and to reach the needed support and help.
 ```
 
 <br>
@@ -141,8 +144,6 @@ As an ordinary human being, I want to contribute to making it easier for the inn
 ### Plans For Improvement
 
 - developing a mobile app
--
--
 -
 -
 -
