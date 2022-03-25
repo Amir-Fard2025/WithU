@@ -28,55 +28,11 @@ const styleCard = {
   backgroundColor: "rgba(255, 255, 255, 0.212)",
 };
 
-// const styleEdit = {
-//   color: "#0288d1",
-//   backgroundcolor: "yelow",
-//   opacity: "80%",
-//   border: 2,
-//   borderColor: "#0288d1",
-//   display: "right",
-//   margin: "10px",
-
-//   marginTop: "50px",
-//   "&:hover": {
-//     color: "turquoise",
-//   },
-// };
-
-// const styleIconEdit = {
-//   "&:hover": {
-//     color: "turquoise",
-//     cursor: "pointer",
-//   },
-// };
-
-// const styleDelete = {
-//   color: "#0288d1",
-//   backgroundcolor: "transparent",
-//   border: 2,
-//   borderColor: "#0288d1",
-//   display: "right",
-//   margin: "10px",
-
-//   marginTop: "50px",
-//   "&:hover": {
-//     color: "red",
-//   },
-// };
-
-// const styleIconDelete = {
-//   "&:hover": {
-//     color: "red",
-//   },
-// };
 const circle = {
   backgroundColor: "transparent",
   margin: "5px",
   border: "solid",
   color: "rgba(255, 255, 0, 0.7)",
-  // "&:hover": {
-  //   color: "red",
-  // },
 };
 
 const styleCardContent = {
@@ -110,6 +66,9 @@ export default function MediaCard({
   languages,
   like,
 }) {
+  console.log(screenshot)
+  const loggedIn = !!localStorage.getItem("id_token");
+
   return (
     <Card sx={styleCard}>
       <div
@@ -119,38 +78,41 @@ export default function MediaCard({
         }}
       >
         <Box></Box>
-        <div className="icons">
-          <Fab
-            className="edit"
-            size="small"
-            sx={circle}
-            aria-label="edit"
+        {loggedIn && (
+          <div className="icons">
+            <Fab
+              className="edit"
+              size="small"
+              sx={circle}
+              aria-label="edit"
             // onClick={handleOpen}
             // style={button}
-          >
-            <EditIcon className="edit" />
+            >
+              <EditIcon className="edit" />
 
-            {/* <AddIcon className="iconModal" /> */}
-          </Fab>
-          <Fab
-            className="delete"
-            size="small"
-            sx={circle}
-            aria-label="delete"
+              {/* <AddIcon className="iconModal" /> */}
+            </Fab>
+            <Fab
+              className="delete"
+              size="small"
+              sx={circle}
+              aria-label="delete"
             // onClick={handleOpen}
             // style={button}
-          >
-            <DeleteIcon className="delete" />
-            {/* <AddIcon className="iconModal" /> */}
-          </Fab>
-        </div>
+            >
+              <DeleteIcon className="delete" />
+              {/* <AddIcon className="iconModal" /> */}
+            </Fab>
+          </div>
+        )}
       </div>
       <div>
         <CardMedia
           sx={styleMediaCard}
           component="img"
           height="140"
-          image={"screenshots/" + title.toLowerCase().replace(" ", "") + ".png"}
+          // image={"screenshots/" + title.toLowerCase().replace(" ", "") + ".png"}
+          image={screenshot}
           alt="website image"
         />
       </div>

@@ -36,41 +36,25 @@ const Container = ({ variables, query, dataParameter }) => {
     // }
   };
 
-  if (error) {
-    console.log(error);
-    return (
-      <div>
-        oops, seems like there are no cards associated with your search. Please
-        try again with a different tag :){" "}
-      </div>
-    );
-  } else if (loading) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
-  } else {
-    return (
-      <div
-        style={{
-          display: "flex",
-          height: "80vh",
-          width: "95vw",
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-          alignContent: "center",
-          marginTop: "18vh",
-        }}
-      >
-        {currCards.map((c) => (
-          <Card
-            key={c.id}
-            title={c.title}
-            description={c.description}
-            languages={c.language}
-          />
-        ))}
+    if (error) {
+        console.log(error);
+        return (
+            <div>
+                oops, seems like there are no cards associated with your search. Please
+                try again with a different tag :){" "}
+            </div>
+        );
+    } else if (loading) {
+        return (
+            <div>
+                <p>Loading...</p>
+            </div>
+        )
+    } else {
+        return (
+            <div style={{ display: "flex", height: "80vh", width: "95vw", flexDirection: "row", justifyContent: "space-around", alignContent: "center" }}>
+
+                {currCards.map(c => <Card key={c.id} title={c.title} description={c.description} languages={c.language} screenshot={c.screenshot} />)}
 
         {/* <button onClick={()=>handleClick(-1)} > Dec </button>
             {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} language= {c.language} />)};

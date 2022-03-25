@@ -7,6 +7,7 @@ export const GET_ALL_CARDS = gql`
         title
         description
         url
+        screenshot
   }
 }
 `;
