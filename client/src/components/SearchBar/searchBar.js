@@ -8,11 +8,14 @@ import "./searchBar.css";
 
 export default function Search() {
   const [filters, setFilters] = useState([topResearch[13]]);
+  String.prototype.toProperCase = function () {
+    return this.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+  };
 
   const onSubmit = () => {
     const formatedFilters = filters
       .map((filter) => {
-        return filter.search.toLowerCase();
+        return filter.search.toProperCase();
       })
       .join(".");
     window.location.assign(`/results/${formatedFilters}`);
@@ -67,12 +70,12 @@ export default function Search() {
             variant="contained"
             className="my-buttton"
             onClick={onSubmit}
-            // sx={{
-            //   display: "flex",
-            //   backgroundColor: "yellow",
-            //   opacity: "0.7",
-            //   height: "4vh",
-            // }}
+          // sx={{
+          //   display: "flex",
+          //   backgroundColor: "yellow",
+          //   opacity: "0.7",
+          //   height: "4vh",
+          // }}
           >
             <Typography sx={{ color: "black" }}>Search</Typography>
           </Button>

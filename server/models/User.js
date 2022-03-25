@@ -13,6 +13,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
+  role: {
+    type: String,
+    enum: ["superAdmin", "admin", 'user'],
+    default: "user",
+    required: true
+  },
   createdCards: [
     {
       type: Schema.Types.ObjectId,

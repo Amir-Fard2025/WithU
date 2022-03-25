@@ -76,24 +76,26 @@ const resolvers = {
       })
     },
     getAllUserCreatedCards: async (parent, args, context) => {
-      if (context.user) {
-        const _id = context.user._id;
+      // if (context.user) {
+        // const _id = context.user._id;
+        const _id = "623b9a4a71fd3484e0f126de"
         console.log("id: ",_id)
         const { createdCards } = await User.findOne({ _id })
           .populate("createdCards");
         return createdCards
-      }
+      // }
       throw new AuthenticationError("Please login first!");
     },
 
     getAllUserLikedCards: async (parent, args, context) => {
-      if (context.user) {
-        const _id = context.user._id;
+      // if (context.user) {
+        // const _id = context.user._id;
+        const _id = "623b9a4a71fd3484e0f126de";
         console.log(_id)
         const { likedCards } = await User.findOne({ _id })
           .populate("likedCards");
         return likedCards
-      }
+      // }
       throw new AuthenticationError("Please login first!");
     },
 

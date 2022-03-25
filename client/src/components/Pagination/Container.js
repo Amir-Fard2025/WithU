@@ -10,21 +10,31 @@ import { useQuery } from "@apollo/client";
 import Pagination from "./Pagination";
 
 const CARDS_PER_PAGE = 2;
-const Container = ({ variables, query, dataParameter }) => {
-    const { loading, data, error } = useQuery(query,
+const Container = ({ variables, query, dataParameter, changeBool }) => {
+    
+    console.log("changeBool out: ", changeBool)
+    useEffect(() => {
+        refetch();
+        console.log("Refetched")
+        console.log("changeBool in: ", changeBool)
+    }, [changeBool])
+
+    const { loading, data, error, refetch } = useQuery(query,
         {
             variables
         });
+
+
     const [currPage, setCurrPage] = useState(-1);
     const [totalCards, setTotalCards] = useState([]);
     let currCards = [];
+    console.log(data)
     if (totalCards.length === 0 && !loading && data) {
         console.log(data);
         setTotalCards(data[dataParameter]);
         setCurrPage(0);
     }
     if (currPage > -1) {
-
         const startingCardIndex = (currPage) * CARDS_PER_PAGE
         currCards = data[dataParameter].slice(startingCardIndex, startingCardIndex + CARDS_PER_PAGE);
     }
@@ -59,7 +69,7 @@ const Container = ({ variables, query, dataParameter }) => {
         )
     } else {
         return (
-            <div>
+            <div style={{ border: "1px solid red", display: "flex", height: "80vh", width: "95vw", flexDirection: "row", justifyContent: "space-around", alignContent: "center" }}>
 
                 {currCards.map(c => <Card key={c.id} title={c.title} description={c.description} />)}
 
