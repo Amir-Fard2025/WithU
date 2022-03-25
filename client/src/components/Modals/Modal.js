@@ -246,18 +246,13 @@ export default function BasicModal() {
                 onChange={handleInputChange}
               />
 
-<<<<<<< HEAD
-              <FormControl sx={styleDropdown}>
+              <FormControl sx={styleDropdown} required>
                 <InputLabel
                   sx={styleDropdown}
                   id="demo-multiple-checkbox-label"
                 >
                   Tag
                 </InputLabel>
-=======
-              <FormControl sx={{ width: 400 }} required>
-                <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
->>>>>>> dev
                 <Select
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
@@ -277,13 +272,8 @@ export default function BasicModal() {
                   ))}
                 </Select>
               </FormControl>
-<<<<<<< HEAD
               <FormControl sx={styleDropdown}>
-                <InputLabel id="demo-multiple-checkbox-label">
-=======
-              <FormControl sx={{ width: 400 }}>
                 <InputLabel id="demo-multiple-checkbox-label" required>
->>>>>>> dev
                   Language
                 </InputLabel>
                 <Select
@@ -321,18 +311,8 @@ export default function BasicModal() {
             sx={{ width: 400 }}
             renderInput={(params) => <TextField {...params} label="Language" />}
           /> */}
-<<<<<<< HEAD
               <>
                 <Fab sx={styleFab} onClick={handleFormSubmit} style={button}>
-=======
-              <Stack direction="row" spacing={2}>
-                <Button
-                  variant="outlined"
-                  onClick={handleFormSubmit}
-                  disabled={!validated}
-                  endIcon={<SendIcon />}
-                >
->>>>>>> dev
                   Add
                   {/* <AddIcon className="iconModal" /> */}
                 </Fab>
