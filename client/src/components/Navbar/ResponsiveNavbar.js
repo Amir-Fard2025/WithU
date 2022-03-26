@@ -31,7 +31,7 @@ const typographyStyle = {
   color: "white",
 };
 
-export default function ResponsiveNavbar({ setOpen }) {
+export default function ResponsiveNavbar({ setOpen, setOpenContactForm }) {
   const [alignment, setAlignment, value, setValue] = useState(0);
 
   const openLoginModal = () => {
@@ -40,7 +40,7 @@ export default function ResponsiveNavbar({ setOpen }) {
   const loggedIn = !!localStorage.getItem("id_token");
 
   const openContactModal = () => {
-    setOpen(true);
+    setOpenContactForm(true);
   };
   return (
     <React.Fragment>
