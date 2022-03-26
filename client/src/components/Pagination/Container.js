@@ -1,6 +1,4 @@
-import { getCardActionsUtilityClass } from "@mui/material";
-import { borderBottom } from "@mui/system";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "../Card/Card";
 import { useQuery } from "@apollo/client";
 import Pagination from "./Pagination";
@@ -31,9 +29,7 @@ const Container = ({ variables, query, dataParameter }) => {
     if (pageNum) {
       setCurrPage(pageNum - 1);
     }
-    // else {
-    //     console.log(pageNum);
-    // }
+
   };
 
     if (error) {
@@ -56,10 +52,7 @@ const Container = ({ variables, query, dataParameter }) => {
 
                 {currCards.map(c => <Card key={c.id} title={c.title} description={c.description} languages={c.language} screenshot={c.screenshot} url={c.url} />)}
 
-        {/* <button onClick={()=>handleClick(-1)} > Dec </button>
-            {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} language= {c.language} />)};
-            {/* <button onClick={()=>handleClick(-1)} > Dec </button>
-            <button onClick={()=>handleClick(1)} >Inc</button> */}
+
 
         <Pagination
           count={Math.ceil(totalCards.length / CARDS_PER_PAGE)}

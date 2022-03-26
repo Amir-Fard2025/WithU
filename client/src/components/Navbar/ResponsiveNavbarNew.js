@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "@mui/material";
 
@@ -18,7 +17,6 @@ const ResponsiveAppBarNew = ({ setOpen, setOpenContactForm }) => {
     setOpen(true);
   };
   const openContactModal = () => {
-    console.log("modal clicked fromat footer");
     setOpen(true);
   };
 
@@ -106,16 +104,6 @@ const ResponsiveAppBarNew = ({ setOpen, setOpenContactForm }) => {
             </Menu>
           </Box>
 
-          {/* <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}> */}
-          {/* 
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-              </Button>
-            ))} */}
-          {/* </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

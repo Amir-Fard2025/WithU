@@ -99,7 +99,6 @@ const SignupForm = () => {
     setValidated(validateInput(password, newPassword, userFormData.email));
   };
 
-  console.log(userFormData);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -122,7 +121,6 @@ const SignupForm = () => {
 
       Auth.login(token);
     } catch (err) {
-      console.error(err);
       setShowAlert(true);
     }
 
@@ -169,14 +167,7 @@ const SignupForm = () => {
       >
         Send
       </Fab>
-      {/* <Button
-        variant="contained"
-        sx={{ marginTop: "1rem" }}
-        onClick={handleFormSubmit}
-        disabled={!validated}
-      >
-        Send
-      </Button> */}
+
     </Box>
   );
 };

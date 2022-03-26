@@ -5,9 +5,7 @@ import "./searchBar.css";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
-// const size = {
-//   transform: "scale(1.1)",
-// };
+
 const useStyles = makeStyles({
   option: {
     backgroundColor: "#FFFC3A ",
@@ -42,7 +40,6 @@ export default function Search() {
   return (
     <>
       <Stack
-        // style={size}
         className="stack"
         direction="row"
         spacing={3}
@@ -82,7 +79,6 @@ export default function Search() {
             }}
             getOptionLabel={(option) => option.search}
             renderInput={(params) => {
-              console.log(params);
               return (
                 <TextField
                   sx={{ color: "white", height: "4vh" }}
@@ -98,12 +94,7 @@ export default function Search() {
             variant="outlined"
             className="my-buttton"
             onClick={onSubmit}
-            // sx={{
-            //   display: "flex",
-            //   backgroundColor: "yellow",
-            //   opacity: "0.7",
-            //   height: "4vh",
-            // }}
+
           >
             <Typography
               className="typo"

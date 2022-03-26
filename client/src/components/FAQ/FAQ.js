@@ -52,8 +52,6 @@ export default function NestedList() {
               backgroundColor: "white",
               opacity: "80%",
               boxShadow: 3,
-              // border: 1,
-              // borderColor: "white",
               borderRadius: "20px",
               padding: 0,
             }}

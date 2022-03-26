@@ -57,7 +57,6 @@ function App() {
             <Route path="/" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
-        {/* <BasicModal /> */}
         <Footer />
         <ContactModal
           open={openContactForm}

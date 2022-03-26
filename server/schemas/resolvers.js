@@ -84,7 +84,6 @@ const resolvers = {
     getAllUserCreatedCards: async (parent, args, context) => {
       if (context.user) {
         const _id = context.user._id;
-        // const _id = "623e4d1fb929854d624fe4cf"; 
 
         console.log("id: ", _id)
         const { createdCards } = await User.findOne({ _id })
@@ -97,7 +96,6 @@ const resolvers = {
     getAllUserLikedCards: async (parent, args, context) => {
       if (context.user) {
         const _id = context.user._id;
-        // const _id = "623df616efa280cf90a63466";
         console.log(_id)
         const { likedCards } = await User.findOne({ _id })
           .populate("likedCards");
@@ -138,10 +136,7 @@ const resolvers = {
     },
 
     addResourcesCard: async (parent, args, context) => {
-      // console.log(context.user)
       if (context.user) {
-        // console.log(context.user._id)
-        // const userId = "623e4d1fb929854d624fe4cf"; 
         const { title, description, url, tags, language } =
           args.resource;
         try {

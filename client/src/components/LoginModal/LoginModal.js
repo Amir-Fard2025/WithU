@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-//import { useState } from "react";
 import Box from "@mui/material/Box";
-//import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import LoginForm from "../LoginForm/LoginForm";
@@ -54,13 +52,9 @@ const LoginModal = ({ open, onClose }) => {
             Sign up
           </Button>
         </Typography>
-        {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Please provide your credentials below:
-        </Typography> */}
-        {displayLoginForm ? <LoginForm /> : <SignupForm />}
-        {/* {displayLoginForm ?  :} */}
 
-        {/* <SignupForm /> */}
+        {displayLoginForm ? <LoginForm /> : <SignupForm />}
+
       </Box>
     </Modal>
   );

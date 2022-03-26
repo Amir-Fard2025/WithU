@@ -27,7 +27,6 @@ const ADDUSER = gql`
   }
 `;
 
-// How to handle arrays for tags and languages?
 const ADDRESOURCE = gql`
   mutation (
     $resource: ResourceData!

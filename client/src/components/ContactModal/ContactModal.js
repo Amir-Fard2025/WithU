@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import Fab from "@mui/material/Fab";
 
 const ContactModal = ({ open, onClose }) => {
@@ -82,14 +82,11 @@ const ContactModal = ({ open, onClose }) => {
           />
           <Fab
             sx={styleFab}
-            // onClick={handleFormSubmit}
-            // style={button}
+
           >
             Send
           </Fab>
-          {/* <Button variant="contained" sx={{ marginTop: "1rem" }}>
-            Send
-          </Button> */}
+
         </Box>
       </Box>
     </Modal>

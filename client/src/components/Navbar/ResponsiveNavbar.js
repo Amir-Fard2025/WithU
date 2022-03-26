@@ -3,14 +3,11 @@ import {
   AppBar,
   Box,
   Button,
-  // Tab,
-  //Tabs,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
 import Auth from "../../utils/auth";
-//import LoginModal from "../LoginModal/LoginModal";
 import logo from "../../images/logopng.png";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
@@ -36,7 +33,6 @@ const typographyStyle = {
 
 export default function ResponsiveNavbar({ setOpen }) {
   const [alignment, setAlignment, value, setValue] = useState(0);
-  //const [open, setOpen] = useState(false);
 
   const openLoginModal = () => {
     setOpen(true);
@@ -44,7 +40,6 @@ export default function ResponsiveNavbar({ setOpen }) {
   const loggedIn = !!localStorage.getItem("id_token");
 
   const openContactModal = () => {
-    console.log("modal clicked fromat footer");
     setOpen(true);
   };
   return (
@@ -79,7 +74,6 @@ export default function ResponsiveNavbar({ setOpen }) {
               Login / Sign Up
             </Button>
           )}
-          {/* add FAQ and contact here */}
           <Box sx={{ color: "black" }}>
             <Typography sx={{ textAlign: "center" }} component="div">
               <Link

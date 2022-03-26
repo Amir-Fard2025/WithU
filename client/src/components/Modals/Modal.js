@@ -1,18 +1,13 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
-// import Autocomplete from "@mui/material/Autocomplete";
 import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADDRESOURCE } from "../../utils/mutations";
-// import { Typography } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
-import Stack from "@mui/material/Stack";
+
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -79,7 +74,6 @@ const button = {
   left: "50%",
   top: "70%",
   width: "60px",
-  // color: "rgba(66, 133, 244, 0.624)",
   transform: "translate(-50%, -50%)",
   backgroundColor: "transparent",
   border: "solid",
@@ -120,7 +114,6 @@ export default function BasicModal() {
       target: { name, value },
     } = event;
     setPersonLanguage(
-      // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
     setUserFormData({ ...userFormData, [name]: value });
@@ -131,13 +124,11 @@ export default function BasicModal() {
       target: { name, value },
     } = event;
     setTag(
-      // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  // how to handle the arrays here?
   const [userFormData, setUserFormData] = useState({
     title: "",
     description: "",
@@ -160,7 +151,6 @@ export default function BasicModal() {
     const { name, value } = event.target;
 
     setUserFormData({ ...userFormData, [name]: value });
-    console.log(userFormData)
     setValidated(validateInput(value));
   };
 
@@ -177,7 +167,6 @@ export default function BasicModal() {
           resource: userFormData,
         },
       });
-      console.log(res);
       setUserFormData({
         title: "",
         description: "",
@@ -200,7 +189,6 @@ export default function BasicModal() {
         style={button}
       >
         Add
-        {/* <AddIcon className="iconModal" /> */}
       </Fab>
       <Modal
         className="modal"

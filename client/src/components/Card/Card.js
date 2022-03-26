@@ -1,13 +1,10 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-// import Button from "@mui/material/Button";
-// import Input from "@mui/material/Input";
+
 import Typography from "@mui/material/Typography";
-// import FlagCircleRoundedIcon from "@mui/icons-material/FlagCircleRounded";
-// import { positions } from "@mui/system";
+
 import Flags from "country-flag-icons/react/3x2";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
@@ -15,7 +12,6 @@ import FavoriteIcone from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import "./Card.css";
-// import { LikeButton } from "@lyket/react";
 
 const styleCard = {
   marginTop: "120px",
@@ -70,7 +66,6 @@ export default function MediaCard({
   like,
   url
 }) {
-  console.log(screenshot);
   const loggedIn = !!localStorage.getItem("id_token");
 
   return (
@@ -90,35 +85,30 @@ export default function MediaCard({
               size="small"
               sx={circle}
               aria-label="edit"
-            // onClick={handleOpen}
-            // style={button}
+  
             >
               <FavoriteIcone className="like" />
 
-              {/* <AddIcon className="iconModal" /> */}
             </Fab>
             <Fab
               className="edit"
               size="small"
               sx={circle}
               aria-label="edit"
-            // onClick={handleOpen}
-            // style={button}
+
             >
               <EditIcon className="edit" />
 
-              {/* <AddIcon className="iconModal" /> */}
             </Fab>
             <Fab
               className="delete"
               size="small"
               sx={circle}
               aria-label="delete"
-            // onClick={handleOpen}
-            // style={button}
+
             >
               <DeleteIcon className="delete" />
-              {/* <AddIcon className="iconModal" /> */}
+
             </Fab>
           </div>
         )}
@@ -172,11 +162,7 @@ export default function MediaCard({
             </Box>
           )}
 
-          {/* <LikeButton
-          id="how-to-reduce-footprint"
-          namespace="post"
-          component={LikeButton.themes.Twitter}
-        /> */}
+
         </div>
       </a >
     </Card>

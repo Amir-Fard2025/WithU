@@ -77,7 +77,6 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -129,7 +128,6 @@ const LoginForm = () => {
           sx={styleFab}
           onClick={handleFormSubmit}
           disabled={!validated}
-          // style={button}
         >
           <Typography
             sx={{ color: "rgba(66, 133, 244, 0.624)", cursor: "pointer" }}
@@ -138,14 +136,7 @@ const LoginForm = () => {
           </Typography>
         </Fab>
       </div>
-      {/* <Button
-        variant="contained"
-        sx={{ marginTop: "1rem" }}
-        onClick={handleFormSubmit}
-        disabled={!validated}
-      >
-        Log In
-      </Button> */}
+
     </Box>
   );
 };
