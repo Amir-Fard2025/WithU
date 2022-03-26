@@ -1,0 +1,31 @@
+{
+  "name": "withu",
+  "version": "1.0.0",
+  "description": "Crowdsourced information platform for U",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server &&  npm run seed && node server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amir-Fard2025/WithU.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amir-Fard2025/WithU/issues"
+  },
+  "homepage": "https://github.com/Amir-Fard2025/WithU#readme",
+  "dependencies": {
+    "@lyket/react": "^1.4.8",
+    "concurrently": "^7.0.0",
+    "country-flag-icons": "^1.4.25",
+    "react-router-dom": "^6.2.2",
+    "styled-components": "^5.3.3"
+  }
+}

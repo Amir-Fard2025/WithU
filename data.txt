@@ -1,0 +1,88 @@
+
+Queries:
+    searchResource:[
+        {
+
+        }
+    ]
+    getTag:[
+        {
+            id: "12",
+            name:["Food"] ,
+
+        }
+    ]
+    getCards:
+    [
+        {
+            id: "1234",
+            title: "Food Supply",
+            description: "lorem ipsum",
+            lanaguage: ["en", "de", "ru", "ua"],
+            image: "https://images.unsplash.com/photo-1600091474842-83bb9c05a723?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+            url:"https://www.deutschebahn.de"
+        },
+    ]
+
+    getCurrentUserCard:[
+        {
+
+        }
+    ]
+
+
+Mutation:
+
+    login(email: String!, password: String!)[
+        {}
+    ]
+    signUp(email: String!, password: String!)[
+        {}
+    ]
+    logout()
+
+    
+    searchCards(searchKey:String!) : 
+    [
+        {
+            id: "1234",
+            title: "Food Supply",
+            category: "Food",
+            tags: ["food", "money"],
+            lanaguage: ["en", "de", "ru", "ua"],
+            image: "https://images.unsplash.com/photo-1600091474842-83bb9c05a723?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+            url:""
+        }
+    ]
+
+    
+
+    likeCard():
+    [
+        {
+
+        }
+    ]
+    
+    addCard():
+    [
+        {
+
+        }
+    ]
+
+    updateCard():
+    [
+        {
+            
+        }
+    ]
+
+    deleteCard():
+    [
+        {
+            
+        }
+    ]
+
+
