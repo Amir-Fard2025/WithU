@@ -82,15 +82,16 @@ const resolvers = {
       })
     },
     getAllUserCreatedCards: async (parent, args, context) => {
-      if (context.user) {
-        const _id = context.user._id;
-        // const _id = "623df616efa280cf90a63466"
-        console.log("id: ",_id)
+      // if (context.user) {
+      //   const _id = context.user._id;
+        const _id = "623e5f7164cd8c482f42e60b"; 
+
+        console.log("id: ", _id)
         const { createdCards } = await User.findOne({ _id })
           .populate("createdCards");
         return createdCards
-      }
-      throw new AuthenticationError("Please login first!");
+      // }
+      // throw new AuthenticationError("Please login first!");
     },
 
     getAllUserLikedCards: async (parent, args, context) => {
@@ -137,42 +138,46 @@ const resolvers = {
     },
 
     addResourcesCard: async (parent, args, context) => {
-      if (context.user) {
-        const { resourceId, title, description, url, language, tag_id } =
+      // console.log(context.user)
+      // if (context.user) {
+        // console.log(context.user._id)
+        const userId = "623e5f7164cd8c482f42e60b"; 
+        const { title, description, url, tags, language } =
           args.resource;
         try {
           let screenshot;
           try {
-            const screenshotName = title.toLowerCase().replace(" ", "");
+            const screenshotName = title.toLowerCase().replace(/ /g, "");
             generateScreenshot(
               url,
-              "public/screenshots/" + screenshotName + ".png"
+              "../client/public/screenshots/" + screenshotName + ".png"
             );
             screenshot = `/screenshots/${screenshotName}.png`;
           } catch (err) {
             console.log("Error while generating a screenshot");
-            screenshot = `/default.png`;
+            screenshot = `../client/public/screenshots/default.png`;
           }
           const addCard = await ResourceCard.create({
-            resourceId,
             title,
             description,
             url,
             screenshot,
             language,
-            tag_id,
+            tags,
           });
-          const user = await User.findOneAndUpdate(
-            { _id: context.user._id },
+          console.log(addCard)
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: userId },
             { $addToSet: { createdCards: addCard._id } }
           );
+          console.log(us)
           return true;
         } catch (err) {
           console.error(err.message);
           return false;
         }
-      }
-      throw new AuthenticationError("Please login first!");
+      // }
+      // throw new AuthenticationError("Please login first!");
     },
 
     updateResourcesCard: async (parent, args, context) => {

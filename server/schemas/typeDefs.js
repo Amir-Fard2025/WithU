@@ -17,6 +17,7 @@ const typeDefs = gql`
     url: String
     language: [String]!
     like: [ID]
+    tags: [String]
     tag_id: [String]
     screenshot:String
     status: String
@@ -49,12 +50,11 @@ const typeDefs = gql`
   }
 
   input ResourceData {
-    _id: ID
     title: String!
     description: String!
     url: String!
     language: [String!]
-    tag_id: [String!]
+    tags: [String!]
   }
 
   type Mutation {

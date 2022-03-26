@@ -30,29 +30,11 @@ const ADDUSER = gql`
 // How to handle arrays for tags and languages?
 const ADDRESOURCE = gql`
   mutation (
-    $title: String!
-    $description: String!
-    $url: String!
-    $tag_id: [String!]
-    $language: [String!]
+    $resource: ResourceData!
   ) {
     addResourcesCard(
-      title: $title
-      description: $description
-      url: $url
-      tag_id: $tag_id
-      language: $language
-    ) {
-      resource {
-        _id
-
-        title
-        description
-        url
-        tag_id
-        language
-      }
-    }
+      resource: $resource
+    ) 
   }
 `;
 export { LOGIN, ADDUSER, ADDRESOURCE };

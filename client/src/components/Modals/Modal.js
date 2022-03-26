@@ -117,22 +117,24 @@ export default function BasicModal() {
 
   const handleChange = (event) => {
     const {
-      target: { value },
+      target: { name, value },
     } = event;
     setPersonLanguage(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    setUserFormData({ ...userFormData, [name]: value });
   };
 
-  const handleChangement = (event1) => {
+  const handleChangement = (event) => {
     const {
-      target: { value },
-    } = event1;
+      target: { name, value },
+    } = event;
     setTag(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    setUserFormData({ ...userFormData, [name]: value });
   };
 
   // how to handle the arrays here?
@@ -140,7 +142,7 @@ export default function BasicModal() {
     title: "",
     description: "",
     url: "",
-    tag_id: "",
+    tags: "",
     language: "",
   });
   const [validated, setValidated] = useState(false);
@@ -160,11 +162,11 @@ export default function BasicModal() {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(event.target.value);
+
     setUserFormData({ ...userFormData, [name]: value });
+    console.log(userFormData)
     setValidated(validateInput(value));
   };
-  console.log(userFormData); // each char goes on a separate line
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -176,21 +178,21 @@ export default function BasicModal() {
     try {
       const res = await addResourcesCard({
         variables: {
-          ...userFormData,
+          resource: userFormData,
         },
       });
       console.log(res);
+      setUserFormData({
+        title: "",
+        description: "",
+        url: "",
+        tags: "",
+        language: "",
+      });
     } catch (err) {
       console.error(err);
     }
 
-    setUserFormData({
-      title: "",
-      description: "",
-      url: "",
-      tag_id: "",
-      language: "",
-    });
   };
 
   return (
@@ -255,7 +257,7 @@ export default function BasicModal() {
                 <Select
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
-                  name="tag_id"
+                  name="tags"
                   multiple
                   value={tags}
                   onChange={handleChangement}
