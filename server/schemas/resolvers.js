@@ -82,16 +82,16 @@ const resolvers = {
       })
     },
     getAllUserCreatedCards: async (parent, args, context) => {
-      // if (context.user) {
-      //   const _id = context.user._id;
-        const _id = "623e5f7164cd8c482f42e60b"; 
+      if (context.user) {
+        const _id = context.user._id;
+        // const _id = "623e4d1fb929854d624fe4cf"; 
 
         console.log("id: ", _id)
         const { createdCards } = await User.findOne({ _id })
           .populate("createdCards");
         return createdCards
-      // }
-      // throw new AuthenticationError("Please login first!");
+      }
+      throw new AuthenticationError("Please login first!");
     },
 
     getAllUserLikedCards: async (parent, args, context) => {
@@ -139,9 +139,9 @@ const resolvers = {
 
     addResourcesCard: async (parent, args, context) => {
       // console.log(context.user)
-      // if (context.user) {
+      if (context.user) {
         // console.log(context.user._id)
-        const userId = "623e5f7164cd8c482f42e60b"; 
+        // const userId = "623e4d1fb929854d624fe4cf"; 
         const { title, description, url, tags, language } =
           args.resource;
         try {
@@ -176,8 +176,8 @@ const resolvers = {
           console.error(err.message);
           return false;
         }
-      // }
-      // throw new AuthenticationError("Please login first!");
+      }
+      throw new AuthenticationError("Please login first!");
     },
 
     updateResourcesCard: async (parent, args, context) => {

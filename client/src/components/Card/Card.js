@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Flags from "country-flag-icons/react/3x2";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
+import FavoriteIcone from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import "./Card.css";
@@ -74,48 +75,60 @@ export default function MediaCard({
 
   return (
     <Card sx={styleCard}>
-      <a href={url} style={{ textDecoration: "none" }}>
-        <div
-          className="twoIcons"
-          style={{
-            display: "left",
-          }}
-        >
-          <Box></Box>
-          {loggedIn && (
-            <div className="icons">
-              <Fab
-                className="edit"
-                size="small"
-                sx={circle}
-                aria-label="edit"
-              // onClick={handleOpen}
-              // style={button}
-              >
-                <EditIcon className="edit" />
 
-                {/* <AddIcon className="iconModal" /> */}
-              </Fab>
-              <Fab
-                className="delete"
-                size="small"
-                sx={circle}
-                aria-label="delete"
-              // onClick={handleOpen}
-              // style={button}
-              >
-                <DeleteIcon className="delete" />
-                {/* <AddIcon className="iconModal" /> */}
-              </Fab>
-            </div>
-          )}
-        </div>
+      <div
+        className="twoIcons"
+        style={{
+          display: "left",
+        }}
+      >
+        <Box></Box>
+        {loggedIn && (
+          <div className="icons">
+            <Fab
+              className="edit"
+              size="small"
+              sx={circle}
+              aria-label="edit"
+            // onClick={handleOpen}
+            // style={button}
+            >
+              <FavoriteIcone className="like" />
+
+              {/* <AddIcon className="iconModal" /> */}
+            </Fab>
+            <Fab
+              className="edit"
+              size="small"
+              sx={circle}
+              aria-label="edit"
+            // onClick={handleOpen}
+            // style={button}
+            >
+              <EditIcon className="edit" />
+
+              {/* <AddIcon className="iconModal" /> */}
+            </Fab>
+            <Fab
+              className="delete"
+              size="small"
+              sx={circle}
+              aria-label="delete"
+            // onClick={handleOpen}
+            // style={button}
+            >
+              <DeleteIcon className="delete" />
+              {/* <AddIcon className="iconModal" /> */}
+            </Fab>
+          </div>
+        )}
+      </div>
+      <a href={url} style={{ textDecoration: "none" }}>
         <div>
           <CardMedia
             sx={styleMediaCard}
             component="img"
             height="140"
-            // image={"screenshots/" + title.toLowerCase().replace(" ", "") + ".png"}
             image={screenshot}
             alt="website image"
           />

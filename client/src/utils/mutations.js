@@ -37,4 +37,10 @@ const ADDRESOURCE = gql`
     ) 
   }
 `;
-export { LOGIN, ADDUSER, ADDRESOURCE };
+
+const TOGGLE_LIKE = gql`
+mutation Mutation($cardId: ID!) {
+  toggleLikeResourcesCard(cardId: $cardId)
+}
+`;
+export { LOGIN, ADDUSER, ADDRESOURCE, TOGGLE_LIKE };
