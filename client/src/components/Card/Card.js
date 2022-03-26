@@ -17,8 +17,9 @@ import "./Card.css";
 // import { LikeButton } from "@lyket/react";
 
 const styleCard = {
+  marginTop: "120px",
   maxWidth: "400px",
-  maxHeight: "380px",
+  maxHeight: "300px",
   minWidth: "30%",
   borderRadius: "20px",
   boxShadow: 2,
@@ -49,6 +50,7 @@ const styleMediaCard = {
   marginRight: "10px",
   padding: "10px",
   border: 1,
+  borderColor: "yellow",
   borderRadius: "20px",
   maxWidth: "95%",
 };
@@ -66,7 +68,7 @@ export default function MediaCard({
   languages,
   like,
 }) {
-  console.log(screenshot)
+  console.log(screenshot);
   const loggedIn = !!localStorage.getItem("id_token");
 
   return (
@@ -85,8 +87,8 @@ export default function MediaCard({
               size="small"
               sx={circle}
               aria-label="edit"
-            // onClick={handleOpen}
-            // style={button}
+              // onClick={handleOpen}
+              // style={button}
             >
               <EditIcon className="edit" />
 
@@ -97,8 +99,8 @@ export default function MediaCard({
               size="small"
               sx={circle}
               aria-label="delete"
-            // onClick={handleOpen}
-            // style={button}
+              // onClick={handleOpen}
+              // style={button}
             >
               <DeleteIcon className="delete" />
               {/* <AddIcon className="iconModal" /> */}
