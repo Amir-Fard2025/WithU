@@ -54,7 +54,7 @@ const Container = ({ variables, query, dataParameter }) => {
         return (
             <div style={{ display: "flex", height: "80vh", width: "95vw", flexDirection: "row", justifyContent: "space-around", alignContent: "center" }}>
 
-                {currCards.map(c => <Card key={c.id} title={c.title} description={c.description} languages={c.language} screenshot={c.screenshot} />)}
+                {currCards.map(c => <Card key={c.id} title={c.title} description={c.description} languages={c.language} screenshot={c.screenshot} url={c.url} />)}
 
         {/* <button onClick={()=>handleClick(-1)} > Dec </button>
             {currCards.map(c => <Card key={c.id} title={c.title} description = {c.description} language= {c.language} />)};

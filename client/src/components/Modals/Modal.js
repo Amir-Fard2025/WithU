@@ -155,10 +155,6 @@ export default function BasicModal() {
     }
     return false;
   };
-  // const handleTitleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setUserFormData({ ...userFormData, [name]: value });
-  // };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

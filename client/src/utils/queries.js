@@ -21,7 +21,7 @@ query GetPublishedCardsByTagName($tagName: String!) {
     url
     like
     language
-    tag_id
+    tags
     status
   }
 }
@@ -34,7 +34,7 @@ query GetPublishedCardsByAllTagNames($tagNamesArray: [String!]!) {
     description
     url
     language
-    tag_id
+    tags
     like
     screenshot
     status
@@ -50,7 +50,7 @@ query GetAllUserLikedCards {
     description
     url
     language
-    tag_id
+    tags
     like
     screenshot
     status
@@ -66,7 +66,7 @@ query GetAllUserCreatedCards {
     url
     language
     like
-    tag_id
+    tags
     screenshot
     status
   }

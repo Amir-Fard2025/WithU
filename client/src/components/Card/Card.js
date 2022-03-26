@@ -67,102 +67,105 @@ export default function MediaCard({
   screenshot,
   languages,
   like,
+  url
 }) {
   console.log(screenshot);
   const loggedIn = !!localStorage.getItem("id_token");
 
   return (
     <Card sx={styleCard}>
-      <div
-        className="twoIcons"
-        style={{
-          display: "left",
-        }}
-      >
-        <Box></Box>
-        {loggedIn && (
-          <div className="icons">
-            <Fab
-              className="edit"
-              size="small"
-              sx={circle}
-              aria-label="edit"
+      <a href={url} style={{ textDecoration: "none" }}>
+        <div
+          className="twoIcons"
+          style={{
+            display: "left",
+          }}
+        >
+          <Box></Box>
+          {loggedIn && (
+            <div className="icons">
+              <Fab
+                className="edit"
+                size="small"
+                sx={circle}
+                aria-label="edit"
               // onClick={handleOpen}
               // style={button}
-            >
-              <EditIcon className="edit" />
+              >
+                <EditIcon className="edit" />
 
-              {/* <AddIcon className="iconModal" /> */}
-            </Fab>
-            <Fab
-              className="delete"
-              size="small"
-              sx={circle}
-              aria-label="delete"
+                {/* <AddIcon className="iconModal" /> */}
+              </Fab>
+              <Fab
+                className="delete"
+                size="small"
+                sx={circle}
+                aria-label="delete"
               // onClick={handleOpen}
               // style={button}
-            >
-              <DeleteIcon className="delete" />
-              {/* <AddIcon className="iconModal" /> */}
-            </Fab>
-          </div>
-        )}
-      </div>
-      <div>
-        <CardMedia
-          sx={styleMediaCard}
-          component="img"
-          height="140"
-          // image={"screenshots/" + title.toLowerCase().replace(" ", "") + ".png"}
-          image={screenshot}
-          alt="website image"
-        />
-      </div>
-      <CardContent sx={styleCardContent}>
-        <Typography gutterBottom variant="h7" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description}
-        </Typography>
-      </CardContent>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
-        {languages.includes("Ua") && (
-          <Box sx={styleFlag}>
-            <Flags.UA title="ukraine" />
-          </Box>
-        )}
-        {languages.includes("De") && (
-          <Box sx={styleFlag}>
-            <Flags.DE title="germany" />
-          </Box>
-        )}
-        {languages.includes("En") && (
-          <Box sx={styleFlag}>
-            <Flags.GB title="england" />
-          </Box>
-        )}
-        {languages.includes("Ru") && (
-          <Box sx={styleFlag}>
-            <Flags.RU title="russia" />
-          </Box>
-        )}
-        {languages.includes("Pl") && (
-          <Box sx={styleFlag}>
-            <Flags.PL title="poland" />
-          </Box>
-        )}
+              >
+                <DeleteIcon className="delete" />
+                {/* <AddIcon className="iconModal" /> */}
+              </Fab>
+            </div>
+          )}
+        </div>
+        <div>
+          <CardMedia
+            sx={styleMediaCard}
+            component="img"
+            height="140"
+            // image={"screenshots/" + title.toLowerCase().replace(" ", "") + ".png"}
+            image={screenshot}
+            alt="website image"
+          />
+        </div>
+        <CardContent sx={styleCardContent}>
+          <Typography gutterBottom variant="h7" component="div">
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+        </CardContent>
+        <div
+          style={{
+            display: "flex",
+          }}
+        >
+          {languages.includes("Ua") && (
+            <Box sx={styleFlag}>
+              <Flags.UA title="ukraine" />
+            </Box>
+          )}
+          {languages.includes("De") && (
+            <Box sx={styleFlag}>
+              <Flags.DE title="germany" />
+            </Box>
+          )}
+          {languages.includes("En") && (
+            <Box sx={styleFlag}>
+              <Flags.GB title="england" />
+            </Box>
+          )}
+          {languages.includes("Ru") && (
+            <Box sx={styleFlag}>
+              <Flags.RU title="russia" />
+            </Box>
+          )}
+          {languages.includes("Pl") && (
+            <Box sx={styleFlag}>
+              <Flags.PL title="poland" />
+            </Box>
+          )}
 
-        {/* <LikeButton
+          {/* <LikeButton
           id="how-to-reduce-footprint"
           namespace="post"
           component={LikeButton.themes.Twitter}
         /> */}
-      </div>
+        </div>
+      </a >
     </Card>
   );
 }
