@@ -27,7 +27,6 @@ Crowdsourced information platform as a MERN stack single-page application.
   - [Homepage](#homepage)
   - [Results Page](#results-page)
   - [Sign In/ Sign Up](#sign-in-sign-up)
-  - [User Dashboard](#user-dashboard)
   - [Contact](#contact)
   - [FAQ](#faq)
 
@@ -162,19 +161,15 @@ As a world citizen, I want to contribute to making it easier for the innocent ci
 
 - #### Results Page
 
-  ![Image](./client/src/images)
+  ![Image](./client/src/images/WithU_result_pag.png)
 
 - #### Sign In/ Sign Up
 
   ![Image](./client/src/images/login.png)
 
-- #### User Dashboard
-
-  ![Image](./client/src/images)
-
 - #### Contact
 
-  ![Image](./client/src/images)
+  ![Image](./client/src/images/contact.png)
 
 - #### FAQ
 
