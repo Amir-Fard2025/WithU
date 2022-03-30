@@ -82,6 +82,7 @@ const resolvers = {
       })
     },
     getAllUserCreatedCards: async (parent, args, context) => {
+      console.log(context.user)
       if (context.user) {
         const _id = context.user._id;
 
@@ -94,6 +95,7 @@ const resolvers = {
     },
 
     getAllUserLikedCards: async (parent, args, context) => {
+      console.log(context.user)
       if (context.user) {
         const _id = context.user._id;
         console.log(_id)
@@ -137,6 +139,7 @@ const resolvers = {
 
     addResourcesCard: async (parent, args, context) => {
       if (context.user) {
+        const userId = context.user._id;
         const { title, description, url, tags, language } =
           args.resource;
         try {
@@ -165,7 +168,6 @@ const resolvers = {
             { _id: userId },
             { $addToSet: { createdCards: addCard._id } }
           );
-          console.log(us)
           return true;
         } catch (err) {
           console.error(err.message);
